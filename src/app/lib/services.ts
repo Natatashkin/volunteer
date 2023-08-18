@@ -11,5 +11,3 @@ export const getHeaderData = async () => {
   const { data } = await res.json();
   return data;
 };
-
-export const getInitialPageData = async () => {};
