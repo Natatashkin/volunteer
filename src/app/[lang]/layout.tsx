@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { getHeaderData } from "./lib/services";
+import { getHeaderData } from "../lib/services";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +15,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const headerData = await getHeaderData();
+  // const headerData = await getHeaderData();
 
   return (
     <html lang="en">
