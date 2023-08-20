@@ -1,12 +1,26 @@
-const baseUrl = "http://localhost:1337/api";
+const baseUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
 
-const query = "nested_menu_items";
+const headers = {
+  Authorization: `bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+};
 
-export const getHeaderData = async () => {
-  const res = await fetch(`${baseUrl}/menu-items?populate=${query}`);
+export const getAllLocales = async () => {
+  const res = await fetch(`${baseUrl}/i18n/locales`, {
+    headers,
+  });
 
   if (!res.ok) {
-    throw new Error(res.statusText);
+    throw new Error("ERROR!");
+  }
+  const data = await res.json();
+  return data;
+};
+
+export const getNavigationData = async (query: string) => {
+  const res = await fetch(`${baseUrl}/menu-items?${query}`, { headers });
+
+  if (!res.ok) {
+    throw new Error("Error");
   }
   const { data } = await res.json();
   return data;

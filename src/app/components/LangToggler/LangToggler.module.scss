@@ -1,0 +1,14 @@
+.list {
+  display: flex;
+
+  &_item {
+    display: flex;
+    text-transform: uppercase;
+
+    &:not(:last-child)::after {
+      content: "|";
+      display: inline;
+      margin: 0 4px;
+    }
+  }
+}

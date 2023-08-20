@@ -1,23 +1,12 @@
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import { NextRequest, NextResponse } from "next/server";
+import { getAllLocales } from "@/app/lib/services";
 
-const getAllLocales = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/i18n/locales`,
-    {
-      headers: {
-        Authorization: `bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
-      },
-    }
-  );
-  const data = await res.json();
-  return data;
-};
-
-const fetchLocalesData = async () => {
+export const fetchLocalesData = async () => {
   const allLocales = await getAllLocales();
-  const locales = allLocales.map(({ code }: { code: string }) => code);
+  const locales = allLocales?.map(({ code }: { code: string }) => code);
+
   const defaultLocale =
     allLocales.find(({ isDefault }: { isDefault: boolean }) => isDefault)
       ?.code || "en";
@@ -51,10 +40,6 @@ export async function middleware(request: NextRequest) {
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
     const locale = await getLocale(request);
-    // console.log(locale);
-
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
     return NextResponse.redirect(
       new URL(`/${locale}/${pathname}`, request.url)
     );
