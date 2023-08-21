@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import styles from "./LangToggler.module.scss";
 
@@ -11,7 +12,7 @@ const LangToggler = ({ items }: TLangToggler) => {
       {items.map((item) => {
         return (
           <li key={item} className={styles.list_item}>
-            <Link href="">{item}</Link>
+            {/* <Link href="">{item}</Link> */}
           </li>
         );
       })}

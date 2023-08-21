@@ -2,6 +2,8 @@ import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import { NextRequest, NextResponse } from "next/server";
 import { getAllLocales } from "@/app/lib/services";
+import { getCookie } from "./app/actions";
+import { cookies } from "next/headers";
 
 export const fetchLocalesData = async () => {
   const allLocales = await getAllLocales();
@@ -29,7 +31,11 @@ const getLocale = async (request: NextRequest) => {
 };
 
 export async function middleware(request: NextRequest) {
-  const { locales } = await fetchLocalesData();
+  const { locales, defaultLocale } = await fetchLocalesData();
+  //check and set cookie
+  if (!request.cookies.has("userLang")) {
+    request.cookies.set("userLang", defaultLocale);
+  }
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname;
   const pathnameIsMissingLocale = locales.every(

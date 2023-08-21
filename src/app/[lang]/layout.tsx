@@ -20,11 +20,11 @@ export default async function RootLayout({
 }) {
   const { locales, defaultLocale } = await fetchLocalesData();
   const navQuery = qs.stringify(
-    { populate: ["nested-menu-items"], locale: defaultLocale },
+    { populate: "nested_menu_items", locale: defaultLocale },
     { encodeValuesOnly: true }
   );
+
   const navigationData = await getNavigationData(navQuery);
-  console.log(navigationData);
 
   return (
     <html lang={defaultLocale}>
