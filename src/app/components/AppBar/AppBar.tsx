@@ -1,14 +1,13 @@
 import LangToggler from "@Components/LangToggler/LangToggler";
 
 export interface IAppBar {
-  langs: string[];
-  currentLocale: string;
+  locale: string;
 }
 
-const AppBar = ({ langs, currentLocale }: IAppBar) => {
+const AppBar = ({ locale }: IAppBar) => {
   return (
     <header>
-      <LangToggler items={langs} currentLocale={currentLocale} />
+      <LangToggler currentLocale={locale} />
     </header>
   );
 };

@@ -6,12 +6,9 @@ import { getAllLocales } from "@/app/lib/services";
 export const fetchLocalesData = async () => {
   const allLocales = await getAllLocales();
   const locales = allLocales?.map(({ code }: { code: string }) => code);
-
   const defaultLocale = allLocales.find(
     ({ isDefault }: { isDefault: boolean }) => isDefault
   )?.code;
-
-  console.log("defaultLocale", defaultLocale);
 
   return {
     locales,
@@ -22,8 +19,6 @@ export const fetchLocalesData = async () => {
 // Browser prefferences lang
 const getLocale = async (request: NextRequest) => {
   const { locales, defaultLocale } = await fetchLocalesData();
-  const cookiesLocale = request.cookies.get("userLang")?.value;
-  console.log("getLocale", cookiesLocale);
 
   // Negotiator expects plain object so we need to transform headers
   const negotiatorHeaders: Record<string, string> = {};
@@ -38,6 +33,8 @@ export async function middleware(request: NextRequest) {
   const { locales } = await fetchLocalesData();
 
   // Check if there is any supported locale in the pathname
+  console.log(request.url);
+
   const pathname = request.nextUrl.pathname;
   const pathnameIsMissingLocale = locales.every(
     (locale: string) =>
@@ -45,11 +42,8 @@ export async function middleware(request: NextRequest) {
   );
 
   // Redirect if there is no locale
-  const cookieLocale = request.cookies.get("userLang")?.value;
-  const prefferedLocale = await getLocale(request);
-
   if (pathnameIsMissingLocale) {
-    const locale = cookieLocale ?? prefferedLocale;
+    const locale = await getLocale(request);
     return NextResponse.redirect(
       new URL(`/${locale}/${pathname}`, request.url)
     );
