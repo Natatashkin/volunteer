@@ -12,6 +12,7 @@ export interface TLangToggler {
 
 const LangToggler = ({ currentLocale }: TLangToggler) => {
   const pathName = usePathname();
+
   const redirectedPathName = (locale: string) => {
     if (!pathName) return "/";
     const segments = pathName.split("/");

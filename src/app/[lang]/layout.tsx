@@ -25,14 +25,12 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  const { locales } = await fetchLocalesData();
   // const navQuery = qs.stringify(
   //   { populate: "nested_menu_items", locale: defaultLocale },
   //   { encodeValuesOnly: true }
   // );
 
   // const navigationData = await getNavigationData(navQuery);
-
   return (
     <html lang={params.lang}>
       <body className={inter.className}>
