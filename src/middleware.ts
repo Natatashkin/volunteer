@@ -2,16 +2,16 @@ import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import { NextRequest, NextResponse } from "next/server";
 import { getAllLocales } from "@/app/lib/services";
-import { getCookie } from "./app/actions";
-import { cookies } from "next/headers";
 
 export const fetchLocalesData = async () => {
   const allLocales = await getAllLocales();
   const locales = allLocales?.map(({ code }: { code: string }) => code);
 
-  const defaultLocale =
-    allLocales.find(({ isDefault }: { isDefault: boolean }) => isDefault)
-      ?.code || "en";
+  const defaultLocale = allLocales.find(
+    ({ isDefault }: { isDefault: boolean }) => isDefault
+  )?.code;
+
+  console.log("defaultLocale", defaultLocale);
 
   return {
     locales,
@@ -19,8 +19,11 @@ export const fetchLocalesData = async () => {
   };
 };
 
+// Browser prefferences lang
 const getLocale = async (request: NextRequest) => {
   const { locales, defaultLocale } = await fetchLocalesData();
+  const cookiesLocale = request.cookies.get("userLang")?.value;
+  console.log("getLocale", cookiesLocale);
 
   // Negotiator expects plain object so we need to transform headers
   const negotiatorHeaders: Record<string, string> = {};
@@ -30,12 +33,10 @@ const getLocale = async (request: NextRequest) => {
   return match(languages, locales, defaultLocale);
 };
 
+// middleware
 export async function middleware(request: NextRequest) {
-  const { locales, defaultLocale } = await fetchLocalesData();
-  //check and set cookie
-  if (!request.cookies.has("userLang")) {
-    request.cookies.set("userLang", defaultLocale);
-  }
+  const { locales } = await fetchLocalesData();
+
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname;
   const pathnameIsMissingLocale = locales.every(
@@ -44,8 +45,11 @@ export async function middleware(request: NextRequest) {
   );
 
   // Redirect if there is no locale
+  const cookieLocale = request.cookies.get("userLang")?.value;
+  const prefferedLocale = await getLocale(request);
+
   if (pathnameIsMissingLocale) {
-    const locale = await getLocale(request);
+    const locale = cookieLocale ?? prefferedLocale;
     return NextResponse.redirect(
       new URL(`/${locale}/${pathname}`, request.url)
     );

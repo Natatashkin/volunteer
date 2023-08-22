@@ -5,6 +5,7 @@ import qs from "qs";
 import { getNavigationData } from "../lib/services";
 import { fetchLocalesData } from "@/middleware";
 import AppBar from "@Components/AppBar/AppBar";
+import { getCookie, setCookie } from "../actions";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,17 +20,23 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const { locales, defaultLocale } = await fetchLocalesData();
-  const navQuery = qs.stringify(
-    { populate: "nested_menu_items", locale: defaultLocale },
-    { encodeValuesOnly: true }
-  );
+  const localeData = await getCookie("userLang");
+  console.log("localeData", localeData);
 
-  const navigationData = await getNavigationData(navQuery);
+  const locale = localeData?.value ?? defaultLocale;
+  console.log("layout", locale);
+
+  // const navQuery = qs.stringify(
+  //   { populate: "nested_menu_items", locale: defaultLocale },
+  //   { encodeValuesOnly: true }
+  // );
+
+  // const navigationData = await getNavigationData(navQuery);
 
   return (
-    <html lang={defaultLocale}>
+    <html lang={locale}>
       <body className={inter.className}>
-        <AppBar langs={locales} />
+        <AppBar langs={locales} currentLocale={locale} />
         {children}
       </body>
     </html>
