@@ -1,0 +1,15 @@
+@import "../../styles/variables.scss";
+
+.navbar {
+  &_list {
+    display: flex;
+  }
+  &_list_item {
+    padding: 10px;
+    border: 1px solid transparent;
+
+    &__active {
+      border-bottom: 1px solid $accent-color;
+    }
+  }
+}

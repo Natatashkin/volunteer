@@ -23,7 +23,6 @@ const LangToggler = ({ currentLocale }: TLangToggler) => {
 
   const handleRoutClick = (locale: string) => {
     const path = redirectedPathName(locale);
-    console.log(path);
     router.push(path);
     document.cookie = `locale=${locale}`;
   };
@@ -57,7 +56,6 @@ const LangToggler = ({ currentLocale }: TLangToggler) => {
                 })}
               >
                 <button onClick={() => handleRoutClick(item)}>{item}</button>
-                {/* <Link href={redirectedPathName(item)}>{item}</Link> */}
               </li>
             );
           })}
