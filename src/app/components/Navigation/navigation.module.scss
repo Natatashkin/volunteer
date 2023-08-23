@@ -5,11 +5,37 @@
     display: flex;
   }
   &_list_item {
-    padding: 10px;
-    border: 1px solid transparent;
+    position: relative;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 250ms ease-in-out;
 
+    &:focus,
+    &:hover,
     &__active {
-      border-bottom: 1px solid $accent-color;
+      border-bottom: 2px solid $accent-color;
+    }
+  }
+  &_nested_list {
+    position: absolute;
+    top: 100%;
+    width: max-content;
+    background-color: $accent-color;
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+    box-shadow: $shadow;
+  }
+  .link {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    color: #fff;
+    background-color: transparent;
+    transition: background-color 250ms ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: $transparent-hover;
     }
   }
 }
