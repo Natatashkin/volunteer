@@ -1,5 +1,5 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "./LangToggler.module.scss";
 import { useCallback, useEffect, useState } from "react";
@@ -12,6 +12,7 @@ export interface TLangToggler {
 
 const LangToggler = ({ currentLocale }: TLangToggler) => {
   const pathName = usePathname();
+  const router = useRouter();
 
   const redirectedPathName = (locale: string) => {
     if (!pathName) return "/";
@@ -19,6 +20,14 @@ const LangToggler = ({ currentLocale }: TLangToggler) => {
     segments[1] = locale;
     return segments.join("/");
   };
+
+  const handleRoutClick = (locale: string) => {
+    const path = redirectedPathName(locale);
+    console.log(path);
+    router.push(path);
+    document.cookie = `locale=${locale}`;
+  };
+
   const [allLocales, setAllLocales] = useState<string[]>([]);
 
   const getLocalesData = useCallback(async () => {
@@ -47,7 +56,8 @@ const LangToggler = ({ currentLocale }: TLangToggler) => {
                   [styles.list_item__active]: isActive,
                 })}
               >
-                <Link href={redirectedPathName(item)}>{item}</Link>
+                <button onClick={() => handleRoutClick(item)}>{item}</button>
+                {/* <Link href={redirectedPathName(item)}>{item}</Link> */}
               </li>
             );
           })}

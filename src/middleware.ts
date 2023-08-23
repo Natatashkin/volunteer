@@ -19,6 +19,7 @@ export const fetchLocalesData = async () => {
 // Browser prefferences lang
 const getLocale = async (request: NextRequest) => {
   const { locales, defaultLocale } = await fetchLocalesData();
+
   // Negotiator expects plain object so we need to transform headers
   const negotiatorHeaders: Record<string, string> = {};
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
@@ -30,7 +31,6 @@ const getLocale = async (request: NextRequest) => {
 // middleware
 export async function middleware(request: NextRequest) {
   const { locales } = await fetchLocalesData();
-
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname;
   const pathnameIsMissingLocale = locales.every(
@@ -41,6 +41,7 @@ export async function middleware(request: NextRequest) {
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
     const locale = await getLocale(request);
+
     return NextResponse.redirect(
       new URL(`/${locale}/${pathname}`, request.url)
     );
