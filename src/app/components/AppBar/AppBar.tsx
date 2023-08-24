@@ -8,7 +8,7 @@ export interface IAppBar {
 
 const AppBar = ({ locale, items }: IAppBar) => {
   return (
-    <header>
+    <header role="menubar">
       <Navigation items={items} />
       <LangToggler currentLocale={locale} />
     </header>

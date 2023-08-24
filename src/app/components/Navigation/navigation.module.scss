@@ -14,15 +14,43 @@
     &__active {
       border-bottom: 2px solid $accent-color;
     }
+
+    &_button {
+      border: none;
+      box-shadow: none;
+      display: inline-flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      background-color: transparent;
+      font: inherit;
+      & svg {
+        margin-left: 10px;
+      }
+    }
   }
   &_nested_list {
     position: absolute;
-    top: 100%;
+    top: 130%;
+    left: 50%;
+    transform: translateX(-50%);
     width: max-content;
     background-color: $accent-color;
-    border-bottom-left-radius: $radius;
-    border-bottom-right-radius: $radius;
+    border-radius: $radius;
     box-shadow: $shadow;
+    &::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: calc(100% - 50% - 8px);
+      display: block;
+      width: 16px;
+      height: 16px;
+      background-color: $accent-color;
+      transform: rotate(45deg);
+      z-index: -1;
+    }
   }
   .link {
     display: inline-flex;

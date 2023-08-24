@@ -7,34 +7,44 @@ import { getNoLocalizedPath } from "@/app/utils/getNoLocalizedPath";
 import classNames from "classnames";
 import React from "react";
 import { INavigationItem, INavigationProps } from "../../../types";
+import { SlArrowDown } from "react-icons/sl";
 
 const Navigation = ({ items }: INavigationProps) => {
   const pathname = usePathname();
   const noLocalizedPath = getNoLocalizedPath(pathname);
 
   return (
-    <nav className={styles.navbar}>
-      <ul className={styles.navbar_list}>
+    <nav className={styles.navbar} role="navigation" aria-label="Main">
+      <ul
+        className={styles.navbar_list}
+        role="menu"
+        aria-orientation="horizontal"
+      >
         {items.map(({ id, attributes: { title, link, nested_menu_items } }) => {
           const isActive = noLocalizedPath === link;
           const hasNestedItems = Boolean(nested_menu_items?.data.length);
           return (
             <li
+              role="menuitem"
               key={id}
               className={classNames(styles.navbar_list_item, {
                 [styles.navbar_list_item__active]: isActive,
               })}
             >
               {!hasNestedItems ? (
-                <Link href={link} className={styles.link}>
+                <Link role="link" href={link} className={styles.link}>
                   {title}
                 </Link>
               ) : (
                 <>
-                  <p role={link} tabIndex={0} className={styles.link}>
+                  <button
+                    role="menuitem"
+                    aria-haspopup="menu"
+                    className={styles.navbar_list_item_button}
+                  >
                     {title}
-                    <button>v</button>
-                  </p>
+                    <SlArrowDown size={10} />
+                  </button>
                   <ul className={styles.navbar_nested_list}>
                     {nested_menu_items?.data.map(
                       ({
