@@ -1,10 +1,11 @@
-import "./globals.css";
+import "../styles/globals.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import qs from "qs";
 import { getNavigationData } from "../lib/services";
 import { fetchLocalesData } from "@/middleware";
 import AppBar from "@Components/AppBar/AppBar";
+import { ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,7 @@ export default async function RootLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   params: { lang: string };
 }) {
   const navQuery = qs.stringify(
