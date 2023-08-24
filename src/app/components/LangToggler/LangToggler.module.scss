@@ -1,17 +1,26 @@
-.list {
+@import "../../styles/variables.scss";
+.langSwitcher {
   display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
 
   &_item {
     display: flex;
+    padding: 4px;
+    background-color: transparent;
+    border: 2px solid transparent;
     text-transform: uppercase;
+    border-radius: $radius;
 
-    &:not(:last-child)::after {
-      content: "|";
-      display: inline;
-      margin: 0 4px;
+    &:hover {
+      border: 2px solid $accent-color;
     }
+
     &__active {
-      color: orangered;
+      background-color: $accent-color;
     }
+  }
+  &_divider {
+    margin: 0 4px;
   }
 }

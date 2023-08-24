@@ -2,7 +2,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "./LangToggler.module.scss";
-import { useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import classNames from "classnames";
 import { fetchLocalesData } from "@/middleware";
 
@@ -29,6 +29,9 @@ const LangToggler = ({ currentLocale }: TLangToggler) => {
 
   const [allLocales, setAllLocales] = useState<string[]>([]);
 
+  const isLocales = Boolean(allLocales.length);
+  const isLastLocale = allLocales.length - 1;
+
   const getLocalesData = useCallback(async () => {
     try {
       const { locales } = await fetchLocalesData();
@@ -43,25 +46,34 @@ const LangToggler = ({ currentLocale }: TLangToggler) => {
   }, [getLocalesData]);
 
   return (
-    <>
-      {Boolean(allLocales.length) && (
-        <ul className={styles.list}>
-          {allLocales.map((item: string) => {
-            const isActive = item === currentLocale;
-            return (
-              <li
-                key={item}
-                className={classNames(styles.list_item, {
-                  [styles.list_item__active]: isActive,
-                })}
-              >
-                <button onClick={() => handleRoutClick(item)}>{item}</button>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-    </>
+    <div
+      className={styles.langSwitcher}
+      role="list"
+      aria-label="List of site languages"
+    >
+      {allLocales.map((item: string, idx: number) => {
+        const isActive = item === currentLocale;
+        const setDevider = idx !== isLastLocale;
+        return (
+          <Fragment key={item}>
+            <button
+              role="listitem"
+              className={classNames(styles.langSwitcher_item, {
+                [styles.langSwitcher_item__active]: isActive,
+              })}
+              onClick={() => handleRoutClick(item)}
+            >
+              {item}
+            </button>
+            {setDevider && (
+              <span role="separator" className={styles.langSwitcher_divider}>
+                |
+              </span>
+            )}
+          </Fragment>
+        );
+      })}
+    </div>
   );
 };
 
