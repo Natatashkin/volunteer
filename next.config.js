@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const path = require("path");
 
-console.log(path.join(__dirname, "src", "app", "styles"));
-
 const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "src", "app", "styles")],

@@ -1,6 +1,17 @@
+@import "../../styles/variables.scss";
+
 .appHeader {
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr 0.2fr;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 12px;
+  padding: 20px;
+  background-color: transparent;
+
+  &_content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 8px;
+    background-color: $primary-bg-color;
+  }
 }

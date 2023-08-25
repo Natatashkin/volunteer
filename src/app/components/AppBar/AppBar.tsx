@@ -10,13 +10,15 @@ export interface IAppBar {
 const AppBar = ({ locale, items }: IAppBar) => {
   return (
     <header className={styles.appHeader}>
-      <Logo />
-      <div>
-        <button>Стань мецентатом!</button>
-      </div>
+      <div className={styles.appHeader_content}>
+        <Logo />
+        <div>
+          <button>Стань волонтером!</button>
+        </div>
 
-      <Navigation items={items} />
-      <LangToggler currentLocale={locale} />
+        <Navigation items={items} />
+        <LangToggler currentLocale={locale} />
+      </div>
     </header>
   );
 };

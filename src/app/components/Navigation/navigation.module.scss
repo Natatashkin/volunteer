@@ -1,37 +1,12 @@
 @import "../../styles/variables.scss";
 
-.navbar {
+.navigation {
   display: flex;
   justify-content: flex-end;
   &_list {
     display: flex;
   }
-  &_list_item {
-    position: relative;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom 250ms ease-in-out;
 
-    &:focus,
-    &:hover,
-    &__active {
-      border-bottom: 2px solid $accent-color;
-    }
-
-    &_button {
-      border: none;
-      box-shadow: none;
-      display: inline-flex;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      padding: 10px;
-      background-color: transparent;
-      font: inherit;
-      & svg {
-        margin-left: 10px;
-      }
-    }
-  }
   &_nested_list {
     position: absolute;
     top: 130%;

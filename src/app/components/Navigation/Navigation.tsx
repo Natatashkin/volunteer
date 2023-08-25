@@ -1,13 +1,10 @@
 "use client";
-
-import Link from "next/link";
 import styles from "./navigation.module.scss";
 import { usePathname } from "next/navigation";
 import { getNoLocalizedPath } from "@/app/utils/getNoLocalizedPath";
-import classNames from "classnames";
 import React, { useState } from "react";
-import { INavigationItem, INavigationProps } from "../../../types";
-import { SlArrowDown } from "react-icons/sl";
+import NavigationItem from "./NavigationItem/NavigationItem";
+import { INavigationProps } from "../../../types";
 
 const Navigation = ({ items }: INavigationProps) => {
   const pathname = usePathname();
@@ -17,23 +14,41 @@ const Navigation = ({ items }: INavigationProps) => {
   const toggleOpen = () => setOpen((prev) => !prev);
 
   return (
-    <nav className={styles.navbar} role="navigation" aria-label="Main">
+    <nav className={styles.navigation} role="navigation" aria-label="Main">
       <ul
-        className={styles.navbar_list}
+        className={styles.navigation_list}
         role="menu"
         aria-orientation="horizontal"
       >
         {items.map(({ id, attributes: { title, link, nested_menu_items } }) => {
           const isActive = noLocalizedPath === link;
-          const hasNestedItems = Boolean(nested_menu_items?.data.length);
+
           return (
-            <li
+            <NavigationItem
+              id={id}
+              title={title}
+              link={link}
+              isActive={isActive}
+              nestedItems={nested_menu_items.data}
+            />
+          );
+        })}
+      </ul>
+    </nav>
+  );
+};
+
+export default Navigation;
+
+{
+  /* <li
               role="menuitem"
               key={id}
               className={classNames(styles.navbar_list_item, {
                 [styles.navbar_list_item__active]: isActive,
               })}
             >
+              
               {!hasNestedItems ? (
                 <Link role="link" href={link} className={styles.link}>
                   {title}
@@ -77,12 +92,5 @@ const Navigation = ({ items }: INavigationProps) => {
                   )}
                 </>
               )}
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-  );
-};
-
-export default Navigation;
+            </li> */
+}
