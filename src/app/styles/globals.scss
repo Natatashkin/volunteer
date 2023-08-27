@@ -72,7 +72,7 @@
 //     --card-border-rgb: 200, 200, 200;
 //   }
 // }
-@import "../styles/variables.scss";
+@import "../styles/variables.module.scss";
 
 *,
 *::after,
@@ -97,7 +97,7 @@ body {
   //     rgb(var(--background-end-rgb))
   //   )
   //   rgb(var(--background-start-rgb));
-  background-color: $primary-bg-color;
+  background-color: rgba(0, 0, 0, 0.5);
   color: $white;
   min-height: 100%;
 }

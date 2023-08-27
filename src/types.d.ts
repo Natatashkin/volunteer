@@ -6,6 +6,7 @@ import { MouseEventHandler, ReactNode } from "react";
 export interface IIconButtonProps {
   onClick: MouseEventHandler<HTMLButtonElement>;
   children: ReactNode;
+  variant?: "outlined" | "filled" | "transparent";
 }
 
 export interface IButtonProps {
@@ -26,6 +27,8 @@ export type INavigationItem = {
 };
 export interface INavigationProps {
   items: INavigationItem[];
+  dropdown?: boolean;
+  currentLocale?: string;
 }
 
 export interface INavigationItemProps {
@@ -35,4 +38,9 @@ export interface INavigationItemProps {
   nestedItems?: INavigationItem[];
   isActive: boolean;
   children?: ReactNode;
+}
+
+export interface IBurgerButtonProps {
+  open: boolean;
+  toggleOpen: () => void;
 }
