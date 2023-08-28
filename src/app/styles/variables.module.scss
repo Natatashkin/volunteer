@@ -1,13 +1,15 @@
 // Colors //
 $accent-color: #ff4500;
 $transparent-hover: rgba(255, 255, 255, 0.3);
-// $body-color: #0c1f34;
 $white: #ffffff;
 $primary-bg-color: #0c1f34;
 
 // Shape //
 $radius: 6px;
 $shadow: 4px -4px 8px rgba(0, 0, 0, 0.5);
+
+//Fonts-sizes
+$text-size: 14px;
 
 // Breakpoints //
 $mobile: 450px;
@@ -29,4 +31,5 @@ $desktop: 1366px;
   tablet: $tablet;
   laptop: $laptop;
   desktop: $desktop;
+  text-size: $text-size;
 }

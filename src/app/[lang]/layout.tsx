@@ -52,7 +52,7 @@ export default async function RootLayout({
           clientWidth={clientWidth}
           locale={params.lang}
           items={navigationData}
-        ></AppBar>
+        />
         {children}
       </body>
     </html>

@@ -6,6 +6,10 @@ import { MouseEventHandler, ReactNode } from "react";
 export interface IIconButtonProps {
   onClick: MouseEventHandler<HTMLButtonElement>;
   children: ReactNode;
+  role?: string;
+  ariaLabel?: string;
+  ariaExpanded?: boolean;
+  ariaOrientation?: "vertical" | "horizontal";
   variant?: "outlined" | "filled" | "transparent";
 }
 
@@ -25,22 +29,27 @@ export type INavigationItem = {
     };
   };
 };
-export interface INavigationProps {
+export interface INavigationListProps {
   items: INavigationItem[];
-  dropdown?: boolean;
+  toggleOpenList: () => void;
   currentLocale?: string;
 }
 
 export interface INavigationItemProps {
-  id: number;
+  id?: number;
   title: string;
   link: string;
   nestedItems?: INavigationItem[];
   isActive: boolean;
+  onClick: () => void;
   children?: ReactNode;
 }
 
 export interface IBurgerButtonProps {
   open: boolean;
   toggleOpen: () => void;
+}
+
+export interface IBurgerNavigationProps {
+  items: INavigationItem[];
 }

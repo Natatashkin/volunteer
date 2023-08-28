@@ -33,6 +33,14 @@ export async function middleware(request: NextRequest) {
   const { locales } = await fetchLocalesData();
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname;
+  if (
+    [
+      "/manifest.json",
+      "/favicon.ico",
+      // Your other files in `public`
+    ].includes(pathname)
+  )
+    return;
   const pathnameIsMissingLocale = locales.every(
     (locale: string) =>
       !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
