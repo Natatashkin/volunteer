@@ -8,7 +8,7 @@ import NavigationList from "../NavigationList/NavigationList";
 const NavigationItem = ({
   title,
   link,
-  nestedItems,
+  nestedItems = [],
   isActive,
   onClick,
 }: INavigationItemProps) => {
@@ -26,9 +26,25 @@ const NavigationItem = ({
       <Link href={link} className={styles.navListItem_link}>
         {title}
       </Link>
-      {/* {hasNestedItems && (
-        <NavigationList items={nestedItems} toggleOpenList={() => {}} />
-      )} */}
+      {hasNestedItems && (
+        <ul>
+          {nestedItems.map(({ id, attributes }) => {
+            const {
+              title: itemTitle,
+              link: itemLink,
+              nested_menu_items,
+            } = attributes;
+            return (
+              <NavigationItem
+                title={itemTitle}
+                link={itemLink}
+                isActive={false}
+                onClick={onClick}
+              />
+            );
+          })}
+        </ul>
+      )}
     </li>
   );
 };
