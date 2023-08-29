@@ -17,6 +17,7 @@ const NavigationList = ({ items, toggleOpenList }: INavigationListProps) => {
       {items.map(({ id, attributes }) => {
         const { title, link, nested_menu_items } = attributes;
         const isActive = id === activeItem;
+        // console.log(nested_menu_items.data);
 
         return (
           <NavigationItem

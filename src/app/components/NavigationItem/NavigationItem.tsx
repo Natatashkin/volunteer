@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "./navigationItem.module.scss";
 import { INavigationItemProps } from "@/types";
 import classNames from "classnames";
+import NavigationList from "../NavigationList/NavigationList";
 
 const NavigationItem = ({
   title,
@@ -11,6 +12,9 @@ const NavigationItem = ({
   isActive,
   onClick,
 }: INavigationItemProps) => {
+  const hasNestedItems = nestedItems.length > 0;
+  console.log(hasNestedItems);
+
   return (
     <li
       role="menuitem"
@@ -22,6 +26,9 @@ const NavigationItem = ({
       <Link href={link} className={styles.navListItem_link}>
         {title}
       </Link>
+      {/* {hasNestedItems && (
+        <NavigationList items={nestedItems} toggleOpenList={() => {}} />
+      )} */}
     </li>
   );
 };

@@ -16,7 +16,7 @@ export interface IIconButtonProps {
 export interface IButtonProps {
   onClick: MouseEventHandler<HTMLButtonElement>;
   title: string;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export type INavigationItem = {
@@ -31,15 +31,16 @@ export type INavigationItem = {
 };
 export interface INavigationListProps {
   items: INavigationItem[];
+  locale?: string;
   toggleOpenList: () => void;
-  currentLocale?: string;
+  // currentLocale?: string;
 }
 
 export interface INavigationItemProps {
   id?: number;
   title: string;
   link: string;
-  nestedItems?: INavigationItem[];
+  nestedItems: INavigationItem[];
   isActive: boolean;
   onClick: () => void;
   children?: ReactNode;
@@ -52,4 +53,11 @@ export interface IBurgerButtonProps {
 
 export interface IBurgerNavigationProps {
   items: INavigationItem[];
+  locale: string;
+}
+
+export interface INavigationProps {
+  items: INavigationItem[];
+  locale?: string;
+  width: number;
 }
