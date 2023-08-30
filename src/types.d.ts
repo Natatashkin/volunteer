@@ -19,6 +19,11 @@ export interface IButtonProps {
   children?: ReactNode;
 }
 
+export interface IAppBar {
+  locale: string;
+  items: any;
+}
+
 export type INavigationItem = {
   id: number;
   attributes: {

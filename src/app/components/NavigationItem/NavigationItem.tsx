@@ -29,6 +29,7 @@ const NavigationItem = ({
       {hasNestedItems && (
         <ul>
           {nestedItems.map(({ id, attributes }) => {
+            
             const {
               title: itemTitle,
               link: itemLink,
@@ -40,6 +41,7 @@ const NavigationItem = ({
                 link={itemLink}
                 isActive={false}
                 onClick={onClick}
+                nestedItems={nested_menu_items?.data}
               />
             );
           })}

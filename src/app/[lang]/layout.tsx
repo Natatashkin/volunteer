@@ -7,6 +7,7 @@ import { fetchLocalesData } from "@/middleware";
 import AppBar from "@Components/AppBar/AppBar";
 import { ReactNode } from "react";
 import { headers } from "next/headers";
+import useWidth from "../lib/hooks/useWidth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default async function RootLayout({
   children: ReactNode;
   params: { lang: string };
 }) {
+  
   const navQuery = qs.stringify(
     {
       fields: ["title", "link"],
@@ -41,15 +43,11 @@ export default async function RootLayout({
   );
 
   const navigationData = await getNavigationData(navQuery);
-  const headersList = headers();
-  console.log(headersList.get("sec-ch-viewport-width"));
-  const clientWidth = Number(headersList.get("sec-ch-viewport-width"));
 
   return (
     <html lang={params.lang}>
       <body className={inter.className}>
-        <AppBar
-          clientWidth={clientWidth}
+         <AppBar
           locale={params.lang}
           items={navigationData}
         />
