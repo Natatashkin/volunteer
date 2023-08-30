@@ -1,9 +1,7 @@
 @import "../../../styles/variables.module.scss";
 
-.primaryNavList {
+.list {
   display: flex;
-  flex-grow: 1;
-  justify-content: flex-end;
 
   // position: absolute;
   // top: calc(100% - 10px);

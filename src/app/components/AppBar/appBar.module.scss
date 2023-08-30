@@ -24,4 +24,9 @@
       grid-template-columns: 2fr 1fr 4.5fr 0.5fr;
     }
   }
+  &_navigation {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
 }

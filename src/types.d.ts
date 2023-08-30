@@ -37,18 +37,14 @@ export type INavigationItem = {
 export interface INavigationListProps {
   items: INavigationItem[];
   locale?: string;
-  toggleOpenList: () => void;
   // currentLocale?: string;
 }
 
 export interface INavigationItemProps {
-  id?: number;
   title: string;
   link: string;
   nestedItems: INavigationItem[];
   isActive: boolean;
-  onClick: () => void;
-  children?: ReactNode;
 }
 
 export interface IBurgerButtonProps {

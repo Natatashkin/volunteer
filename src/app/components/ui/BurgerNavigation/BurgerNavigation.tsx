@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavigationList from "../../NavigationList/NavigationList";
+import NavigationList from "../../PrimaryNavigationList/PrimaryNavigationList";
 import BurgerButton from "../../BurgerButton/BurgerButton";
 import styles from "./burgerNavigation.module.scss";
 import { IBurgerNavigationProps } from "@/types";
