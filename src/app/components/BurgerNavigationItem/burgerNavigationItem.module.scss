@@ -1,6 +1,7 @@
 @import "../../styles/variables.module.scss";
 
 .navigationItem {
+  width: 100%;
   background-color: transparent;
   transition: background-color 250ms ease-in-out;
   border-radius: $radius;
@@ -10,12 +11,17 @@
     align-items: center;
     padding: 8px 16px;
     border-radius: $radius;
+    &:hover,
+    &:focus {
+      background-color: $transparent-hover;
+    }
   }
 
   .dropdown {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     border-radius: $radius;
 
     &_button {
@@ -32,8 +38,13 @@
       font-size: inherit;
       cursor: pointer;
 
+      &:hover,
+      &:focus {
+        background-color: $accent-color-darker;
+      }
+
       &__active {
-        background-color: $transparent-hover;
+        background-color: $accent-color-darker;
       }
 
       &_text {
@@ -46,6 +57,18 @@
         left: calc(100% + 4px);
         display: inline-flex;
         align-items: center;
+      }
+    }
+
+    &_nestedList {
+      display: none;
+      width: 100%;
+      padding: 8px;
+      background-color: $accent-color-darker;
+      border-radius: $radius;
+
+      &__active {
+        display: block;
       }
     }
   }

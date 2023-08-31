@@ -13,12 +13,7 @@ const BurgerNavigationItem = ({
 }: INavigationItemProps) => {
   const hasNestedItems = Boolean(nestedItems?.length);
   const [open, setOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState(isActive);
-
   const toggleOpen = () => setOpen((prev) => !prev);
-
-	console.log();
-	
 
   return (
     <li className={styles.navigationItem}>
@@ -26,7 +21,7 @@ const BurgerNavigationItem = ({
         <Link
           href={link}
           className={classNames(styles.navigationItem_link, {
-            [styles.navigationItem__active]: activeLink,
+            [styles.navigationItem__active]: isActive,
           })}
         >
           {title}
@@ -45,6 +40,30 @@ const BurgerNavigationItem = ({
               </span>
             </span>
           </button>
+          <ul
+            className={classNames(styles.dropdown_nestedList, {
+              [styles.dropdown_nestedList__active]: open,
+            })}
+          >
+            {nestedItems?.map(({ id, attributes }) => {
+              const {
+                link: nestedLink,
+                title: nestedTitle,
+                nested_menu_items,
+              } = attributes;
+              const itemLink = `${link}${nestedLink}`;
+
+              return (
+                <BurgerNavigationItem
+                  key={id}
+                  link={itemLink}
+                  title={nestedTitle}
+                  nestedItems={nested_menu_items?.data}
+                  isActive={false}
+                />
+              );
+            })}
+          </ul>
         </div>
       )}
     </li>
