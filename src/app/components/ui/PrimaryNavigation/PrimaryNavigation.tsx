@@ -10,23 +10,26 @@ const PrimaryNavigation = ({ items }: INavigationListProps) => {
   const path = usePathname();
 
   return (
-    <ul aria-label="Menu List" className={styles.list}>
-      {items.map(({ id, attributes }) => {
-        const { title, link, nested_menu_items } = attributes;
-        const itemPath = getNoLocalizedPath(path);
-        const isActive = link === itemPath || link !=='/' && path.includes(link);
+    <nav className={styles.navigation}>
+      <ul aria-label="Menu List" className={styles.navigation_list}>
+        {items.map(({ id, attributes }) => {
+          const { title, link, nested_menu_items } = attributes;
+          const currentPath = getNoLocalizedPath(path);
+          const isActive =
+            link === currentPath || (link !== "/" && currentPath.includes(link));
 
-        return (
-          <PrymaryNavigationItem
-            key={id}
-            title={title}
-            link={link}
-            nestedItems={nested_menu_items.data}
-            isActive={isActive}
-          />
-        );
-      })}
-    </ul>
+          return (
+            <PrymaryNavigationItem
+              key={id}
+              title={title}
+              link={link}
+              nestedItems={nested_menu_items.data}
+              isActive={isActive}
+            />
+          );
+        })}
+      </ul>
+    </nav>
   );
 };
 

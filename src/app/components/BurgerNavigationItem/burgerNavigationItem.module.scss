@@ -1,0 +1,59 @@
+@import "../../styles/variables.module.scss";
+
+.navigationItem {
+  background-color: transparent;
+  transition: background-color 250ms ease-in-out;
+  border-radius: $radius;
+  &_link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: $radius;
+  }
+
+  .dropdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: $radius;
+
+    &_button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 8px 16px;
+      border-radius: $radius;
+      border: none;
+      background-color: transparent;
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
+
+      &__active {
+        background-color: $transparent-hover;
+      }
+
+      &_text {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+      }
+      &_icon {
+        position: absolute;
+        left: calc(100% + 4px);
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+  }
+  &__active {
+    background-color: $transparent-hover;
+  }
+
+  // &__open {
+  // 	background-color: $transparent-hover;
+  // }
+}

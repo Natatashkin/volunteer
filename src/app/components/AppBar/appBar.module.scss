@@ -27,13 +27,7 @@
       grid-template-columns: 1.5fr 3fr 4.5fr 0.5fr;
     }
   }
-  &_navigation {
-    display: flex;
-    justify-content: flex-end;
-    @media (min-width:$desktop) {
-      justify-content: center;
-    }
-  }
+  
   &_action {
     display: flex;
     align-items: center;

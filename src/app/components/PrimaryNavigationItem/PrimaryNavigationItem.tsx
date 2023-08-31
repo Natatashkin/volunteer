@@ -5,7 +5,6 @@ import { INavigationItemProps } from "@/types";
 import { RiArrowDownSLine } from "react-icons/ri";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
-import { getNoLocalizedPath } from "@/app/utils/getNoLocalizedPath";
 
 const PrymaryNavigationItem = ({
   title,
@@ -17,11 +16,10 @@ const PrymaryNavigationItem = ({
   const [open, setOpen] = useState(false);
   const toggleOpen = () => setOpen((prev) => !prev);
   const hasNestedItems = Boolean(nestedItems.length);
- 
- useEffect(()=>{
-    setOpen(false)
- },[path])
- 
+
+  useEffect(() => {
+    setOpen(false);
+  }, [path]);
 
   return (
     <li
@@ -36,7 +34,7 @@ const PrymaryNavigationItem = ({
         <Link href={link} className={styles.primaryNavListItem_link}>
           {title}
         </Link>
-      ) : ( 
+      ) : (
         <div className={styles.hasDropdown}>
           <button className={styles.hasDropdown_button}>
             {title}
@@ -45,15 +43,16 @@ const PrymaryNavigationItem = ({
             </span>
           </button>
 
-          <div className={classNames(styles.dropdown, {[styles.dropdown_open]: open})}>
+          <div
+            className={classNames(styles.dropdown, {
+              [styles.dropdown_open]: open,
+            })}
+          >
             <ul className={styles.dropdown_list}>
               {nestedItems.map(({ id, attributes }) => {
-                const {
-                  title: itemTitle,
-                  link: nestedLink,
-                } = attributes;
-                const itemLink = `${link}${nestedLink}`
-                
+                const { title: itemTitle, link: nestedLink } = attributes;
+                const itemLink = `${link}${nestedLink}`;
+
                 return (
                   <PrymaryNavigationItem
                     key={id}

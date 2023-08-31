@@ -1,6 +1,33 @@
 @import "../../../styles/variables.module.scss";
-.nav {
+
+.navigation {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  &_content {
+    display: none;
+    position: absolute;
+    top: calc(100% - 10px);
+    left: 0;
+    width: 100%;
+    &__open {
+      display: block;
+    }
+
+    @media (min-width: $tablet) {
+      width: calc(100% - 20px);
+      top: 100%;
+      left: 10px;
+    }
+  }
+  &_list {
+    padding: 10px;
+    background-color: $accent-color;
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+    @media (min-width: $tablet) {
+      border-radius: 6px;
+    }
+  }
 }
