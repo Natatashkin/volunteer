@@ -1,14 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
+import { IAppBar } from "@/types";
+import useWidth from "@/app/lib/hooks/useWidth";
 import Logo from "../Logo/Logo";
+import LinkButton from "../LinkButton/LinkButton";
 import PrimaryNavigation from "../ui/PrimaryNavigation/PrimaryNavigation";
 import BurgerNavigation from "../ui/BurgerNavigation/BurgerNavigation";
-
-import useWidth from "@/app/lib/hooks/useWidth";
-import { IAppBar } from "@/types";
 import LangToggler from "../LangToggler/LangToggler";
+
 import styles from "./appBar.module.scss";
-import Button from "../Button/Button";
 
 const AppBar = ({ locale, items }: IAppBar) => {
   const { isLaptopWidth, width } = useWidth();
@@ -18,8 +17,9 @@ const AppBar = ({ locale, items }: IAppBar) => {
       <header className={styles.appHeader}>
         <div className={styles.appHeader_content}>
           <Logo />
-          <button>Стань волонтером</button>
-
+          <div className={styles.appHeader_action}>
+            <LinkButton title="Стань волонтером" link="/about/join" variant="outlined"/>
+          </div>
           {Boolean(width) && (
             <nav className={styles.appHeader_navigation}>
               {isLaptopWidth ? (

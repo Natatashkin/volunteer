@@ -98,7 +98,7 @@ body {
   //   )
   //   rgb(var(--background-start-rgb));
   background-color: rgba(0, 0, 0, 0.5);
-  color: $white;
+  color: $primary-text-color;
   min-height: 100%;
   font-size: $text-size;
 }
@@ -124,7 +124,7 @@ h6 {
   margin: 0;
 }
 button {
-  color: $white;
+  color: $primary-text-color;
 }
 
 // @media (prefers-color-scheme: dark) {

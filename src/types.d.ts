@@ -37,13 +37,12 @@ export type INavigationItem = {
 export interface INavigationListProps {
   items: INavigationItem[];
   locale?: string;
-  // currentLocale?: string;
 }
 
 export interface INavigationItemProps {
   title: string;
   link: string;
-  nestedItems: INavigationItem[];
+  nestedItems?: INavigationItem[];
   isActive: boolean;
 }
 
@@ -57,8 +56,8 @@ export interface IBurgerNavigationProps {
   locale: string;
 }
 
-export interface INavigationProps {
-  items: INavigationItem[];
-  locale?: string;
-  width: number;
-}
+// export interface INavigationProps {
+//   items: INavigationItem[];
+//   locale?: string;
+//   width: number;
+// }

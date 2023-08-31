@@ -1,13 +1,12 @@
 "use client";
 import { INavigationListProps } from "@/types";
-import NavigationItem from "../../PrimaryNavigationItem/PrimaryNavigationItem";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./primaryNavigation.module.scss";
 import { usePathname } from "next/navigation";
 import { getNoLocalizedPath } from "@/app/utils/getNoLocalizedPath";
 import PrymaryNavigationItem from "../../PrimaryNavigationItem/PrimaryNavigationItem";
 
-const PrimaryNavigation = ({ items, locale }: INavigationListProps) => {
+const PrimaryNavigation = ({ items }: INavigationListProps) => {
   const path = usePathname();
 
   return (
@@ -15,7 +14,7 @@ const PrimaryNavigation = ({ items, locale }: INavigationListProps) => {
       {items.map(({ id, attributes }) => {
         const { title, link, nested_menu_items } = attributes;
         const itemPath = getNoLocalizedPath(path);
-        const isActive = link === itemPath;
+        const isActive = link === itemPath || link !=='/' && path.includes(link);
 
         return (
           <PrymaryNavigationItem
@@ -24,7 +23,6 @@ const PrimaryNavigation = ({ items, locale }: INavigationListProps) => {
             link={link}
             nestedItems={nested_menu_items.data}
             isActive={isActive}
-            // locale={locale}
           />
         );
       })}

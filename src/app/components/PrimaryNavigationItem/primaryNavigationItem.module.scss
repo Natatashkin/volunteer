@@ -4,6 +4,7 @@
   border-radius: $radius;
   background-color: transparent;
   font-size: inherit;
+  transition: all 250ms ease-in-out;
 
   &_link {
     display: flex;
@@ -11,11 +12,13 @@
     width: 100%;
     height: 100%;
     align-items: center;
+    transition: all 250ms ease-in-out;
 
     &:hover,
     &:focus {
       background-color: $transparent-hover;
       border-radius: $radius;
+
     }
   }
   &__active {
@@ -31,6 +34,7 @@
     width: 100%;
     height: 100%;
     font-family: inherit;
+    transition: all 250ms ease-in-out;
 
     &_button {
       display: flex;
@@ -43,6 +47,7 @@
       border-radius: $radius;
       background-color: transparent;
       font-size: inherit;
+
       &:hover,
       &:focus {
         background-color: $transparent-hover;
@@ -58,10 +63,9 @@
     .dropdown {
       position: absolute;
       top: 100%;
-      // left: calc(-50% + 14px);
       display: block;
       width: max-content;
-      height: auto;
+      height: 100%;
       padding-top: 20px;
 
       &_list {
@@ -86,11 +90,26 @@
           z-index: -1;
         }
       }
+      
     }
-
-    &:hover .dropdown_list,
-    &:focus .dropdown_list {
-      display: block;
+    
+    &:hover,
+    &:focus {
+      .dropdown{
+        .dropdown_list {
+          display: block;
+        }
+      }
     }
   }
+  &__open {
+    .hasDropdown{
+      .dropdown{
+        &_list{
+          display: block;
+        }
+
+      }
+    }
+  } 
 }
