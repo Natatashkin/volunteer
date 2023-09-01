@@ -56,8 +56,17 @@ export interface IBurgerNavigationProps {
   locale: string;
 }
 
-// export interface INavigationProps {
-//   items: INavigationItem[];
-//   locale?: string;
-//   width: number;
-// }
+export interface INavigationItemWrapperProps {
+  title: string;
+  link: string;
+  // currentPath: string;
+  nestedItems?: INavigationItem[];
+  locale?: string;
+  Component: any;
+  
+}
+
+export type TGetIsActivePathState = {
+  itemLink: string;
+  urlPath: string;
+};

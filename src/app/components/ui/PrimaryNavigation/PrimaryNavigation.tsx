@@ -1,30 +1,22 @@
 "use client";
-import { INavigationListProps } from "@/types";
-import React from "react";
-import styles from "./primaryNavigation.module.scss";
+import { INavigationListProps } from "@/app/utils/types";
 import { usePathname } from "next/navigation";
-import { getNoLocalizedPath } from "@/app/utils/getNoLocalizedPath";
+import NavigationItemWrapper from "../../NavigationItemWrapper/NavigationItemWrapper";
 import PrymaryNavigationItem from "../../PrimaryNavigationItem/PrimaryNavigationItem";
+import styles from "./primaryNavigation.module.scss";
 
 const PrimaryNavigation = ({ items }: INavigationListProps) => {
-  const path = usePathname();
-
   return (
     <nav className={styles.navigation}>
       <ul aria-label="Menu List" className={styles.navigation_list}>
-        {items.map(({ id, attributes }) => {
-          const { title, link, nested_menu_items } = attributes;
-          const currentPath = getNoLocalizedPath(path);
-          const isActive =
-            link === currentPath || (link !== "/" && currentPath.includes(link));
-
+        {items.map(({ id, attributes: { title, link, nested_menu_items } }) => {
           return (
-            <PrymaryNavigationItem
+            <NavigationItemWrapper
               key={id}
               title={title}
               link={link}
-              nestedItems={nested_menu_items.data}
-              isActive={isActive}
+              nestedItems={nested_menu_items?.data}
+              Component={PrymaryNavigationItem}
             />
           );
         })}

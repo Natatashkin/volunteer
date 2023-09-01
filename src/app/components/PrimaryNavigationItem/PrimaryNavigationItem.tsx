@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import styles from "./primaryNavigationItem.module.scss";
-import { INavigationItemProps } from "@/types";
-import { RiArrowDownSLine } from "react-icons/ri";
-import classNames from "classnames";
 import { usePathname } from "next/navigation";
+import classNames from "classnames";
+import { RiArrowDownSLine } from "react-icons/ri";
+import NavigationItemWrapper from "../NavigationItemWrapper/NavigationItemWrapper";
+import { INavigationItemProps } from "../../utils/types";
+import styles from "./primaryNavigationItem.module.scss";
 
 const PrymaryNavigationItem = ({
   title,
@@ -49,19 +50,23 @@ const PrymaryNavigationItem = ({
             })}
           >
             <ul className={styles.dropdown_list}>
-              {nestedItems.map(({ id, attributes }) => {
-                const { title: itemTitle, link: nestedLink } = attributes;
-                const itemLink = `${link}${nestedLink}`;
+              {nestedItems.map(
+                ({
+                  id,
+                  attributes: { title: itemTitle, link: nestedLink },
+                }) => {
+                  const itemLink = `${link}${nestedLink}`;
 
-                return (
-                  <PrymaryNavigationItem
-                    key={id}
-                    title={itemTitle}
-                    link={itemLink}
-                    isActive={false}
-                  />
-                );
-              })}
+                  return (
+                    <NavigationItemWrapper
+                      key={id}
+                      title={itemTitle}
+                      link={itemLink}
+                      Component={PrymaryNavigationItem}
+                    />
+                  );
+                }
+              )}
             </ul>
           </div>
         </div>

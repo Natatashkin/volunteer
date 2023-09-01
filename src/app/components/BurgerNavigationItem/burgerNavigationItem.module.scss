@@ -17,12 +17,22 @@
     }
   }
 
+  &__active {
+    background-color: $transparent-hover;
+  }
+
   .dropdown {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border-radius: $radius;
+    &:hover,
+    &:focus {
+      .dropdown_nestedList {
+        display: block;
+      }
+    }
 
     &_button {
       display: flex;
@@ -40,7 +50,7 @@
 
       &:hover,
       &:focus {
-        background-color: $accent-color-darker;
+        background-color: $transparent-hover;
       }
 
       &__active {
@@ -64,6 +74,7 @@
       display: none;
       width: 100%;
       padding: 8px;
+      margin-top: 2px;
       background-color: $accent-color-darker;
       border-radius: $radius;
 
@@ -72,11 +83,4 @@
       }
     }
   }
-  &__active {
-    background-color: $transparent-hover;
-  }
-
-  // &__open {
-  // 	background-color: $transparent-hover;
-  // }
 }

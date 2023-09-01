@@ -1,5 +1,5 @@
 "use client";
-import { IAppBar } from "@/types";
+import { IAppBar } from "@/app/utils/types";
 import useWidth from "@/app/lib/hooks/useWidth";
 import Logo from "../Logo/Logo";
 import LinkButton from "../LinkButton/LinkButton";
@@ -27,11 +27,7 @@ const AppBar = ({ locale, items }: IAppBar) => {
                   variant="outlined"
                 />
               </div>
-              {widthIsDetect && (
-                <nav className={styles.appHeader_navigation}>
-                  <PrimaryNavigation items={items} />
-                </nav>
-              )}
+              {widthIsDetect && <PrimaryNavigation items={items} />}
               <LangToggler currentLocale={locale} />
             </>
           ) : (
