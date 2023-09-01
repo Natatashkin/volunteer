@@ -53,7 +53,6 @@ export interface IBurgerButtonProps {
 
 export interface IBurgerNavigationProps {
   items: INavigationItem[];
-  locale: string;
 }
 
 export interface INavigationItemWrapperProps {
@@ -63,9 +62,9 @@ export interface INavigationItemWrapperProps {
   nestedItems?: INavigationItem[];
   locale?: string;
   Component: any;
-  
 }
 
+// Helpers
 export type TGetIsActivePathState = {
   itemLink: string;
   urlPath: string;

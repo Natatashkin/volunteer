@@ -4,14 +4,13 @@ import useWidth from "@/app/lib/hooks/useWidth";
 import Logo from "../Logo/Logo";
 import LinkButton from "../LinkButton/LinkButton";
 import PrimaryNavigation from "../ui/PrimaryNavigation/PrimaryNavigation";
-import BurgerNavigation from "../ui/BurgerNavigation/BurgerNavigation";
-import LangToggler from "../LangToggler/LangToggler";
+import BurgerMenu from "../ui/BurgerMenu/BurgerMenu";
+import LangSwitcher from "../LangToggler/LangToggler";
 
 import styles from "./appBar.module.scss";
 
 const AppBar = ({ locale, items }: IAppBar) => {
-  const { isLaptopWidth, width } = useWidth();
-  const widthIsDetect = Boolean(width);
+  const { isLaptopWidth, widthIsDetect } = useWidth();
 
   return (
     <>
@@ -28,10 +27,10 @@ const AppBar = ({ locale, items }: IAppBar) => {
                 />
               </div>
               {widthIsDetect && <PrimaryNavigation items={items} />}
-              <LangToggler currentLocale={locale} />
+              <LangSwitcher currentLocale={locale} />
             </>
           ) : (
-            widthIsDetect && <BurgerNavigation items={items} locale={locale} />
+            <BurgerMenu items={items} />
           )}
         </div>
       </header>

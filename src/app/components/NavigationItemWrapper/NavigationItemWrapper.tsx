@@ -8,12 +8,9 @@ const NavigationItemWrapper = ({
   link,
   nestedItems,
   Component,
-  // currentPath,
 }: INavigationItemWrapperProps) => {
-	const path = usePathname();
-	console.log("path", path);
-	
-	
+  const path = usePathname();
+
   const { noLocalizedPath } = splitUrl(path);
   const isActive = getIsActivePathState({
     itemLink: link,

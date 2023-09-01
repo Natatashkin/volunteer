@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 import classNames from "classnames";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { RiArrowDownSLine } from "react-icons/ri";
-import { INavigationItemProps } from "../../utils/types";
+import { INavigationItemProps } from "@/app/utils/types";
 import { splitUrl, createNestedLink, findNavItem } from "@/app/utils/helpers";
 import NavigationItemWrapper from "../NavigationItemWrapper/NavigationItemWrapper";
 import styles from "./burgerNavigationItem.module.scss";

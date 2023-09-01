@@ -21,13 +21,28 @@
       left: 10px;
     }
   }
-  &_list {
-    padding: 10px;
+
+  &_wrapper {
     background-color: $accent-color;
     border-bottom-left-radius: $radius;
     border-bottom-right-radius: $radius;
+    padding-bottom: 10px;
+  }
+
+  &_list {
+    padding: 10px;
     @media (min-width: $tablet) {
       border-radius: 6px;
     }
+  }
+}
+
+.tools {
+  display: flex;
+  justify-content: center;
+
+  &_background {
+    padding: 8px 48px;
+    border-radius: $radius;
   }
 }
