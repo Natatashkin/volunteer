@@ -1,11 +1,10 @@
 "use client";
-import { INavigationListProps } from "@/types";
-import { usePathname } from "next/navigation";
+import { IAppMenuProps } from "@/types";
 import NavigationItemWrapper from "../NavigationItemWrapper/NavigationItemWrapper";
 import PrymaryNavigationItem from "../PrimaryNavigationItem/PrimaryNavigationItem";
 import styles from "./primaryNavigation.module.scss";
 
-const PrimaryNavigation = ({ items }: INavigationListProps) => {
+const PrimaryNavigation = ({ items }: IAppMenuProps) => {
   return (
     <nav className={styles.navigation}>
       <ul aria-label="Menu List" className={styles.navigation_list}>

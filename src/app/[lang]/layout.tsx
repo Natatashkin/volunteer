@@ -44,7 +44,7 @@ export default async function RootLayout({
   return (
     <html lang={params.lang}>
       <body className={inter.className}>
-        <AppBar locale={params.lang} items={navigationData} />
+        <AppBar items={navigationData} />
         {children}
       </body>
     </html>

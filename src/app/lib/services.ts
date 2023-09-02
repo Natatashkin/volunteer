@@ -1,11 +1,11 @@
-const baseUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
+export const baseUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
 
-const headers = {
+export const headers = {
   Authorization: `bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
 };
 
 export const getAllLocales = async () => {
-  const res = await fetch(`${baseUrl}/i18n/locales`, {
+  const res = await fetch(`${baseUrl}/api/i18n/locales`, {
     headers,
   });
 
@@ -17,7 +17,7 @@ export const getAllLocales = async () => {
 };
 
 export const getNavigationData = async (query: string) => {
-  const res = await fetch(`${baseUrl}/menu-items?${query}`, { headers });
+  const res = await fetch(`${baseUrl}/api/menu-items?${query}`, { headers });
 
   if (!res.ok) {
     throw new Error("Error");
@@ -26,4 +26,11 @@ export const getNavigationData = async (query: string) => {
   return data;
 };
 
-export const getInitialPageData = async () => {};
+export const getHomePageData = async (query: string) => {
+  const res = await fetch(`${baseUrl}/api/home-page?${query}`, { headers });
+  if (!res.ok) {
+    throw new Error("Error");
+  }
+  const { data } = await res.json();
+  return data;
+};

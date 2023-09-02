@@ -20,8 +20,7 @@ export interface IButtonProps {
 }
 
 export interface IAppBar {
-  locale: string;
-  items: any;
+  items: INavigationItem[];
 }
 
 export type INavigationItem = {
@@ -67,3 +66,9 @@ export type TGetIsActivePathState = {
   itemLink: string;
   urlPath: string;
 };
+
+// Pages
+
+export interface IHomePageProps {
+  params: { lang: string };
+}
