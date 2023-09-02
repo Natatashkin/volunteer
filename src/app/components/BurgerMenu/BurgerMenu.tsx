@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import classNames from "classnames";
-import { IBurgerNavigationProps } from "@/types";
+import { IAppMenuProps } from "@/types";
 import { splitUrl } from "@/app/utils/helpers";
-import BurgerButton from "../BurgerButton/BurgerButton";
-import NavigationItemWrapper from "../NavigationItemWrapper/NavigationItemWrapper";
-import BurgerNavigationItem from "../BurgerNavigationItem/BurgerNavigationItem";
-import LangSwitcher from "../../LangToggler/LangToggler";
+import BurgerButton from "../ui/BurgerButton/BurgerButton";
+import NavigationItemWrapper from "../ui/NavigationItemWrapper/NavigationItemWrapper";
+import BurgerNavigationItem from "../ui/BurgerNavigationItem/BurgerNavigationItem";
+import LangSwitcher from "../LangToggler/LangToggler";
 
 import styles from "./burgerMenu.module.scss";
 
-const BurgerMenu = ({ items }: IBurgerNavigationProps) => {
+const BurgerMenu = ({ items }: IAppMenuProps) => {
   const path = usePathname();
   const { locale } = splitUrl(path);
   const [open, setOpen] = useState(false);

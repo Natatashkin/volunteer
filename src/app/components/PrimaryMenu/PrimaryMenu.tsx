@@ -1,20 +1,15 @@
 import React from "react";
-import PrimaryNavigation from "../PrimaryNavigation/PrimaryNavigation";
-import LinkButton from "../LinkButton/LinkButton";
-import { INavigationItem } from "@/types";
+import PrimaryNavigation from "../ui/PrimaryNavigation/PrimaryNavigation";
+import LinkButton from "../ui/LinkButton/LinkButton";
+import { IAppMenuProps, INavigationItem } from "@/types";
 import styles from "./primaryMenu.module.scss";
 import useWidth from "@/app/lib/hooks/useWidth";
-import LangSwitcher from "../../LangToggler/LangToggler";
+import LangSwitcher from "../LangToggler/LangToggler";
 import { splitUrl } from "@/app/utils/helpers";
 import { usePathname } from "next/navigation";
 
-export interface IPrimaryMenuProps {
-  items: INavigationItem[];
-}
-
-const PrimaryMenu = ({ items }: IPrimaryMenuProps) => {
+const PrimaryMenu = ({ items }: IAppMenuProps) => {
   const path = usePathname();
-  const { widthIsDetect } = useWidth();
   const { locale } = splitUrl(path);
   return (
     <div className={styles.appHeader_primaryMenu}>

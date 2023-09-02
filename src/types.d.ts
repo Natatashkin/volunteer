@@ -36,7 +36,6 @@ export type INavigationItem = {
 };
 export interface INavigationListProps {
   items: INavigationItem[];
-  locale?: string;
 }
 
 export interface INavigationItemProps {
@@ -51,14 +50,13 @@ export interface IBurgerButtonProps {
   toggleOpen: () => void;
 }
 
-export interface IBurgerNavigationProps {
+export interface IAppMenuProps {
   items: INavigationItem[];
 }
 
 export interface INavigationItemWrapperProps {
   title: string;
   link: string;
-  // currentPath: string;
   nestedItems?: INavigationItem[];
   locale?: string;
   Component: any;

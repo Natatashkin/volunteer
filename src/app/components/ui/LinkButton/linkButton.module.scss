@@ -1,31 +1,33 @@
-@import "../../styles/variables.module.scss";
+@import "../../../styles/variables.module.scss";
 
 .linkButton {
-	display: inline-flex;
-	align-items: center;
-	width: max-content;
-	padding: 8px 16px;
-	color: $primary-text-color;
-	border-radius: $radius;
-	
-	&__outlined {
-		border: 2px solid $accent-color;
-		color: $primary-text-color;
-		&:hover, &:focus {
-			background-color: $transparent-hover;
-		}
-	}
-	
-	&__filled {
-		border: 2px solid transparent;
-		background-color: $accent-color;
-		&:hover, &:focus {
-			border: 2px solid $accent-color;
-			background-color: $transparent-hover;
-		}
-	}
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  padding: 8px 16px;
+  color: $primary-text-color;
+  border-radius: $radius;
 
-	&_link {
-		color: inherit;
-	}
+  &__outlined {
+    border: 2px solid $accent-color;
+    color: $primary-text-color;
+    &:hover,
+    &:focus {
+      background-color: $transparent-hover;
+    }
+  }
+
+  &__filled {
+    border: 2px solid transparent;
+    background-color: $accent-color;
+    &:hover,
+    &:focus {
+      border: 2px solid $accent-color;
+      background-color: $transparent-hover;
+    }
+  }
+
+  &_link {
+    color: inherit;
+  }
 }

@@ -2,8 +2,8 @@
 import { IAppBar } from "@/types";
 import useWidth from "@/app/lib/hooks/useWidth";
 import Logo from "../ui/Logo/Logo";
-import PrimaryMenu from "../ui/PrimaryMenu/PrimaryMenu";
-import BurgerMenu from "../ui/BurgerMenu/BurgerMenu";
+import PrimaryMenu from "../PrimaryMenu/PrimaryMenu";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 import styles from "./appBar.module.scss";
 
