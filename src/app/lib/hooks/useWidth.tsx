@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useDebouncedCallback } from "use-debounce";
+
 import variables from "../../styles/variables.module.scss";
 
 const useWidth = () => {
@@ -9,15 +11,16 @@ const useWidth = () => {
     setWhidth(innerWidth);
   };
 
+  const throttledWidth = useDebouncedCallback(handleClientWidth, 300);
   const isLaptopWidth = width >= parseInt(variables.laptop);
   const widthIsDetect = Boolean(width);
 
   useEffect(() => {
     if (!width) {
-      handleClientWidth();
+      throttledWidth();
     }
-    window.addEventListener("resize", handleClientWidth);
-    return () => window.removeEventListener("resize", handleClientWidth);
+    window.addEventListener("resize", throttledWidth);
+    return () => window.removeEventListener("resize", throttledWidth);
   }, []);
 
   return { isLaptopWidth, width, widthIsDetect };

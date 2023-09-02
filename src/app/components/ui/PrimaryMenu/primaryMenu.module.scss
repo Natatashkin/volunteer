@@ -1,0 +1,24 @@
+@import "../../../styles/variables.module.scss";
+
+.appHeader_primaryMenu {
+  display: none;
+  grid-template-columns: 1fr 4fr 1fr;
+  align-items: center;
+  @media (min-width: $laptop) {
+    display: grid;
+  }
+}
+
+.appHeader_action {
+  display: none;
+  align-items: center;
+  @media (min-width: $laptop) {
+    display: flex;
+  }
+}
+
+.langSwitcher_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

@@ -1,8 +1,8 @@
 "use client";
 import { INavigationListProps } from "@/app/utils/types";
 import { usePathname } from "next/navigation";
-import NavigationItemWrapper from "../../NavigationItemWrapper/NavigationItemWrapper";
-import PrymaryNavigationItem from "../../PrimaryNavigationItem/PrimaryNavigationItem";
+import NavigationItemWrapper from "../NavigationItemWrapper/NavigationItemWrapper";
+import PrymaryNavigationItem from "../PrimaryNavigationItem/PrimaryNavigationItem";
 import styles from "./primaryNavigation.module.scss";
 
 const PrimaryNavigation = ({ items }: INavigationListProps) => {

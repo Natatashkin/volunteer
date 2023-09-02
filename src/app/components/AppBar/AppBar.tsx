@@ -2,15 +2,13 @@
 import { IAppBar } from "@/app/utils/types";
 import useWidth from "@/app/lib/hooks/useWidth";
 import Logo from "../Logo/Logo";
-import LinkButton from "../LinkButton/LinkButton";
-import PrimaryNavigation from "../ui/PrimaryNavigation/PrimaryNavigation";
+import PrimaryMenu from "../ui/PrimaryMenu/PrimaryMenu";
 import BurgerMenu from "../ui/BurgerMenu/BurgerMenu";
-import LangSwitcher from "../LangToggler/LangToggler";
 
 import styles from "./appBar.module.scss";
 
-const AppBar = ({ locale, items }: IAppBar) => {
-  const { isLaptopWidth, widthIsDetect } = useWidth();
+const AppBar = ({ items }: IAppBar) => {
+  const { isLaptopWidth } = useWidth();
 
   return (
     <>
@@ -18,17 +16,7 @@ const AppBar = ({ locale, items }: IAppBar) => {
         <div className={styles.appHeader_content}>
           <Logo />
           {isLaptopWidth ? (
-            <>
-              <div className={styles.appHeader_action}>
-                <LinkButton
-                  title="Стань волонтером"
-                  link="/about/join"
-                  variant="outlined"
-                />
-              </div>
-              {widthIsDetect && <PrimaryNavigation items={items} />}
-              <LangSwitcher currentLocale={locale} />
-            </>
+            <PrimaryMenu items={items} />
           ) : (
             <BurgerMenu items={items} />
           )}

@@ -4,6 +4,9 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  @media (min-width: $laptop) {
+    display: none;
+  }
 
   &_content {
     display: none;
