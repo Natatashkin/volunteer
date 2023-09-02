@@ -1,6 +1,6 @@
 "use client";
 import { getIsActivePathState, splitUrl } from "@/app/utils/helpers";
-import { INavigationItemWrapperProps } from "@/app/utils/types";
+import { INavigationItemWrapperProps } from "@/types";
 import { usePathname } from "next/navigation";
 
 const NavigationItemWrapper = ({

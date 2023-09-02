@@ -2,7 +2,7 @@
 
 .appHeader_primaryMenu {
   display: none;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 4.5fr 0.5fr;
   align-items: center;
   @media (min-width: $laptop) {
     display: grid;

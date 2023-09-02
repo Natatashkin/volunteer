@@ -3,7 +3,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { RiArrowDownSLine } from "react-icons/ri";
-import { INavigationItemProps } from "@/app/utils/types";
+import { INavigationItemProps } from "../../../../types";
 import { splitUrl, createNestedLink, findNavItem } from "@/app/utils/helpers";
 import NavigationItemWrapper from "../NavigationItemWrapper/NavigationItemWrapper";
 import styles from "./burgerNavigationItem.module.scss";

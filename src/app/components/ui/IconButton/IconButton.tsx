@@ -1,4 +1,4 @@
-import { IIconButtonProps } from "@/app/utils/types";
+import { IIconButtonProps } from "@/types";
 import React, { MouseEventHandler, ReactNode } from "react";
 import styles from "./IconButton.module.scss";
 

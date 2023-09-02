@@ -4,10 +4,8 @@ import { Inter } from "next/font/google";
 import qs from "qs";
 import { getNavigationData } from "../lib/services";
 import { fetchLocalesData } from "@/middleware";
-import AppBar from "@Components/AppBar/AppBar";
+import AppBar from "@/app/components/AppBar/AppBar";
 import { ReactNode } from "react";
-import { headers } from "next/headers";
-import useWidth from "../lib/hooks/useWidth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +26,6 @@ export default async function RootLayout({
   children: ReactNode;
   params: { lang: string };
 }) {
-  
   const navQuery = qs.stringify(
     {
       fields: ["title", "link"],
@@ -47,10 +44,7 @@ export default async function RootLayout({
   return (
     <html lang={params.lang}>
       <body className={inter.className}>
-         <AppBar
-          locale={params.lang}
-          items={navigationData}
-        />
+        <AppBar locale={params.lang} items={navigationData} />
         {children}
       </body>
     </html>

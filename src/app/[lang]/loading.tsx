@@ -1,5 +1,5 @@
 "use client";
-import Spinner from "@App/components/Spinner/Spinner";
+import Spinner from "@/app/components/ui/Spinner/Spinner";
 
 const Loading = () => {
   return <Spinner />;

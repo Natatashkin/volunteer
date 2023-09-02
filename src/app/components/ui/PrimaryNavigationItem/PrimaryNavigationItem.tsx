@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import classNames from "classnames";
 import { RiArrowDownSLine } from "react-icons/ri";
 import NavigationItemWrapper from "../NavigationItemWrapper/NavigationItemWrapper";
-import { INavigationItemProps } from "../../utils/types";
+import { INavigationItemProps } from "@/types";
 import styles from "./primaryNavigationItem.module.scss";
 
 const PrymaryNavigationItem = ({

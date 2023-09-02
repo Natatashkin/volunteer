@@ -1,7 +1,7 @@
 import React from "react";
-import PrimaryNavigation from "../../PrimaryNavigation/PrimaryNavigation";
-import LinkButton from "../../LinkButton/LinkButton";
-import { INavigationItem } from "@/app/utils/types";
+import PrimaryNavigation from "../PrimaryNavigation/PrimaryNavigation";
+import LinkButton from "../LinkButton/LinkButton";
+import { INavigationItem } from "@/types";
 import styles from "./primaryMenu.module.scss";
 import useWidth from "@/app/lib/hooks/useWidth";
 import LangSwitcher from "../../LangToggler/LangToggler";

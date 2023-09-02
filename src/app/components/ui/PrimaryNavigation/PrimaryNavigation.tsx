@@ -1,5 +1,5 @@
 "use client";
-import { INavigationListProps } from "@/app/utils/types";
+import { INavigationListProps } from "@/types";
 import { usePathname } from "next/navigation";
 import NavigationItemWrapper from "../NavigationItemWrapper/NavigationItemWrapper";
 import PrymaryNavigationItem from "../PrimaryNavigationItem/PrimaryNavigationItem";

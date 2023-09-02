@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import classNames from "classnames";
-import { IBurgerNavigationProps } from "@/app/utils/types";
+import { IBurgerNavigationProps } from "@/types";
 import { splitUrl } from "@/app/utils/helpers";
-import BurgerButton from "../../BurgerButton/BurgerButton";
-import NavigationItemWrapper from "../../NavigationItemWrapper/NavigationItemWrapper";
-import BurgerNavigationItem from "../../BurgerNavigationItem/BurgerNavigationItem";
+import BurgerButton from "../BurgerButton/BurgerButton";
+import NavigationItemWrapper from "../NavigationItemWrapper/NavigationItemWrapper";
+import BurgerNavigationItem from "../BurgerNavigationItem/BurgerNavigationItem";
 import LangSwitcher from "../../LangToggler/LangToggler";
 
 import styles from "./burgerMenu.module.scss";
