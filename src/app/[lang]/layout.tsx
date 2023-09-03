@@ -6,6 +6,7 @@ import { getNavigationData } from "../lib/services";
 import { fetchLocalesData } from "@/middleware";
 import AppBar from "@/app/components/AppBar/AppBar";
 import { ReactNode } from "react";
+import { AppContextProvider, useAppContext } from "../context/appContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,7 +46,9 @@ export default async function RootLayout({
     <html lang={params.lang}>
       <body className={inter.className}>
         <AppBar items={navigationData} />
-        {children}
+        <AppContextProvider value={navigationData}>
+          {children}
+        </AppContextProvider>
       </body>
     </html>
   );

@@ -100,7 +100,13 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   color: $primary-text-color;
   min-height: 100%;
-  font-size: $text-size;
+  font-size: $small-text-size;
+  @media (min-width: $desktop) {
+    font-size: $large-text-size;
+  }
+  @media (min-width: $large-desktop) {
+    font-size: $large-text-size;
+  }
 }
 
 a {
@@ -122,6 +128,16 @@ h4,
 h5,
 h6 {
   margin: 0;
+}
+
+h1 {
+  font-size: $mobile-h1;
+  @media (min-width: $tablet) {
+    font-size: $tablet-h1;
+  }
+  @media (min-width: $desktop) {
+    font-size: $desktop-h1;
+  }
 }
 button {
   color: $primary-text-color;

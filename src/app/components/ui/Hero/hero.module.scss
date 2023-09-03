@@ -1,0 +1,55 @@
+@import "../../../styles/variables.module.scss";
+
+.hero {
+  position: relative;
+  height: 400px;
+  width: 100%;
+
+  @media (min-width: $tablet) {
+    height: 750px;
+  }
+
+  &_image {
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  &_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    padding: 3%;
+    background-color: $transparent-bg-color;
+    @media (min-width: $tablet) {
+      max-width: 35%;
+    }
+
+    &_title {
+      position: absolute;
+      top: 30%;
+      left: 3%;
+      // font-size: 2rem;
+      text-shadow: $shadow;
+      @media (min-width: $tablet) {
+        font-size: 3rem;
+      }
+      @media (min-width: $desktop) {
+        // font-size: 4rem;
+      }
+    }
+
+    &_linkWrapper {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 5%;
+      @media (min-width: $tablet) {
+        margin-top: 20%;
+      }
+    }
+  }
+}

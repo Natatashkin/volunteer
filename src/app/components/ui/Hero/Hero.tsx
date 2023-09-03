@@ -1,5 +1,11 @@
+"use client";
 import React from "react";
 import LinkButton from "../LinkButton/LinkButton";
+import Image from "next/image";
+import styles from "./hero.module.scss";
+import Container from "../../Container/Container";
+import { useAppContext } from "@/app/context/appContext";
+import { getLink } from "@/app/utils/helpers";
 
 export interface IHeroProps {
   pageTitle?: string;
@@ -18,15 +24,25 @@ const Hero = ({
   heroTitle,
   heroDescription,
 }: IHeroProps) => {
-  console.log(heroTitle);
+  const { navData } = useAppContext();
+
+  const heroActionLink = getLink(navData, actionLink);
 
   return (
-    <section className="hero">
-      <h1 className="hero_title">{heroTitle}</h1>
-      <div className="hero_info">
-        <div className="heroImage">{`${heroImage}`}</div>
-        <div className="hero_text">{heroDescription}</div>
-        <LinkButton title={actionText} link={actionLink} variant="filled" />
+    <section className={styles.hero}>
+      <Image src={heroImage} className={styles.hero_image} fill alt="" />
+      <div className={styles.hero_info}>
+        <h1 className={styles.hero_info_title}>{heroTitle}</h1>
+        <div>
+          <div className={styles.hero_info_text}>{heroDescription}</div>
+          <div className={styles.hero_info_linkWrapper}>
+            <LinkButton
+              title={actionText}
+              link={heroActionLink}
+              variant="hero"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

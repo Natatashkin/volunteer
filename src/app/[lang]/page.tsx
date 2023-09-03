@@ -4,6 +4,8 @@ import { IHomePageProps } from "@/types";
 import Hero from "../components/ui/Hero/Hero";
 
 import styles from "./page.module.scss";
+import Container from "../components/Container/Container";
+import { useAppContext } from "../context/appContext";
 
 export default async function Home({ params: { lang } }: IHomePageProps) {
   const pageQery = qs.stringify(
@@ -16,7 +18,6 @@ export default async function Home({ params: { lang } }: IHomePageProps) {
         "logo",
         "action",
       ],
-      // populate: "*",
       locale: lang,
     },
     { encodeValuesOnly: true }
@@ -50,6 +51,7 @@ export default async function Home({ params: { lang } }: IHomePageProps) {
         heroImage={heroImagePath}
         heroButtonTitle={heroButtonTitle}
       />
+      {/* <Container>children</Container> */}
     </main>
   );
 }
