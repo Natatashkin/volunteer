@@ -4,9 +4,8 @@ import { Inter } from "next/font/google";
 import qs from "qs";
 import { getNavigationData } from "../lib/services";
 import { fetchLocalesData } from "@/middleware";
-import AppBar from "@Components/AppBar/AppBar";
+import AppBar from "@/app/components/AppBar/AppBar";
 import { ReactNode } from "react";
-import { headers } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,18 +40,11 @@ export default async function RootLayout({
   );
 
   const navigationData = await getNavigationData(navQuery);
-  const headersList = headers();
-  console.log(headersList.get("sec-ch-viewport-width"));
-  const clientWidth = Number(headersList.get("sec-ch-viewport-width"));
 
   return (
     <html lang={params.lang}>
       <body className={inter.className}>
-        <AppBar
-          clientWidth={clientWidth}
-          locale={params.lang}
-          items={navigationData}
-        ></AppBar>
+        <AppBar items={navigationData} />
         {children}
       </body>
     </html>

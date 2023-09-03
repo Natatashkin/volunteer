@@ -11,13 +11,26 @@
     border: 2px solid transparent;
     text-transform: uppercase;
     border-radius: $radius;
+    &__orange {
+      &:hover,
+      &:focus {
+        border: 2px solid $accent-color;
+      }
 
-    &:hover {
-      border: 2px solid $accent-color;
+      &_active {
+        background-color: $accent-color;
+      }
     }
 
-    &__active {
-      background-color: $accent-color;
+    &__darkblue {
+      &:hover,
+      &:focus {
+        border: 2px solid $primary-bg-color;
+      }
+
+      &_active {
+        background-color: $primary-bg-color;
+      }
     }
   }
   &_divider {

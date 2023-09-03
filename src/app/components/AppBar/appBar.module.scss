@@ -5,34 +5,21 @@
   top: 0;
   left: 0;
   display: flex;
+  padding: 10px 0;
   flex-direction: column;
-  padding: 20px 0px;
   background-color: transparent;
 
-  @media (min-width: 769px) {
-    padding: 20px;
+  @media (min-width: $tablet) {
+    padding: 10px;
   }
-
   &_content {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    padding: 8px;
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
     background-color: $primary-bg-color;
-    border-radius: none;
-
-    @media (min-width: 769px) {
+    padding: 10px;
+    @media (min-width: $tablet) {
+      grid-template-columns: 0.7fr 3.3fr;
       border-radius: $radius;
     }
-  }
-  &_wrapper {
-    display: flex;
-    width: 100%;
-  }
-  .nav_container {
-    display: flex;
-    justify-content: flex-end;
-    flex-grow: 1;
   }
 }

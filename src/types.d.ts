@@ -6,13 +6,21 @@ import { MouseEventHandler, ReactNode } from "react";
 export interface IIconButtonProps {
   onClick: MouseEventHandler<HTMLButtonElement>;
   children: ReactNode;
+  role?: string;
+  ariaLabel?: string;
+  ariaExpanded?: boolean;
+  ariaOrientation?: "vertical" | "horizontal";
   variant?: "outlined" | "filled" | "transparent";
 }
 
 export interface IButtonProps {
   onClick: MouseEventHandler<HTMLButtonElement>;
   title: string;
-  children: ReactNode;
+  children?: ReactNode;
+}
+
+export interface IAppBar {
+  items: INavigationItem[];
 }
 
 export type INavigationItem = {
@@ -25,22 +33,42 @@ export type INavigationItem = {
     };
   };
 };
-export interface INavigationProps {
+export interface INavigationListProps {
   items: INavigationItem[];
-  dropdown?: boolean;
-  currentLocale?: string;
 }
 
 export interface INavigationItemProps {
-  id: number;
   title: string;
   link: string;
   nestedItems?: INavigationItem[];
   isActive: boolean;
-  children?: ReactNode;
 }
 
 export interface IBurgerButtonProps {
   open: boolean;
   toggleOpen: () => void;
+}
+
+export interface IAppMenuProps {
+  items: INavigationItem[];
+}
+
+export interface INavigationItemWrapperProps {
+  title: string;
+  link: string;
+  nestedItems?: INavigationItem[];
+  locale?: string;
+  Component: any;
+}
+
+// Helpers
+export type TGetIsActivePathState = {
+  itemLink: string;
+  urlPath: string;
+};
+
+// Pages
+
+export interface IHomePageProps {
+  params: { lang: string };
 }

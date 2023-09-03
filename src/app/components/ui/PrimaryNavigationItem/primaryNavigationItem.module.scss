@@ -1,0 +1,158 @@
+@import "../../../styles/variables.module.scss";
+
+.primaryNavListItem {
+  position: relative;
+  border-radius: $radius;
+  background-color: transparent;
+  font-size: inherit;
+  transition: all 250ms ease-in-out;
+
+  &_link {
+    display: flex;
+    padding: 8px 16px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    transition: all 250ms ease-in-out;
+    &::after {
+      content: "";
+      position: absolute;
+      top: calc(100% + 2px);
+      left: 50%;
+      display: block;
+      width: 0;
+      max-width: calc(100% - 12px);
+      height: 2px;
+      background-color: $accent-color;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+
+      transform-origin: center;
+      transition: width 250ms ease-in-out, left 250ms ease-in-out;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $transparent-hover;
+      border-radius: $radius;
+    }
+    &:hover::after,
+    &:focus::after {
+      width: 100%;
+      left: 6px;
+    }
+  }
+
+  &__active {
+    background-color: $transparent-hover;
+    // border-radius: $radius;
+  }
+
+  .hasDropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-family: inherit;
+    transition: all 250ms ease-in-out;
+
+    &_button {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      padding: 8px 16px;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      border: none;
+      border-radius: $radius;
+      background-color: transparent;
+      font-size: inherit;
+      &::after {
+        content: "";
+        position: absolute;
+        top: calc(100% + 2px);
+        left: 50%;
+        display: block;
+        width: 0;
+        max-width: calc(100% - 12px);
+        height: 2px;
+        background-color: $accent-color;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+
+        transform-origin: center;
+        transition: width 250ms ease-in-out, left 250ms ease-in-out;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: $transparent-hover;
+        border-radius: $radius;
+      }
+      &:hover::after,
+      &:focus::after {
+        width: 100%;
+        left: 6px;
+      }
+
+      &_icon {
+        display: flex;
+        align-items: center;
+        margin-left: 4px;
+      }
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      display: block;
+      width: max-content;
+      height: 100%;
+      padding-top: 20px;
+
+      &_list {
+        position: relative;
+        display: none;
+        width: max-content;
+        padding: 6px;
+        background-color: $accent-color;
+        border-radius: $radius;
+        z-index: 1;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -10px;
+          left: calc(50% - 10px);
+          display: flex;
+          width: 20px;
+          min-height: 20px;
+          background-color: inherit;
+          transform: rotate(45deg);
+          z-index: -1;
+        }
+      }
+    }
+
+    &:hover,
+    &:focus {
+      .dropdown {
+        .dropdown_list {
+          display: block;
+        }
+      }
+    }
+  }
+  &__open {
+    .hasDropdown {
+      .dropdown {
+        &_list {
+          display: block;
+        }
+      }
+    }
+  }
+}

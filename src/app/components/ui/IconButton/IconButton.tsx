@@ -5,10 +5,21 @@ import styles from "./IconButton.module.scss";
 const IconButton = ({
   onClick,
   children,
+  ariaLabel,
+  role,
+  ariaExpanded,
+  ariaOrientation,
   variant = "transparent",
 }: IIconButtonProps) => {
   return (
-    <button className={styles.iconButton} onClick={onClick}>
+    <button
+      role={role}
+      aria-label={ariaLabel}
+      aria-expanded={ariaExpanded}
+      aria-orientation={ariaOrientation}
+      className={styles.iconButton}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

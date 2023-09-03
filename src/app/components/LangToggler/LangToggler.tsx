@@ -1,16 +1,16 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
-import Link from "next/link";
-import styles from "./LangToggler.module.scss";
 import { Fragment, useCallback, useEffect, useState } from "react";
 import classNames from "classnames";
 import { fetchLocalesData } from "@/middleware";
+import styles from "./langToggler.module.scss";
 
 export interface TLangToggler {
   currentLocale: string;
+  color?: "orange" | "darkblue";
 }
 
-const LangToggler = ({ currentLocale }: TLangToggler) => {
+const LangSwitcher = ({ currentLocale, color = "orange" }: TLangToggler) => {
   const pathName = usePathname();
   const router = useRouter();
 
@@ -31,6 +31,9 @@ const LangToggler = ({ currentLocale }: TLangToggler) => {
 
   const isLocales = Boolean(allLocales.length);
   const isLastLocale = allLocales.length - 1;
+
+  const isOrange = color === "orange";
+  const isDarkBlue = color === "darkblue";
 
   const getLocalesData = useCallback(async () => {
     try {
@@ -59,7 +62,11 @@ const LangToggler = ({ currentLocale }: TLangToggler) => {
             <button
               role="listitem"
               className={classNames(styles.langSwitcher_item, {
-                [styles.langSwitcher_item__active]: isActive,
+                [styles.langSwitcher_item__orange]: isOrange,
+                [styles.langSwitcher_item__orange_active]: isOrange && isActive,
+                [styles.langSwitcher_item__darkblue]: isDarkBlue,
+                [styles.langSwitcher_item__darkblue_active]:
+                  isDarkBlue && isActive,
               })}
               onClick={() => handleRoutClick(item)}
             >
@@ -77,4 +84,4 @@ const LangToggler = ({ currentLocale }: TLangToggler) => {
   );
 };
 
-export default LangToggler;
+export default LangSwitcher;
