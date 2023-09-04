@@ -97,12 +97,12 @@ body {
   //     rgb(var(--background-end-rgb))
   //   )
   //   rgb(var(--background-start-rgb));
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: $primary-bg-color;
   color: $primary-text-color;
   min-height: 100%;
   font-size: $small-text-size;
   @media (min-width: $desktop) {
-    font-size: $large-text-size;
+    font-size: $medium-text-size;
   }
   @media (min-width: $large-desktop) {
     font-size: $large-text-size;
@@ -130,7 +130,7 @@ h6 {
   margin: 0;
 }
 
-h1 {
+h2 {
   font-size: $mobile-h1;
   @media (min-width: $tablet) {
     font-size: $tablet-h1;

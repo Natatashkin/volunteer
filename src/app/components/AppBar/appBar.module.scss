@@ -5,11 +5,11 @@
   top: 0;
   left: 0;
   display: flex;
-  width: 100%;
   padding: 10px 0;
   z-index: 100;
   flex-direction: column;
   background-color: transparent;
+  width: 100%;
 
   @media (min-width: $tablet) {
     padding: 10px;
@@ -19,6 +19,7 @@
     grid-template-columns: 1.5fr 0.5fr;
     background-color: $primary-bg-color;
     padding: 10px;
+
     @media (min-width: $tablet) {
       grid-template-columns: 0.7fr 3.3fr;
       border-radius: $radius;

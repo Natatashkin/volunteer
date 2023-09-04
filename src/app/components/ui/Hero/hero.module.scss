@@ -6,13 +6,27 @@
   width: 100%;
 
   @media (min-width: $tablet) {
+    height: 600px;
+  }
+  @media(min-width:$laptop) {
+    height: 700px;
+  }
+  @media(min-width:$desktop){
     height: 750px;
+  }
+
+  &_pageTitle {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    appearance: none;
   }
 
   &_image {
     top: 0;
     left: 0;
     object-fit: cover;
+    object-position: top;
     z-index: -1;
   }
 
@@ -25,30 +39,35 @@
     max-width: 100%;
     padding: 3%;
     background-color: $transparent-bg-color;
+
     @media (min-width: $tablet) {
-      max-width: 35%;
+      max-width: 50%;
     }
 
+    @media (min-width: $laptop) {
+      max-width: 35%;
+    }
+    
     &_title {
-      position: absolute;
-      top: 30%;
-      left: 3%;
-      // font-size: 2rem;
+      font-size: $mobile-h1;
       text-shadow: $shadow;
+      margin-bottom: 20px;
+      line-height: 1;
+     
       @media (min-width: $tablet) {
-        font-size: 3rem;
+        font-size: $tablet-h1;
       }
       @media (min-width: $desktop) {
-        // font-size: 4rem;
+        font-size: $desktop-h1;
       }
     }
 
     &_linkWrapper {
       display: flex;
       justify-content: flex-end;
-      margin-top: 5%;
+      margin-top: 20px;
       @media (min-width: $tablet) {
-        margin-top: 20%;
+        margin-top: 30px;
       }
     }
   }

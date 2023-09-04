@@ -8,41 +8,39 @@ import { useAppContext } from "@/app/context/appContext";
 import { getLink } from "@/app/utils/helpers";
 
 export interface IHeroProps {
-  pageTitle?: string;
-  actionText: string;
-  actionLink: string;
+  pageTitle: string;
   heroTitle: string;
   heroDescription: string;
   heroImage: string;
   heroButtonTitle: string;
+  heroButtonLink: string;
 }
 
 const Hero = ({
   heroImage,
-  actionText,
-  actionLink,
   heroTitle,
+  heroButtonLink,
   heroDescription,
+  heroButtonTitle
 }: IHeroProps) => {
   const { navData } = useAppContext();
-
-  const heroActionLink = getLink(navData, actionLink);
+  const heroLink = getLink(navData, heroButtonLink);
 
   return (
     <section className={styles.hero}>
+
       <Image src={heroImage} className={styles.hero_image} fill alt="" />
       <div className={styles.hero_info}>
-        <h1 className={styles.hero_info_title}>{heroTitle}</h1>
-        <div>
-          <div className={styles.hero_info_text}>{heroDescription}</div>
+       
+          <h1 className={styles.hero_info_title}>{heroTitle}</h1>
+          <p className={styles.hero_info_text}>{heroDescription}</p>
           <div className={styles.hero_info_linkWrapper}>
             <LinkButton
-              title={actionText}
-              link={heroActionLink}
+              title={heroButtonTitle}
+              link={heroLink}
               variant="hero"
             />
           </div>
-        </div>
       </div>
     </section>
   );
