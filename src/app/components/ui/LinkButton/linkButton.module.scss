@@ -26,6 +26,23 @@
       background-color: $transparent-hover;
     }
   }
+  &__hero {
+    padding: 12px 20px;
+    border: 2px solid transparent;
+    background-color: $accent-color;
+    font-size: inherit;
+    border-radius: 30px;
+    &:hover,
+    &:focus {
+      border: 2px solid $accent-color;
+      background-color: $transparent-hover;
+    }
+
+    @media (min-width: $desktop) {
+      padding: 16px 24px;
+      border-radius: 50px;
+    }
+  }
 
   &_link {
     color: inherit;

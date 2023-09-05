@@ -1,0 +1,74 @@
+@import "../../../styles/variables.module.scss";
+
+.hero {
+  position: relative;
+  height: 400px;
+  width: 100%;
+
+  @media (min-width: $tablet) {
+    height: 600px;
+  }
+  @media(min-width:$laptop) {
+    height: 700px;
+  }
+  @media(min-width:$desktop){
+    height: 750px;
+  }
+
+  &_pageTitle {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    appearance: none;
+  }
+
+  &_image {
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: top;
+    z-index: -1;
+  }
+
+  &_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    padding: 3%;
+    background-color: $transparent-bg-color;
+
+    @media (min-width: $tablet) {
+      max-width: 50%;
+    }
+
+    @media (min-width: $laptop) {
+      max-width: 35%;
+    }
+    
+    &_title {
+      font-size: $mobile-h1;
+      text-shadow: $shadow;
+      margin-bottom: 20px;
+      line-height: 1;
+     
+      @media (min-width: $tablet) {
+        font-size: $tablet-h1;
+      }
+      @media (min-width: $desktop) {
+        font-size: $desktop-h1;
+      }
+    }
+
+    &_linkWrapper {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+      @media (min-width: $tablet) {
+        margin-top: 30px;
+      }
+    }
+  }
+}

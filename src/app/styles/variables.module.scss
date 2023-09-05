@@ -5,19 +5,27 @@ $transparent-hover: rgba(255, 255, 255, 0.3);
 $white: #ffffff;
 $primary-bg-color: #0c1f34;
 $primary-text-color: #ffffff;
+$transparent-bg-color: rgba(0, 0, 0, 0.5);
 
 // Shape //
 $radius: 6px;
-$shadow: 4px -4px 8px rgba(0, 0, 0, 0.5);
+$shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
 
 //Fonts-sizes
-$text-size: 14px;
+$small-text-size: 14px;
+$medium-text-size: 18px;
+$large-text-size: 22px;
+
+$mobile-h1: 32px;
+$tablet-h1: 48px;
+$desktop-h1: 56px;
 
 // Breakpoints //
 $mobile: 450px;
 $tablet: 768px;
 $laptop: 1024px;
 $desktop: 1366px;
+$large-desktop: 1920px;
 
 // Mobile: 360 x 640
 // Mobile: 375 x 667
@@ -33,5 +41,8 @@ $desktop: 1366px;
   tablet: $tablet;
   laptop: $laptop;
   desktop: $desktop;
-  text-size: $text-size;
+  large-desktop: $large-desktop;
+  small-text: $small-text-size;
+  medium-text: $medium-text-size;
+  large-text: $large-text-size;
 }
