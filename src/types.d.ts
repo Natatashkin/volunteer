@@ -70,5 +70,44 @@ export type TGetIsActivePathState = {
 // Pages
 
 export interface IHomePageProps {
-  params: { lang: string };
+  params: { lang: string; slug: string };
+}
+
+export type ProgectTypes = {
+  id: number;
+  attributes: {
+    createdAt: Date;
+    updatedAt: Date;
+    publishedAt: Date;
+    title: string;
+    description: string;
+    image: any;
+    date: Date;
+    project_category: any;
+  };
+};
+
+export interface PageBlockType {
+  id: number;
+  __component: string;
+  title: string;
+  description: string;
+}
+
+export interface IPageDataTypes {
+  id: number;
+  attributes: {
+    createdAt: Date;
+    updatedAt: Date;
+    publishedAt: Date;
+    locale: string;
+    title: string;
+    slug: string;
+    customSlug: string | null;
+    seo: {
+      title: string;
+      description: string | null;
+    };
+    blocks: [[Object], [Object], [Object]];
+  };
 }
