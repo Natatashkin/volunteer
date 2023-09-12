@@ -21,7 +21,7 @@ const useWidth = () => {
     }
     window.addEventListener("resize", throttledWidth);
     return () => window.removeEventListener("resize", throttledWidth);
-  }, []);
+  }, [throttledWidth, width]);
 
   return { isLaptopWidth, width, widthIsDetect };
 };

@@ -1,8 +1,11 @@
+
 import { getPageData } from "../lib/services";
-import { IHomePageProps } from "@/types";
+import { IHomePageProps, TPagePath } from "@/types";
 import { getPageQuery } from "../utils/helpers";
 import styles from "./page.module.scss";
 import hidden from "../styles/visually-hidden.module.scss";
+
+import usePagePath from "../lib/hooks/usePagePath";
 
 export type BlockType = {
   __component: string;
@@ -11,22 +14,24 @@ export type BlockType = {
 };
 
 export default async function Home({ params: { lang } }: IHomePageProps) {
+  // const { noLocalizedPath, locale }: TPagePath = usePagePath();
   const pageQery = getPageQuery("/", lang);
-  const [pageData] = await getPageData(pageQery);
-  const pageTitle = pageData.attributes.title;
-  console.log(pageData);
+  const [pageData] = await getPageData(pageQery)
+
   const {
-    attributes: { seo, blocks },
+    attributes: { seo, blocks, title, description },
   } = pageData;
+
 
   // const heroImagePath = `${baseUrl}${heroBackgroundImage.data[0].attributes.url}`;
 
   return (
     <main className={styles.main}>
-      <h1 className={hidden.visually_hidden}>{pageTitle}</h1>
-      {blocks.map(({ __component, title, description, ...rest }: BlockType) =>
-        console.log(rest)
-      )}
+      <h1 className={hidden.visually_hidden}>{title}</h1>
+      {/* {blocks.map(
+        ({ __component, title, description, ...rest }: BlockType) => {}
+        // console.log(rest)
+      )} */}
       {/* <Hero
       pageTitle={pageTitle}
         heroTitle={heroTitle}

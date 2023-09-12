@@ -1,6 +1,9 @@
-//Navigation Types
-
 import { MouseEventHandler, ReactNode } from "react";
+
+export type TPagePath = {
+	noLocalizedPath: string; locale: string;
+}
+
 
 // Components
 export interface IIconButtonProps {

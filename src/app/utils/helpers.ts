@@ -7,7 +7,7 @@ export const splitUrl = (path: string) => {
   const locale = segments[1];
 
   if (path.length > 3) {
-    noLocalizedPath = path.slice(3);
+    noLocalizedPath = path.slice(4);
   }
   return { locale, noLocalizedPath };
 };
@@ -70,7 +70,8 @@ export function getStrapiMedia(url: string) {
 }
 
 export const getPageQuery = (slug: string, locale: string) => {
-  const pageQery = qs.stringify(
+
+   const pageQery = qs.stringify(
     {
       filters: {
         customSlug: {
