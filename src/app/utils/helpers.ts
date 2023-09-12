@@ -70,12 +70,11 @@ export function getStrapiMedia(url: string) {
 }
 
 export const getPageQuery = (slug: string, locale: string) => {
-
-   const pageQery = qs.stringify(
+  const pageQery = qs.stringify(
     {
       filters: {
         customSlug: {
-          $eq: slug,
+          $eq: slug ?? "/",
         },
       },
 
@@ -86,19 +85,22 @@ export const getPageQuery = (slug: string, locale: string) => {
         blocks: {
           populate: "*",
           on: {
-            "hero.hero": {
+            "elements.hero": {
               populate: "*",
             },
-            "mosaic.mosaic": {
+            "elements.news-list": {
               populate: "*",
             },
-            "features.features": {
+            "elements.progects-list": {
               populate: "*",
             },
-            "lists.news-list": {
+            "elements.mosaic": {
               populate: "*",
             },
-            "lists.progects-list": {
+            "elements.features": {
+              populate: "*",
+            },
+            "elements.carousel": {
               populate: "*",
             },
           },

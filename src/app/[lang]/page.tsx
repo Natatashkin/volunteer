@@ -1,4 +1,4 @@
-
+"use client";
 import { getPageData } from "../lib/services";
 import { IHomePageProps, TPagePath } from "@/types";
 import { getPageQuery } from "../utils/helpers";
@@ -14,14 +14,15 @@ export type BlockType = {
 };
 
 export default async function Home({ params: { lang } }: IHomePageProps) {
-  // const { noLocalizedPath, locale }: TPagePath = usePagePath();
-  const pageQery = getPageQuery("/", lang);
-  const [pageData] = await getPageData(pageQery)
+  const { noLocalizedPath, locale } = usePagePath();
+  const pageQery = getPageQuery(noLocalizedPath, lang);
+  const [pageData] = await getPageData(pageQery);
 
   const {
-    attributes: { seo, blocks, title, description },
+    attributes: { seo, elements, title, description },
   } = pageData;
 
+  console.log(pageData);
 
   // const heroImagePath = `${baseUrl}${heroBackgroundImage.data[0].attributes.url}`;
 
