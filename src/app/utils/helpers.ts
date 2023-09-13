@@ -1,4 +1,5 @@
 import { INavigationItem, TGetIsActivePathState } from "@/types";
+import qs from "qs";
 
 export const splitUrl = (path: string) => {
   let noLocalizedPath = "/";
@@ -6,7 +7,7 @@ export const splitUrl = (path: string) => {
   const locale = segments[1];
 
   if (path.length > 3) {
-    noLocalizedPath = path.slice(3);
+    noLocalizedPath = path.slice(4);
   }
   return { locale, noLocalizedPath };
 };
@@ -56,4 +57,56 @@ export const getLink = (navItems: INavigationItem[], link: string) => {
     }
   }
   return "/";
+};
+
+export function getStrapiMedia(url: string) {
+ 
+  if (url.startsWith("http") || url.startsWith("//")) {
+    return url;
+  }
+  return `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337"}${url}`;
+}
+
+export const getPageQuery = (slug: string, locale: string) => {
+  const pageQery = qs.stringify(
+    {
+      filters: {
+        customSlug: {
+          $eq: slug ?? "/",
+        },
+      },
+
+      populate: {
+        seo: {
+          populate: "*",
+        },
+        blocks: {
+          populate: "*",
+          on: {
+            "elements.hero": {
+              populate: "*",
+            },
+            "elements.news-list": {
+              populate: "*",
+            },
+            "elements.progects-list": {
+              populate: "*",
+            },
+            "elements.mosaic": {
+              populate: "*",
+            },
+            "elements.features": {
+              populate: "*",
+            },
+            "elements.carousel": {
+              populate: "*",
+            },
+          },
+        },
+      },
+      locale: locale,
+    },
+    { encodeValuesOnly: true }
+  );
+  return pageQery;
 };

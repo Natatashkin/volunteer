@@ -19,7 +19,7 @@ const BurgerNavigationItem = ({
   const hasNestedItems = Boolean(nestedItems?.length);
   const isNestedItem = useMemo(
     () => hasNestedItems && Boolean(findNavItem(nestedItems, noLocalizedPath)),
-    [noLocalizedPath, hasNestedItems]
+    [noLocalizedPath, hasNestedItems, nestedItems]
   );
 
   const shouldOpen = isActive && isNestedItem;

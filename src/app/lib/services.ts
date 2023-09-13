@@ -26,8 +26,23 @@ export const getNavigationData = async (query: string) => {
   return data;
 };
 
-export const getHomePageData = async (query: string) => {
-  const res = await fetch(`${baseUrl}/api/home-page?${query}`, { headers });
+export const getPages = async () => {
+  const res = await fetch(`${baseUrl}/api/pages`, {
+    headers,
+  });
+
+  if (!res.ok) {
+    throw new Error("Error");
+  }
+  const { data } = await res.json();
+  return data;
+};
+
+export const getPageData = async (request: string) => {
+  const res = await fetch(`${baseUrl}/api/pages?${request}`, {
+    headers,
+  });
+
   if (!res.ok) {
     throw new Error("Error");
   }

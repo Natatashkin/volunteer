@@ -1,6 +1,9 @@
-//Navigation Types
-
 import { MouseEventHandler, ReactNode } from "react";
+
+export type TPagePath = {
+	noLocalizedPath: string; locale: string;
+}
+
 
 // Components
 export interface IIconButtonProps {
@@ -70,5 +73,79 @@ export type TGetIsActivePathState = {
 // Pages
 
 export interface IHomePageProps {
-  params: { lang: string };
+  params: { lang: string; slug: string };
 }
+
+export type ProgectTypes = {
+  id: number;
+  attributes: {
+    createdAt: Date;
+    updatedAt: Date;
+    publishedAt: Date;
+    title: string;
+    description: string;
+    image: any;
+    date: Date;
+    project_category: any;
+  };
+};
+
+export interface PageBlockType {
+  id: number;
+  __component: string;
+  title: string;
+  description: string;
+}
+
+export interface IPageDataTypes {
+  id: number;
+  attributes: {
+    createdAt: Date;
+    updatedAt: Date;
+    publishedAt: Date;
+    locale: string;
+    title: string;
+    slug: string;
+    seo: {
+      title: string;
+      description: string | null;
+    };
+    blocks: BlockType[];
+  };
+}
+
+export interface BlocksCommonTypes {
+  id: number;
+  __component: string;
+  title: string;
+  description: string;
+  [key: string]: any
+}
+
+export interface HeroBlock extends BlocksCommonTypes {
+  image: any;
+  buttonTitle: string;
+  buttonLink: string;
+}
+
+export interface CollectionItem {
+  id: number;
+  attributes: {
+    createdAt: Date;
+    updatedAt: Date;
+    publishedAt: Date;
+    locale: string;
+    title: string;
+    slug: string;
+    description: string | null;
+    image?: any
+  }
+}
+export interface FeaturesBlock extends BlocksCommonTypes{
+  features: CollectionItem[];
+} 
+
+export type BlockType = HeroBlock | FeaturesBlock
+
+export type IHeroProps = Omit<HeroBlock, "__component">
+export type IFeaturesProps = Omit<FeaturesBlock, "__component">
