@@ -106,11 +106,46 @@ export interface IPageDataTypes {
     locale: string;
     title: string;
     slug: string;
-    customSlug: string | null;
     seo: {
       title: string;
       description: string | null;
     };
-    blocks: [[Object], [Object], [Object]];
+    blocks: BlockType[];
   };
 }
+
+export interface BlocksCommonTypes {
+  id: number;
+  __component: string;
+  title: string;
+  description: string;
+  [key: string]: any
+}
+
+export interface HeroBlock extends BlocksCommonTypes {
+  image: any;
+  buttonTitle: string;
+  buttonLink: string;
+}
+
+export interface CollectionItem {
+  id: number;
+  attributes: {
+    createdAt: Date;
+    updatedAt: Date;
+    publishedAt: Date;
+    locale: string;
+    title: string;
+    slug: string;
+    description: string | null;
+    image?: any
+  }
+}
+export interface FeaturesBlock extends BlocksCommonTypes{
+  features: CollectionItem[];
+} 
+
+export type BlockType = HeroBlock | FeaturesBlock
+
+export type IHeroProps = Omit<HeroBlock, "__component">
+export type IFeaturesProps = Omit<FeaturesBlock, "__component">
