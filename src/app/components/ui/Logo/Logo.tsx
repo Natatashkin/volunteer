@@ -4,10 +4,10 @@ import React from "react";
 const Logo = () => {
   return (
     <div role="presentation">
-      <h3>
+      <p>
         БФ Побратиму <br />
         від побратима
-      </h3>
+      </p>
     </div>
   );
 };

@@ -60,7 +60,6 @@ export const getLink = (navItems: INavigationItem[], link: string) => {
 };
 
 export function getStrapiMedia(url: string) {
- 
   if (url.startsWith("http") || url.startsWith("//")) {
     return url;
   }
@@ -71,39 +70,11 @@ export const getPageQuery = (slug: string, locale: string) => {
   const pageQery = qs.stringify(
     {
       filters: {
-        customSlug: {
+       slug: {
           $eq: slug ?? "/",
         },
       },
-
-      populate: {
-        seo: {
-          populate: "*",
-        },
-        blocks: {
-          populate: "*",
-          on: {
-            "elements.hero": {
-              populate: "*",
-            },
-            "elements.news-list": {
-              populate: "*",
-            },
-            "elements.progects-list": {
-              populate: "*",
-            },
-            "elements.mosaic": {
-              populate: "*",
-            },
-            "elements.features": {
-              populate: "*",
-            },
-            "elements.carousel": {
-              populate: "*",
-            },
-          },
-        },
-      },
+      populate: "deep",
       locale: locale,
     },
     { encodeValuesOnly: true }

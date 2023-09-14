@@ -1,0 +1,28 @@
+@import '../../../styles/variables.module.scss';
+
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+
+
+  &_items {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
+
+
+    @media (min-width: $tablet) {
+      grid-template-columns: 1fr 1fr;
+      grid-auto-flow: row;
+	
+    }
+
+		@media (min-width: $laptop) {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-auto-flow: row;
+
+    }
+  }
+}

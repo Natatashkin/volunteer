@@ -5,6 +5,7 @@ $transparent-hover: rgba(255, 255, 255, 0.3);
 $white: #ffffff;
 $primary-bg-color: #0c1f34;
 $primary-text-color: #ffffff;
+$secondary-text-color: #000000;
 $transparent-bg-color: rgba(0, 0, 0, 0.5);
 
 // Shape //
@@ -19,6 +20,14 @@ $large-text-size: 22px;
 $mobile-h1: 32px;
 $tablet-h1: 48px;
 $desktop-h1: 56px;
+
+$mobile-h2: 24px;
+$tablet-h2: 32px;
+$desktop-h2: 48px;
+
+$mobile-h3: 18px;
+$tablet-h3: 24px;
+$desktop-h3: 32px;
 
 // Breakpoints //
 $mobile: 450px;
