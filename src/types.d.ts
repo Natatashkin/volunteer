@@ -139,6 +139,7 @@ export interface CollectionItem {
     slug: string;
     description: string | null;
     image?: any
+    icon?: any
   }
 }
 export interface FeaturesBlock extends BlocksCommonTypes{
@@ -149,3 +150,5 @@ export type BlockType = HeroBlock | FeaturesBlock
 
 export type IHeroProps = Omit<HeroBlock, "__component">
 export type IFeaturesProps = Omit<FeaturesBlock, "__component">
+
+
