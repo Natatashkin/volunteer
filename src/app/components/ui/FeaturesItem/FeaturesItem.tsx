@@ -1,7 +1,9 @@
+"use client";
+import { useState } from "react";
 import { getStrapiMedia } from "@/app/utils/helpers";
-import { CollectionItem } from "@/types";
-import Image from "next/image";
+
 import styles from "./featuresItem.module.scss";
+import Icon from "../Icon/Icon";
 
 export interface IFeaturesItemProps {
   title: string;
@@ -10,13 +12,21 @@ export interface IFeaturesItemProps {
 }
 
 const FeaturesItem = ({ title, description, icon }: IFeaturesItemProps) => {
+  const [loading, setLoading] = useState(true);
   const iconHref = getStrapiMedia(icon.data.attributes.url);
+
+  console.log(loading, "loading");
+
   return (
-    <div className={styles.features_item}>
-      <h3 className={styles.features_item_title}>{title}</h3>
-      <Image src={iconHref} width={60} height={60} alt="" className={styles.features_item_icon}/>
-			<p>{description}</p>
-    </div>
+    <>
+      {!loading && (
+        <div className={styles.features_item}>
+          <h3 className={styles.features_item_title}>{title}</h3>
+          <Icon url={iconHref} className="icon" setLoading={setLoading} />
+          <p>{description}</p>
+        </div>
+      )}
+    </>
   );
 };
 
