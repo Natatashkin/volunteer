@@ -63,14 +63,14 @@ export function getStrapiMedia(url: string) {
   if (url.startsWith("http") || url.startsWith("//")) {
     return url;
   }
-  return `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337"}${url}`;
+  return `${process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:1337"}${url}`;
 }
 
 export const getPageQuery = (slug: string, locale: string) => {
   const pageQery = qs.stringify(
     {
       filters: {
-       slug: {
+        slug: {
           $eq: slug ?? "/",
         },
       },
