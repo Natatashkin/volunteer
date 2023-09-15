@@ -13,8 +13,8 @@ const FeaturesItem = ({ title, description, icon }: IFeaturesItemProps) => {
   const iconHref = getStrapiMedia(icon.data.attributes.url);
   return (
     <div className={styles.features_item}>
-      <h3>{title}</h3>
-      <Image src={iconHref} width={40} height={40} alt="" />
+      <h3 className={styles.features_item_title}>{title}</h3>
+      <Image src={iconHref} width={60} height={60} alt="" className={styles.features_item_icon}/>
 			<p>{description}</p>
     </div>
   );

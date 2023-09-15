@@ -8,9 +8,9 @@ const Features = ({ features, title, description }: IFeaturesProps) => {
   return (
     <Container>
       <section className={styles.features}>
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <div className={styles.features_items}>
+        <h2 className={styles.features_title}>{title}</h2>
+        <p className={styles.features_description}>{description}</p>
+        <div className={styles.features_container}>
           {features.data.map(
             ({
               id,
