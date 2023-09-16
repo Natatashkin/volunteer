@@ -22,7 +22,7 @@ const Features = ({ features, title, description }: IFeaturesProps) => {
                   key={key}
                   title={title}
                   description={description || ""}
-                  icon={icon}
+                  icon={icon?.data}
                 />
               );
             }

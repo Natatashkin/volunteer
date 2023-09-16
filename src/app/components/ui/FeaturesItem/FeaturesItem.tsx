@@ -1,7 +1,10 @@
-import { getStrapiMedia } from "@/app/utils/helpers";
-import { CollectionItem } from "@/types";
-import Image from "next/image";
+"use client";
+
 import styles from "./featuresItem.module.scss";
+import Image from "next/image";
+import Icon from "../Icon/Icon";
+import useSVGMarkupParser from "@/app/lib/hooks/useSVGMarkupParser";
+import { getStrapiMedia } from "@/app/utils/helpers";
 
 export interface IFeaturesItemProps {
   title: string;
@@ -10,13 +13,21 @@ export interface IFeaturesItemProps {
 }
 
 const FeaturesItem = ({ title, description, icon }: IFeaturesItemProps) => {
-  const iconHref = getStrapiMedia(icon.data.attributes.url);
+  const { alternativeText, url } = icon.attributes;
+  const iconHref = getStrapiMedia(url);
+
   return (
-    <div className={styles.features_item}>
-      <h3 className={styles.features_item_title}>{title}</h3>
-      <Image src={iconHref} width={60} height={60} alt="" className={styles.features_item_icon}/>
-			<p>{description}</p>
-    </div>
+    <>
+      {iconHref && (
+        <div className={styles.features_item}>
+          <h3 className={styles.features_item_title}>{title}</h3>
+          <div className={styles.features_item_icon}>
+            <Image src={iconHref} fill alt={alternativeText} />
+          </div>
+          <p>{description}</p>
+        </div>
+      )}
+    </>
   );
 };
 
