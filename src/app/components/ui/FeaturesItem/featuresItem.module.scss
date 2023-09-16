@@ -12,7 +12,7 @@
   background-color: $accent-color-darker;
   border-radius: 6px;
   box-shadow: $shadow;
-  color: $secondary-text-color;
+  color: $primary-text-color;
 
   @media (min-width: $desktop) {
     max-width: 330px;
@@ -24,9 +24,9 @@
   }
 
   &_icon {
-		width: 60px;
-		height: 60px;
+    position: relative;
+    width: 60px;
+    height: 60px;
     margin-bottom: 20px;
-		
   }
 }

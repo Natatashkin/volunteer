@@ -1,34 +1,12 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import parse from "html-react-parser";
+import React, { ReactNode, useEffect, useState } from "react";
 
 export type TIconProps = {
-  url: string;
-  className: string;
-  setLoading: any;
+  Component: ReactNode;
 };
 
-const Icon = ({ url, className }: TIconProps) => {
-  const [svg, setSvg] = useState("");
-	
-  useEffect(() => {
-    fetch(url)
-      .then((res) => {
-        return res.text();
-      })
-      .then((text) => {
-        if (text.includes("html")) {
-          console.log("file does not exist");
-        } else {
-          setSvg(text);
-        }
-      })
-      .catch(console.log);
-  }, [url]);
-
-  const markup = svg && parse(svg);
-
-  return <>{markup && <div className={className}>{markup}</div>}</>;
+const Icon = ({ Component }: TIconProps) => {
+  const IconComponent = () => Component;
+  return <IconComponent />;
 };
 
 export default Icon;
