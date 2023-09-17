@@ -1,9 +1,9 @@
 import { MouseEventHandler, ReactNode } from "react";
 
 export type TPagePath = {
-	noLocalizedPath: string; locale: string;
-}
-
+  noLocalizedPath: string;
+  locale: string;
+};
 
 // Components
 export interface IIconButtonProps {
@@ -119,10 +119,10 @@ export interface BlocksCommonTypes {
   __component: string;
   title: string;
   description: string;
-  [key: string]: any
+  [key: string]: any;
 }
 
-export interface HeroBlock extends BlocksCommonTypes {
+export interface IHeroBlock extends BlocksCommonTypes {
   image: any;
   buttonTitle: string;
   buttonLink: string;
@@ -138,17 +138,20 @@ export interface CollectionItem {
     title: string;
     slug: string;
     description: string | null;
-    image?: any
-    icon?: any
-  }
+    image?: any;
+    icon?: any;
+    date?: Date;
+  };
 }
-export interface FeaturesBlock extends BlocksCommonTypes{
+export interface IFeaturesBlock extends BlocksCommonTypes {
   features: CollectionItem[];
-} 
+}
 
-export type BlockType = HeroBlock | FeaturesBlock
+export interface ICarouselBlock extends BlocksCommonTypes {
+  projects: CollectionItem[];
+}
+export type BlockType = IHeroBlock | IFeaturesBlock | ICarouselBlock;
 
-export type IHeroProps = Omit<HeroBlock, "__component">
-export type IFeaturesProps = Omit<FeaturesBlock, "__component">
-
-
+export type IHeroProps = Omit<IHeroBlock, "__component">;
+export type IFeaturesProps = Omit<IFeaturesBlock, "__component">;
+export type ICarouselProps = Omit<ICarouselBlock, "__component">;

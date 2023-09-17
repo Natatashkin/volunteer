@@ -1,6 +1,7 @@
 import { BlockType } from "@/types";
 import Hero from "../Hero/Hero";
 import Features from "../Features/Features";
+import Carousel from "../Carousel/Carousel";
 
 const createComponent = ({ __component, ...rest }: BlockType) => {
   let Component;
@@ -11,6 +12,9 @@ const createComponent = ({ __component, ...rest }: BlockType) => {
       break;
     case "elements.features":
       Component = Features;
+      break;
+    case "elements.carousel":
+      Component = Carousel;
       break;
     default:
       break;
