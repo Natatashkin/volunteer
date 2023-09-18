@@ -4,17 +4,17 @@
   width: 100%;
   padding-top: 40px;
   padding-bottom: 40px;
-  &_slide {
-    background-position: center;
-    background-size: cover;
-    width: 300px;
-    background: #000;
-    height: 300px;
-  }
-  &_slide img {
-    display: block;
-    width: 100%;
-  }
+  // &_slide {
+  //   background-position: center;
+  //   background-size: cover;
+  //   width: 300px;
+  //   background: #000;
+  //   height: 300px;
+  // }
+  // &_slide img {
+  //   display: block;
+  //   width: 100%;
+  // }
 
   .swiper-pagination-bullet {
     background: $accent-color;
