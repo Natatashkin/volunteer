@@ -1,13 +1,15 @@
 "use client";
 import React from "react";
+import CarouselEmbla from "../CarouselEmbla/CarouselEmbla";
 import Image from "next/image";
 import { ICarouselProps } from "@/types";
 
 import styles from "./carousel.module.scss";
 
-import { getStrapiMedia } from "@/app/utils/helpers";
 import Container from "../../Container/Container";
+import { EmblaOptionsType } from "embla-carousel-react";
 
+const OPTIONS: EmblaOptionsType = { loop: true }
 
 const Carousel = ({ title, description, projects }: ICarouselProps) => {
   // console.log(projects.data);
@@ -17,7 +19,7 @@ const Carousel = ({ title, description, projects }: ICarouselProps) => {
       <section>
         <h2>{title}</h2>
         {description && <p>{description}</p>}
-        
+        <CarouselEmbla items={projects.data} options={OPTIONS}/>
         
   
       </section>
