@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from "react";
+import { ButtonHTMLAttributes, DetailedHTMLProps, MouseEventHandler, PropsWithChildren, ReactNode } from "react";
 
 export type TPagePath = {
   noLocalizedPath: string;
@@ -13,7 +13,7 @@ export interface IIconButtonProps {
   ariaLabel?: string;
   ariaExpanded?: boolean;
   ariaOrientation?: "vertical" | "horizontal";
-  variant?: "outlined" | "filled" | "transparent";
+  variant?: "outlined" | "filled" | "transparent" | "accent";
 }
 
 export interface IButtonProps {
@@ -155,3 +155,22 @@ export type BlockType = IHeroBlock | IFeaturesBlock | ICarouselBlock;
 export type IHeroProps = Omit<IHeroBlock, "__component">;
 export type IFeaturesProps = Omit<IFeaturesBlock, "__component">;
 export type ICarouselProps = Omit<ICarouselBlock, "__component">;
+
+export type TCarouselButtonsProps = PropsWithChildren<
+  DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >
+>;
+
+export interface ICarouselEmblaProps {
+  items: number[]
+  options?: EmblaOptionsType
+}
+
+type TUseCarouselNavigtionButtons = {
+  prevBtnDisabled: boolean
+  nextBtnDisabled: boolean
+  onPrevButtonClick: () => void
+  onNextButtonClick: () => void
+}

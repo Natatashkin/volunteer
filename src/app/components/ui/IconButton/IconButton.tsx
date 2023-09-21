@@ -1,6 +1,7 @@
 import { IIconButtonProps } from "@/types";
 import React, { MouseEventHandler, ReactNode } from "react";
 import styles from "./IconButton.module.scss";
+import classNames from "classnames";
 
 const IconButton = ({
   onClick,
@@ -17,7 +18,9 @@ const IconButton = ({
       aria-label={ariaLabel}
       aria-expanded={ariaExpanded}
       aria-orientation={ariaOrientation}
-      className={styles.iconButton}
+      className={classNames(styles.iconButton, {
+        [styles.iconButton__accent]: variant == "accent"
+      })}
       onClick={onClick}
     >
       {children}

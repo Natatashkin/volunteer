@@ -5,6 +5,7 @@
   --slide-size: 50%;
   // --slide-height: 19rem;
   padding: 1.6rem 0;
+  position: relative;
 
   &__viewport {
     overflow: hidden;
@@ -23,6 +24,7 @@
     padding-left: var(--slide-spacing);
     position: relative;
     aspect-ratio: auto 16/9;
+
   
     @media (min-width: $tablet) {
       flex: 0 0 80%;
@@ -50,6 +52,11 @@
       // height: 100%;
       object-fit: cover;
     }
+  }
+  .leftBtn {
+    position: absolute;
+    top:0;
+    left: 0;
   }
 
 }
