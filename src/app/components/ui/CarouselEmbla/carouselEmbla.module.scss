@@ -2,8 +2,6 @@
 
 .embla {
   --slide-spacing: 1rem;
-  // --slide-size: 30%;
-  --slide-height: 19rem;
   padding: 1.6rem;
   position: relative;
 
@@ -19,7 +17,6 @@
   }
   &__slide {
     flex: 0 0 100%;
-    // width: 500px;
     height: 300px;
     min-width: 0;
     padding-left: var(--slide-spacing);
@@ -38,13 +35,37 @@
     @media (min-width: $desktop) {
       flex: 0 0 30%;
     }
+
+    &:hover .embla__slide__info  {
+      height: 100%;
+      max-height: 100%;
+    }
   }
   &__slide__img {
     display: block;
-    // height: var(--slide-height);
     width: 100%;
     object-fit: cover;
     object-position: top;
+  }
+
+  &__slide__info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 20%;
+    max-height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background-color: $transparent-bg-color;
+    transition: all 250ms ease-in-out;
+    
+    &__button {
+      margin-top: 20px;
+    }
   }
 
   &__buttons {
@@ -54,8 +75,8 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: -20px;
-    right: -20px;
+    left: -15px;
+    right: -15px;
   }
 
   &__button {
@@ -84,11 +105,6 @@
     svg {
       width: 40px;
       height: 40px;
-
-      @media (min-width: $laptop) {
-        width: 40px;
-        height: 40px;
-      }
     }
   }
 }

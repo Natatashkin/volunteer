@@ -6,10 +6,14 @@ import CarouselEmblaPrevButton from "./CarouselEmblaPrevButton/CarouselEmblaPrev
 import CarouselEmblaNextButton from "./CarouselEmblaNextButton/CarouselEmblaNextButton";
 import { getStrapiMedia } from "@/app/utils/helpers";
 import styles from "./carouselEmbla.module.scss";
+import Button from "../Button/Button";
+import LinkButton from "../LinkButton/LinkButton";
 
 
 const CarouselEmbla = ({ items, options }: ICarouselEmblaProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  console.log(items);
+  
 
   const {
     prevBtnDisabled,
@@ -27,17 +31,27 @@ const CarouselEmbla = ({ items, options }: ICarouselEmblaProps) => {
             const [imageData] = image.data
             const {url, alternativeText} = imageData.attributes;
             const imageUrl = getStrapiMedia(url);
+            console.log(progect_category);
+            
 
             const itemKey = `${title}-${id}`
             return (
               <div className={styles.embla__slide} key={itemKey}>
-                
+
                 <Image
                   className={styles.embla__slide__img}
                   src={imageUrl}
                   alt={alternativeText}
                   fill
                 />
+                <div className={styles.embla__slide__info}>
+                  <h4>{title}</h4>
+                  <div className={styles.embla__slide__info__button}>
+
+                  <LinkButton variant='outlined' title="Докладніше" link="/projects"/>
+                  </div>
+
+                </div>
               </div>
             );
           })}
