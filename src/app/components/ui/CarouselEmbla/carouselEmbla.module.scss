@@ -2,9 +2,9 @@
 
 .embla {
   --slide-spacing: 1rem;
-  --slide-size: 50%;
-  // --slide-height: 19rem;
-  padding: 1.6rem 0;
+  // --slide-size: 30%;
+  --slide-height: 19rem;
+  padding: 1.6rem;
   position: relative;
 
   &__viewport {
@@ -17,48 +17,78 @@
     touch-action: pan-y;
     margin-left: calc(var(--slide-spacing) * -1);
   }
-
   &__slide {
     flex: 0 0 100%;
+    // width: 500px;
+    height: 300px;
     min-width: 0;
     padding-left: var(--slide-spacing);
     position: relative;
-    aspect-ratio: auto 16/9;
+    margin-right: 10px;
 
-  
     @media (min-width: $tablet) {
-      flex: 0 0 80%;
+      flex: 0 0 50%;
+      height: 250px;
     }
-  
+
     @media (min-width: $laptop) {
-      flex: 0 0 var(--slide-size);
+      height: 300px;
     }
 
-    
-
-    &__title {
-      position: absolute;
-      bottom: 8px;
-      left: 8px;
-      right: 8px;
-      z-index: 2;
-      text-shadow: $shadow;
-    }
-    
-    &__img {
-      display: block;
-      // height: var(--slide-height);
-      // width: 100%;
-      // height: 100%;
-      object-fit: cover;
+    @media (min-width: $desktop) {
+      flex: 0 0 30%;
     }
   }
-  .leftBtn {
+  &__slide__img {
+    display: block;
+    // height: var(--slide-height);
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     position: absolute;
-    top:0;
-    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -20px;
+    right: -20px;
   }
 
+  &__button {
+    appearance: none;
+    background-color: transparent;
+    touch-action: manipulation;
+    display: inline-flex;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    margin: 0;
+
+    z-index: 1;
+    color: $accent-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 4rem;
+    height: 4rem;
+
+    &__button:disabled {
+      opacity: 0.3;
+    }
+    svg {
+      width: 40px;
+      height: 40px;
+
+      @media (min-width: $laptop) {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
 }
-
-

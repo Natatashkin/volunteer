@@ -4,6 +4,8 @@ import { ICarouselEmblaProps } from "@/types";
 import usePrevNextButtons from "@/app/lib/hooks/useCarouselNavigationButtons";
 import CarouselEmblaPrevButton from "./CarouselEmblaPrevButton/CarouselEmblaPrevButton";
 import CarouselEmblaNextButton from "./CarouselEmblaNextButton/CarouselEmblaNextButton";
+import { getStrapiMedia } from "@/app/utils/helpers";
+import styles from "./carouselEmbla.module.scss";
 
 
 const CarouselEmbla = ({ items, options }: ICarouselEmblaProps) => {
@@ -17,19 +19,23 @@ const CarouselEmbla = ({ items, options }: ICarouselEmblaProps) => {
   } = usePrevNextButtons(emblaApi);
 
   return (
-    <div className="embla">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
+    <div className={styles.embla}>
+      <div className={styles.embla__viewport} ref={emblaRef}>
+        <div className={styles.embla__container}>
           {items.map(({id, attributes}) => {
             const {title, description, image, progect_category, date} = attributes;
+            const [imageData] = image.data
+            const {url, alternativeText} = imageData.attributes;
+            const imageUrl = getStrapiMedia(url);
 
             const itemKey = `${title}-${id}`
             return (
-              <div className="embla__slide" key={itemKey}>
+              <div className={styles.embla__slide} key={itemKey}>
+                
                 <Image
-                  className="embla__slide__img"
-                  src=""
-                  alt="Your alt text"
+                  className={styles.embla__slide__img}
+                  src={imageUrl}
+                  alt={alternativeText}
                   fill
                 />
               </div>
@@ -38,7 +44,7 @@ const CarouselEmbla = ({ items, options }: ICarouselEmblaProps) => {
         </div>
       </div>
 
-      <div className="embla__buttons">
+      <div className={styles.embla__buttons}>
         <CarouselEmblaPrevButton
           onClick={onPrevButtonClick}
           disabled={prevBtnDisabled}

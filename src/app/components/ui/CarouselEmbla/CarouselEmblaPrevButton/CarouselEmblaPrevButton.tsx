@@ -1,17 +1,18 @@
 
 import { TCarouselButtonsProps } from "@/types";
-import { RiArrowLeftSLine } from "react-icons/ri";
+import {IoIosArrowBack} from "react-icons/io"
+import styles from '../carouselEmbla.module.scss';
 
 
 const CarouselEmblaPrevButton = ({children, ...restProps}: TCarouselButtonsProps) => {
 
   return (
     <button
-      className="embla__button embla__button--prev"
+      className={styles.embla__button}
       type="button"
       {...restProps}
     >
-        <RiArrowLeftSLine size={40} />
+        <IoIosArrowBack />
       {children}
     </button>
   );

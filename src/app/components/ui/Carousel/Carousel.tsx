@@ -9,21 +9,18 @@ import styles from "./carousel.module.scss";
 import Container from "../../Container/Container";
 import { EmblaOptionsType } from "embla-carousel-react";
 
-const OPTIONS: EmblaOptionsType = { loop: true,  align: 'start', }
+const OPTIONS: EmblaOptionsType = { loop: true, align: "start" };
 
 const Carousel = ({ title, description, projects }: ICarouselProps) => {
-  console.log(projects.data);
-
   return (
     <Container>
       <section>
         <h2>{title}</h2>
         {description && <p>{description}</p>}
-        <CarouselEmbla items={projects.data} options={OPTIONS}/>
+        <CarouselEmbla items={projects.data} options={OPTIONS} />
       </section>
     </Container>
   );
 };
 
 export default Carousel;
-
