@@ -160,6 +160,16 @@ h3 {
   }
 }
 
+h4 {
+  font-size: $mobile-h4;
+  @media (min-width: $tablet) {
+    font-size: $tablet-h4;
+  }
+  @media (min-width: $desktop) {
+    font-size: $desktop-h4;
+  }
+}
+
 button {
   color: $primary-text-color;
 }

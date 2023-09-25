@@ -1,0 +1,136 @@
+@import "../../../styles/variables.module.scss";
+
+.embla {
+  padding: 0;
+  position: relative;
+
+  &__viewport {
+    overflow: hidden;
+  }
+
+  &__container {
+    backface-visibility: hidden;
+    display: flex;
+    touch-action: pan-y;
+  }
+  &__slide {
+    flex: 0 0 100%;
+    height: 300px;
+    min-width: 0;
+    position: relative;
+    margin-right: 10px;
+    border-radius: $radius;
+
+    @media (min-width: $tablet) {
+      flex: 0 0 50%;
+      height: 250px;
+      margin-right: 20px;
+    }
+
+    @media (min-width: $laptop) {
+      height: 300px;
+    }
+
+    @media (min-width: $desktop) {
+      flex: 0 0 30%;
+      margin-right: 20px;
+    }
+
+    &:hover .embla__slide__info {
+      height: 100%;
+      justify-content: space-around;
+      border-radius: $radius;
+
+      &__button {
+        visibility: visible;
+        opacity: 1;
+        height: auto;
+      }
+    }
+  }
+  &__slide__img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: $radius;
+  }
+
+  &__slide__info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100%);
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px 16px;
+    background-color: $transparent-bg-color;
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+    transition: all 250ms ease-in-out;
+
+    &__text {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__button {
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+      margin-left: auto;
+      margin-right: auto;
+      transition-property: all;
+      transition-duration: 250ms;
+      transition-timing-function: ease-in-out;
+      transition-delay: 150ms;
+    }
+  }
+
+  &__dot {
+    appearance: none;
+    background-color: transparent;
+    touch-action: manipulation;
+    display: inline-flex;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__dots {
+    bottom: 1.6rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__dot {
+    height: 2.4rem;
+    width: 2.4rem;
+    display: flex;
+    align-items: center;
+    margin-right: 0.75rem;
+    margin-left: 0.75rem;
+
+    &:after {
+      background-color: $lightGray;
+      border-radius: 0.2rem;
+      width: 100%;
+      height: 0.3rem;
+      content: "";
+    }
+
+    &__selected:after {
+      background: $accent-color;
+    }
+  }
+}

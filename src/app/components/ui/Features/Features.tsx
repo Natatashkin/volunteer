@@ -1,8 +1,9 @@
 "use client";
-import { CollectionItem, IFeaturesProps } from "@/types";
+import { ICollectionItem, IFeaturesProps } from "@/types";
 import FeaturesItem from "../FeaturesItem/FeaturesItem";
 import styles from "./features.module.scss";
 import Container from "../../Container/Container";
+import { generateKey } from "@/app/utils/helpers";
 
 const Features = ({ features, title, description }: IFeaturesProps) => {
   return (
@@ -15,11 +16,11 @@ const Features = ({ features, title, description }: IFeaturesProps) => {
             ({
               id,
               attributes: { title, description, icon },
-            }: CollectionItem) => {
-              const key = `${title}-${id}`;
+            }: ICollectionItem) => {
+              const itemKey = generateKey(id, title);
               return (
                 <FeaturesItem
-                  key={key}
+                  key={itemKey}
                   title={title}
                   description={description || ""}
                   icon={icon?.data}

@@ -2,8 +2,6 @@
 
 import styles from "./featuresItem.module.scss";
 import Image from "next/image";
-import Icon from "../Icon/Icon";
-import useSVGMarkupParser from "@/app/lib/hooks/useSVGMarkupParser";
 import { getStrapiMedia } from "@/app/utils/helpers";
 
 export interface IFeaturesItemProps {

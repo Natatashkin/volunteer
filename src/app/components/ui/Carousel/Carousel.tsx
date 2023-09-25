@@ -1,24 +1,26 @@
-import React from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+"use client";
+import React from "react";
+import CarouselEmbla from "../CarouselEmbla/CarouselEmbla";
+import Image from "next/image";
+import { ICarouselProps } from "@/types";
 
-const Carousel = () => {
-	return (
-		<div>
-			<Swiper
-      spaceBetween={50}
-      slidesPerView={3}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-      ...
-    </Swiper>
-		</div>
-	)
-}
+import styles from "./carousel.module.scss";
 
-export default Carousel
+import Container from "../../Container/Container";
+import { EmblaOptionsType } from "embla-carousel-react";
+
+const OPTIONS: EmblaOptionsType = { loop: true, align: "start" };
+
+const Carousel = ({ title, description, projects }: ICarouselProps) => {
+  return (
+    <Container>
+      <section>
+        <h2>{title}</h2>
+        {description && <p>{description}</p>}
+        <CarouselEmbla items={projects.data} options={OPTIONS} />
+      </section>
+    </Container>
+  );
+};
+
+export default Carousel;
