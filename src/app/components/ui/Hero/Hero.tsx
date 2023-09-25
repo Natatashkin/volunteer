@@ -3,7 +3,6 @@ import React from "react";
 import LinkButton from "../LinkButton/LinkButton";
 import Image from "next/image";
 import styles from "./hero.module.scss";
-import Container from "../../Container/Container";
 import { useAppContext } from "@/app/context/appContext";
 import { getLink, getStrapiMedia } from "@/app/utils/helpers";
 import { IHeroProps } from "@/types";

@@ -3,8 +3,9 @@ import Hero from "../Hero/Hero";
 import Features from "../Features/Features";
 import Carousel from "../Carousel/Carousel";
 
-const createComponent = ({ __component, ...rest }: BlockType) => {
+const createComponent = ({ __component, ...rest }: BlockType) => {  
   let Component;
+  let componentProps;
 
   switch (__component) {
     case "elements.hero":

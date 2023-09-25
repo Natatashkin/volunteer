@@ -149,7 +149,7 @@ export interface ICollectionItem {
       data: IStrapiMedia;
     };
     date?: Date;
-    progect_category?: ICollectionItem;
+    project_category?: ICollectionItem;
   };
 }
 export interface IFeaturesBlock extends BlocksCommonTypes {

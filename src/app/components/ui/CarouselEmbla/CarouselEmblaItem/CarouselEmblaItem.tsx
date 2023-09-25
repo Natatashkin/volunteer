@@ -6,14 +6,14 @@ import { getStrapiMedia } from "@/app/utils/helpers";
 export interface CarouselEmblaItemProps {
   title: string;
   image: any;
-  progect_category: any;
+  category: any;
   date?: Date;
 }
 
 const CarouselEmblaItem = ({
   title,
   image,
-  progect_category,
+  category,
   date,
 }: CarouselEmblaItemProps) => {
   const [imageData] = image.data;
