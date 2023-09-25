@@ -5,8 +5,9 @@ import { getStrapiMedia } from "@/app/utils/helpers";
 
 export interface CarouselEmblaItemProps {
   title: string;
+  slug: string;
   image: any;
-  category: any;
+  category?: any;
   date?: Date;
 }
 
@@ -15,10 +16,12 @@ const CarouselEmblaItem = ({
   image,
   category,
   date,
+  slug,
 }: CarouselEmblaItemProps) => {
   const [imageData] = image.data;
   const { url, alternativeText } = imageData.attributes;
   const imageUrl = getStrapiMedia(url);
+  const detailsLink = category ? `/${category}/${slug}` : `/${slug}`;
 
   return (
     <div className={styles.embla__slide}>
@@ -31,11 +34,15 @@ const CarouselEmblaItem = ({
       <div className={styles.embla__slide__info}>
         <h4 className={styles.embla__slide__info__text}>{title}</h4>
         <div className={styles.embla__slide__info__button}>
-          <LinkButton variant="outlined" title="Докладніше" link="/projects" />
+          <LinkButton
+            variant="outlined"
+            title="Докладніше"
+            link={detailsLink}
+          />
         </div>
       </div>
     </div>
   );
-};  
+};
 
 export default CarouselEmblaItem;

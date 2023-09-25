@@ -11,13 +11,15 @@ import { EmblaOptionsType } from "embla-carousel-react";
 
 const OPTIONS: EmblaOptionsType = { loop: true, align: "start" };
 
-const Carousel = ({ title, description, projects }: ICarouselProps) => {
+const Carousel = ({ title, description, relatedItems }: ICarouselProps) => {
+  // console.log(relatedItems);
+
   return (
     <Container>
       <section>
         <h2>{title}</h2>
         {description && <p>{description}</p>}
-        <CarouselEmbla items={projects.data} options={OPTIONS} />
+        <CarouselEmbla items={relatedItems.data} options={OPTIONS} />
       </section>
     </Container>
   );

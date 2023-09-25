@@ -125,6 +125,7 @@ export interface BlocksCommonTypes {
   __component: string;
   title: string;
   description: string;
+  relatedItems: CollectionItem[];
   [key: string]: any;
 }
 
@@ -149,21 +150,22 @@ export interface ICollectionItem {
       data: IStrapiMedia;
     };
     date?: Date;
-    project_category?: ICollectionItem;
+    category?: ICollectionItem;
   };
 }
-export interface IFeaturesBlock extends BlocksCommonTypes {
-  features: CollectionItem[];
-}
+// export interface IFeaturesBlock extends BlocksCommonTypes {
+//   features: CollectionItem[];
+// }
 
-export interface ICarouselBlock extends BlocksCommonTypes {
-  projects: CollectionItem[];
-}
-export type BlockType = IHeroBlock | IFeaturesBlock | ICarouselBlock;
+// export interface ICarouselBlock extends BlocksCommonTypes {
+//   projects: CollectionItem[];
+// }
+// export type BlockType = IHeroBlock | IFeaturesBlock | ICarouselBlock;
+export type BlockType = IHeroBlock | BlocksCommonTypes;
 
 export type IHeroProps = Omit<IHeroBlock, "__component">;
-export type IFeaturesProps = Omit<IFeaturesBlock, "__component">;
-export type ICarouselProps = Omit<ICarouselBlock, "__component">;
+export type IFeaturesProps = Omit<BlocksCommonTypes, "__component">;
+export type ICarouselProps = Omit<BlocksCommonTypes, "__component">;
 
 export type TSnaps = {
   isActive: boolean;
