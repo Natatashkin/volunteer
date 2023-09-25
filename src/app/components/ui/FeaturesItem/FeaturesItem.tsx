@@ -13,6 +13,9 @@ export interface IFeaturesItemProps {
 const FeaturesItem = ({ title, description, icon }: IFeaturesItemProps) => {
   const { alternativeText, url } = icon.attributes;
 
+  console.log(icon.attributes);
+  
+
   const iconHref = getStrapiMedia(url);
 
   return (

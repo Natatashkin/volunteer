@@ -1,4 +1,10 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, MouseEventHandler, PropsWithChildren, ReactNode } from "react";
+import {
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  MouseEventHandler,
+  PropsWithChildren,
+  ReactNode,
+} from "react";
 
 export type TPagePath = {
   noLocalizedPath: string;
@@ -128,7 +134,7 @@ export interface IHeroBlock extends BlocksCommonTypes {
   buttonLink: string;
 }
 
-export interface CollectionItem {
+export interface ICollectionItem {
   id: number;
   attributes: {
     createdAt: Date;
@@ -138,9 +144,10 @@ export interface CollectionItem {
     title: string;
     slug: string;
     description: string | null;
-    image?: any;
-    icon?: any;
+    image?: IStrapiMedia;
+    icon?: IStrapiMedia;
     date?: Date;
+    progect_category?: ICollectionItem;
   };
 }
 export interface IFeaturesBlock extends BlocksCommonTypes {
@@ -157,27 +164,67 @@ export type IFeaturesProps = Omit<IFeaturesBlock, "__component">;
 export type ICarouselProps = Omit<ICarouselBlock, "__component">;
 
 export type TCarouselButtonsProps = PropsWithChildren<
-  DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  >
->;
+  DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+> & {
+  scrollSnaps: number[];
+  onButtonClick: (index: number) => void;
+  selectedIndex: number;
+};
+
+export interface IImageFormat {
+  name: string,
+  hash: string,
+  ext: string,
+  mime: string,
+  path: string | null,
+  width: number,
+  height: number,
+  size: number,
+  url: string
+}
+
+export interface IStrapiMedia {
+  id: number,
+  attributes: {
+    name: string,
+    alternativeText: string | null,
+    caption: string | null,
+    width: number,
+    height: number,
+    formats: {
+      thumbnail: IImageFormat,
+      medium: IImageFormat,
+      small: IImageFormat,
+      large: IImageFormat
+    } | null,
+    hash: string,
+    ext: string,
+    mime: string,
+    size: number,
+    url: number,
+    previewUrl: string | null,
+    provider: string,
+    provider_metadata: null,
+    createdAt: Date,
+    updatedAt: Date
+  }
+} 
 
 export interface ICarouselEmblaProps {
-  items: number[]
-  options?: EmblaOptionsType
+  items: ICollectionItem[];
+  options?: EmblaOptionsType;
 }
 
 type TUseCarouselNavigtionButtons = {
-  prevBtnDisabled: boolean
-  nextBtnDisabled: boolean
-  onPrevButtonClick: () => void
-  onNextButtonClick: () => void
-}
+  prevBtnDisabled: boolean;
+  nextBtnDisabled: boolean;
+  onPrevButtonClick: () => void;
+  onNextButtonClick: () => void;
+};
 
-export type TUseDotButtonType = {
-  selectedIndex: number
-  scrollSnaps: number[]
-  onDotButtonClick: (index: number) => void
-}
+export type TUseDotButtonProps = {
+  selectedIndex: number;
+  scrollSnaps: number[];
+  onDotButtonClick: (index: number) => void;
+};
 

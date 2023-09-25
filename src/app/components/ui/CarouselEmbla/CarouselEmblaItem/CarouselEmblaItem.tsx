@@ -5,15 +5,13 @@ import { getStrapiMedia } from "@/app/utils/helpers";
 
 export interface CarouselEmblaItemProps {
   title: string;
-  description: string;
   image: any;
   progect_category: any;
-  date: Date;
+  date?: Date;
 }
 
 const CarouselEmblaItem = ({
   title,
-  description,
   image,
   progect_category,
   date,
@@ -21,6 +19,9 @@ const CarouselEmblaItem = ({
   const [imageData] = image.data;
   const { url, alternativeText } = imageData.attributes;
   const imageUrl = getStrapiMedia(url);
+
+  console.log(imageData.attributes.formats);
+  
 
   return (
     <div className={styles.embla__slide}>
