@@ -3,16 +3,20 @@ import styles from "../carouselEmbla.module.scss";
 import classNames from "classnames";
 
 const CarouselDotButtons = (props: TCarouselButtonsProps) => {
-  const { children, scrollSnaps, onButtonClick, selectedIndex, ...restProps } =
-    props;
-  return scrollSnaps.map((_, index) => {
+  const {
+    children,
+    scrollSnaps,
+    onButtonClick,
+    selectedIndex,
+    ...restProps
+  } = props;
 
-    const isActive = index === selectedIndex;
-    
+  return scrollSnaps.map(({ id, isActive }) => {
     return (
       <button
+        key={id}
         type="button"
-        onClick={() => onButtonClick(index)}
+        onClick={() => onButtonClick(id)}
         className={classNames(styles.embla__dot, {
           [styles.embla__dot__selected]: isActive,
         })}

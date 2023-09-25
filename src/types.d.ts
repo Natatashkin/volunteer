@@ -145,7 +145,9 @@ export interface ICollectionItem {
     slug: string;
     description: string | null;
     image?: IStrapiMedia;
-    icon?: IStrapiMedia;
+    icon?: {
+      data: IStrapiMedia;
+    };
     date?: Date;
     progect_category?: ICollectionItem;
   };
@@ -163,52 +165,57 @@ export type IHeroProps = Omit<IHeroBlock, "__component">;
 export type IFeaturesProps = Omit<IFeaturesBlock, "__component">;
 export type ICarouselProps = Omit<ICarouselBlock, "__component">;
 
+export type TSnaps = {
+  isActive: boolean;
+  id: number;
+};
+
 export type TCarouselButtonsProps = PropsWithChildren<
   DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 > & {
-  scrollSnaps: number[];
+  scrollSnaps: TSnaps[];
   onButtonClick: (index: number) => void;
   selectedIndex: number;
 };
 
 export interface IImageFormat {
-  name: string,
-  hash: string,
-  ext: string,
-  mime: string,
-  path: string | null,
-  width: number,
-  height: number,
-  size: number,
-  url: string
+  name: string;
+  hash: string;
+  ext: string;
+  mime: string;
+  path: string | null;
+  width: number;
+  height: number;
+  size: number;
+  url: string;
 }
 
 export interface IStrapiMedia {
-  id: number,
+  id: number;
   attributes: {
-    name: string,
-    alternativeText: string | null,
-    caption: string | null,
-    width: number,
-    height: number,
+    name: string;
+    alternativeText: string | null;
+    caption: string | null;
+    width: number;
+    height: number;
     formats: {
-      thumbnail: IImageFormat,
-      medium: IImageFormat,
-      small: IImageFormat,
-      large: IImageFormat
-    } | null,
-    hash: string,
-    ext: string,
-    mime: string,
-    size: number,
-    url: number,
-    previewUrl: string | null,
-    provider: string,
-    provider_metadata: null,
-    createdAt: Date,
-    updatedAt: Date
-  }
-} 
+      thumbnail: IImageFormat;
+      medium: IImageFormat;
+      small: IImageFormat;
+      large: IImageFormat;
+    } | null;
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: number;
+    previewUrl: string | null;
+    provider: string;
+    provider_metadata: null;
+    createdAt: Date;
+    updatedAt: Date;
+  };
+}
 
 export interface ICarouselEmblaProps {
   items: ICollectionItem[];
@@ -224,7 +231,6 @@ type TUseCarouselNavigtionButtons = {
 
 export type TUseDotButtonProps = {
   selectedIndex: number;
-  scrollSnaps: number[];
+  scrollSnaps: TSnaps[];
   onDotButtonClick: (index: number) => void;
 };
-

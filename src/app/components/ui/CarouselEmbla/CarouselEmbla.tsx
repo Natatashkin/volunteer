@@ -6,6 +6,7 @@ import CarouselEmblaItem from "./CarouselEmblaItem/CarouselEmblaItem";
 import CarouselDotButtons from "./CarouselDot/CarouselDotButtons";
 
 import styles from "./carouselEmbla.module.scss";
+import { generateKey } from "@/app/utils/helpers";
 
 const CarouselEmbla = ({ items, options }: ICarouselEmblaProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
@@ -15,19 +16,11 @@ const CarouselEmbla = ({ items, options }: ICarouselEmblaProps) => {
 
   return (
     <div className={styles.embla}>
-      <div className={styles.embla__dots}>
-        <CarouselDotButtons
-          scrollSnaps={scrollSnaps}
-          onButtonClick={onDotButtonClick}
-          selectedIndex={selectedIndex}
-        />
-      </div>
       <div className={styles.embla__viewport} ref={emblaRef}>
         <div className={styles.embla__container}>
           {items.map(({ id, attributes }) => {  
             const { title, image, progect_category, date } = attributes;
-            const itemKey = `${title}-${id}`;
-
+            const itemKey = generateKey(id, title);       
             return (
               <CarouselEmblaItem
                 key={itemKey}
@@ -39,6 +32,13 @@ const CarouselEmbla = ({ items, options }: ICarouselEmblaProps) => {
             );
           })}
         </div>
+      </div>
+      <div className={styles.embla__dots}>
+        <CarouselDotButtons
+          scrollSnaps={scrollSnaps}
+          onButtonClick={onDotButtonClick}
+          selectedIndex={selectedIndex}
+        />
       </div>
     </div>
   );

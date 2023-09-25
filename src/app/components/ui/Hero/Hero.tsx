@@ -22,7 +22,7 @@ const Hero = ({
 
   return (
     <section className={styles.hero}>
-      <Image src={heroImagePath} className={styles.hero_image} fill alt="" />
+      <Image src={heroImagePath} className={styles.hero_image} fill alt="" priority/>
       <div className={styles.hero_info}>
         <h1 className={styles.hero_info_title}>{title}</h1>
         <p className={styles.hero_info_text}>{description}</p>

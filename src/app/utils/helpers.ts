@@ -81,3 +81,5 @@ export const getPageQuery = (slug: string, locale: string) => {
   );
   return pageQery;
 };
+
+export const generateKey = (id: number, title: string)=> `${title}-${id}`

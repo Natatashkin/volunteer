@@ -20,9 +20,6 @@ const CarouselEmblaItem = ({
   const { url, alternativeText } = imageData.attributes;
   const imageUrl = getStrapiMedia(url);
 
-  console.log(imageData.attributes.formats);
-  
-
   return (
     <div className={styles.embla__slide}>
       <Image
