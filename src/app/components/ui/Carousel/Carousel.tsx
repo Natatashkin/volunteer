@@ -9,7 +9,7 @@ import styles from "./carousel.module.scss";
 import Container from "../../Container/Container";
 import { EmblaOptionsType } from "embla-carousel-react";
 
-const OPTIONS: EmblaOptionsType = { loop: true, align: "center" };
+const OPTIONS: EmblaOptionsType = { loop: true, align: "start" };
 
 const Carousel = ({ title, description, projects }: ICarouselProps) => {
   return (

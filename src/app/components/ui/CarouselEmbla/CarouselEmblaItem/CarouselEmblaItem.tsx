@@ -31,13 +31,13 @@ const CarouselEmblaItem = ({
         fill
       />
       <div className={styles.embla__slide__info}>
-        <h4>{title}</h4>
+        <h4 className={styles.embla__slide__info__text}>{title}</h4>
         <div className={styles.embla__slide__info__button}>
           <LinkButton variant="outlined" title="Докладніше" link="/projects" />
         </div>
       </div>
     </div>
   );
-};
+};  
 
 export default CarouselEmblaItem;

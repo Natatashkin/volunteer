@@ -1,8 +1,7 @@
 @import "../../../styles/variables.module.scss";
 
 .embla {
-  --slide-spacing: 1rem;
-  padding: 1.6rem;
+  padding: 0;
   position: relative;
 
   &__viewport {
@@ -13,19 +12,19 @@
     backface-visibility: hidden;
     display: flex;
     touch-action: pan-y;
-    margin-left: calc(var(--slide-spacing) * -1);
   }
   &__slide {
     flex: 0 0 100%;
     height: 300px;
     min-width: 0;
-    padding-left: var(--slide-spacing);
     position: relative;
     margin-right: 10px;
+    border-radius: $radius;
 
     @media (min-width: $tablet) {
       flex: 0 0 50%;
       height: 250px;
+      margin-right: 20px;
     }
 
     @media (min-width: $laptop) {
@@ -34,89 +33,104 @@
 
     @media (min-width: $desktop) {
       flex: 0 0 30%;
+      margin-right: 20px;
     }
 
-    // &:hover .embla__slide__info {
-    //   height: 100%;
-    //   max-height: 100%;
+    &:hover .embla__slide__info {
+      height: 100%;
+      justify-content: space-around;
+      border-radius: $radius;
 
-    //   &__button {
-    //     display: flex;
-    //     opacity: 1;
-    //   }
-    // }
+      &__button {
+        visibility: visible;
+        opacity: 1;
+        height: auto;
+      }
+    }
   }
   &__slide__img {
     display: block;
     width: 100%;
     object-fit: cover;
     object-position: top;
+    border-radius: $radius;
   }
 
   &__slide__info {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: calc(100%);
+    height: 30%;
     display: flex;
     flex-direction: column;
-    // align-items: center;
-    justify-content: flex-end;
-    padding: 8px;
-    background-color: transparent;
+    justify-content: center;
+    padding: 8px 16px;
+    background-color: $transparent-bg-color;
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
     transition: all 250ms ease-in-out;
 
-    &:hover {
-      background-color: $transparent-bg-color;
+    &__text {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &__button {
-      // display: none;
-      // opacity: 0;
-      margin-top: 20px;
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+      margin-left: auto;
+      margin-right: auto;
+      transition-property: all;
+      transition-duration: 250ms;
+      transition-timing-function: ease-in-out;
+      transition-delay: 150ms;
     }
   }
 
-  &__buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: -15px;
-    right: -15px;
-    pointer-events: none;
-  }
-
-  &__button {
+  &__dot {
     appearance: none;
     background-color: transparent;
     touch-action: manipulation;
     display: inline-flex;
     text-decoration: none;
     cursor: pointer;
-    pointer-events: all;
     border: 0;
     padding: 0;
     margin: 0;
+  }
 
-    z-index: 1;
-    color: $accent-color;
+  &__dots {
+    bottom: 1.6rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+  }
+
+  &__dot {
+    height: 2.4rem;
+    width: 2.4rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    width: 4rem;
-    height: 4rem;
+    margin-right: 0.75rem;
+    margin-left: 0.75rem;
 
-    &__button:disabled {
-      opacity: 0.3;
+    &:after {
+      background-color: $lightGray;
+      border-radius: 0.2rem;
+      width: 100%;
+      height: 0.3rem;
+      content: "";
     }
-    svg {
-      width: 40px;
-      height: 40px;
+
+    &__selected:after {
+      background: $accent-color;
     }
   }
 }
