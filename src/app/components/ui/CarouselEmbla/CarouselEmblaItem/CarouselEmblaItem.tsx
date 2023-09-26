@@ -21,6 +21,11 @@ const CarouselEmblaItem = ({
   const [imageData] = image.data;
   const { url, alternativeText } = imageData.attributes;
   const imageUrl = getStrapiMedia(url);
+  // console.log(imageUrl);
+
+  console.log("category",category);
+  
+  
   const detailsLink = category ? `/${category}/${slug}` : `/${slug}`;
 
   return (

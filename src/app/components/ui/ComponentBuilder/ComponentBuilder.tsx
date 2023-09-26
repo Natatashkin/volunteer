@@ -6,7 +6,7 @@ import Carousel from "../Carousel/Carousel";
 const createComponent = ({ __component, ...rest }: BlockType) => {
   let Component;
   let componentProps;
-  console.log(rest);
+  // console.log(rest);
 
   switch (__component) {
     case "elements.hero":
