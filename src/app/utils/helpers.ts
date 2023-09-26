@@ -82,4 +82,8 @@ export const getPageQuery = (slug: string, locale: string) => {
   return pageQery;
 };
 
-export const generateKey = (id: number, title: string)=> `${title}-${id}`
+export const generateKey = (id: number, title: string)=> `${title}-${id}`;
+
+export const generateLink = (parentSlug: string ="", slug: string) => {
+  return parentSlug ? `/${parentSlug}/${slug}` : `/${slug}`;
+}

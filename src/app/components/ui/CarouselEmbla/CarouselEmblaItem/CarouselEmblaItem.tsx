@@ -1,7 +1,7 @@
 import Image from "next/image";
 import LinkButton from "../../LinkButton/LinkButton";
 import styles from "../carouselEmbla.module.scss";
-import { getStrapiMedia } from "@/app/utils/helpers";
+import { generateLink, getStrapiMedia } from "@/app/utils/helpers";
 
 export interface CarouselEmblaItemProps {
   title: string;
@@ -21,12 +21,8 @@ const CarouselEmblaItem = ({
   const [imageData] = image.data;
   const { url, alternativeText } = imageData.attributes;
   const imageUrl = getStrapiMedia(url);
-  // console.log(imageUrl);
-
-  console.log("category",category);
   
-  
-  const detailsLink = category ? `/${category}/${slug}` : `/${slug}`;
+  const detailsLink = generateLink(category, slug);
 
   return (
     <div className={styles.embla__slide}>
