@@ -9,6 +9,7 @@ export interface CarouselEmblaItemProps {
   image: any;
   category?: any;
   date?: Date;
+  rootSlug: string;
 }
 
 const CarouselEmblaItem = ({
@@ -17,15 +18,12 @@ const CarouselEmblaItem = ({
   category,
   date,
   slug,
+  rootSlug,
 }: CarouselEmblaItemProps) => {
-  const [imageData] = image.data;
-  const { url, alternativeText } = imageData.attributes;
+  const itemCategory = category?.data?.attributes?.slug || "";
+  const { url, alternativeText } = image.data.attributes;
   const imageUrl = getStrapiMedia(url);
-
-  console.log(category);
-  
-  
-  const detailsLink = generateLink(category, slug);
+  const detailsLink = generateLink(rootSlug, itemCategory, slug);
 
   return (
     <div className={styles.embla__slide}>

@@ -77,13 +77,22 @@ export const getPageQuery = (slug: string, locale: string) => {
       populate: "deep",
       locale: locale,
     },
+
     { encodeValuesOnly: true }
   );
   return pageQery;
 };
 
-export const generateKey = (id: number, title: string)=> `${title}-${id}`;
+export const generateKey = (id: number, title: string) => `${title}-${id}`;
 
-export const generateLink = (parentSlug: string ="", slug: string) => {
-  return parentSlug ? `/${parentSlug}/${slug}` : `/${slug}`;
-}
+export const generateLink = (
+  pageSlug: string = "",
+  parentSlug: string = "",
+  slug: string
+) => {
+  return pageSlug
+    ? parentSlug
+      ? `${pageSlug}/${parentSlug}/${slug}`
+      : `/${pageSlug}/${slug}`
+    : `${slug}`;
+};

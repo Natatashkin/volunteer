@@ -19,21 +19,18 @@ const CarouselEmbla = ({ items, options }: ICarouselEmblaProps) => {
       <div className={styles.embla__viewport} ref={emblaRef}>
         <div className={styles.embla__container}>
           {items.map(({ id, attributes }) => {
-            // console.log(attributes);
-            
-            const { title, image, category, date, slug } = attributes;
+            const { title, image, category, date, slug, rootSlug } = attributes;
             const itemKey = generateKey(id, title);
-            console.log(category?.data?.attributes);
-            
 
             return (
               <CarouselEmblaItem
                 key={itemKey}
                 title={title}
                 image={image}
-                category={category?.data?.attributes?.slug}
+                category={category}
                 date={date}
                 slug={slug}
+                rootSlug={rootSlug}
               />
             );
           })}

@@ -144,6 +144,7 @@ export interface ICollectionItem {
     locale: string;
     title: string;
     slug: string;
+    rootSlug: string;
     description: string | null;
     image?: IStrapiMedia;
     icon?: {

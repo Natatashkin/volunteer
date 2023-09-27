@@ -5,7 +5,6 @@ import Carousel from "../Carousel/Carousel";
 
 const createComponent = ({ __component, ...rest }: BlockType) => {
   let Component;
-  let componentProps;
   // console.log(rest);
 
   switch (__component) {
@@ -15,7 +14,10 @@ const createComponent = ({ __component, ...rest }: BlockType) => {
     case "elements.features":
       Component = Features;
       break;
-    case "elements.carousel":
+    case "elements.carousel-projects":
+      Component = Carousel;
+      break;
+    case "elements.carousel-blog":
       Component = Carousel;
       break;
     default:
