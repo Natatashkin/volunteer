@@ -21,6 +21,8 @@ const CarouselEmbla = ({ items, options }: ICarouselEmblaProps) => {
           {items.map(({ id, attributes }) => {
             const { title, image, category, date, slug, rootSlug } = attributes;
             const itemKey = generateKey(id, title);
+            console.log(category);
+            
 
             return (
               <CarouselEmblaItem

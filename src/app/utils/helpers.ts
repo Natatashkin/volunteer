@@ -74,7 +74,37 @@ export const getPageQuery = (slug: string, locale: string) => {
           $eq: slug ?? "/",
         },
       },
-      populate: "deep",
+      // populate: "deep",
+      populate: {
+        blocks: {
+          on: {
+            "elements.features": {
+              populate: {
+                features: {
+                  fields: ["title", "description"],
+                  populate: ["icon", "icon.url", "icon.alternativeText"]
+                }
+              }
+            },
+            "elements.hero": {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"]
+                }
+              }
+            },
+            "elements.carousel-projects": {
+              // populate: "*"
+              populate: {
+                relatedItems: {
+                  fields: ["title", "description", "slug", "rootSlug"],
+                  populate: ["image", "image.url", "image.alternativeText", "category", "category.slug" ]
+                }
+              }
+            }
+          }
+        }
+      },
       locale: locale,
     },
 

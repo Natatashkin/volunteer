@@ -7,7 +7,6 @@ export const headers = {
 export const getAllLocales = async () => {
   const res = await fetch(`${baseUrl}/api/i18n/locales`, {
     headers,
-    // cache: 'no-store' 
   });
 
   if (!res.ok) {
@@ -42,6 +41,7 @@ export const getPages = async () => {
 export const getPageData = async (request: string) => {
   const res = await fetch(`${baseUrl}/api/pages?${request}`, {
     headers,
+    // cache: 'no-store', 
   });
 
   if (!res.ok) {

@@ -13,6 +13,9 @@ export default async function Home({ params: { lang } }: IHomePageProps) {
     attributes: { blocks },
   } = pageData;
 
+  // console.log(pageData?.attributes?.blocks);
+  
+
   return (
     <main className={styles.main}>
       {blocks?.map((block: BlockType) => {
