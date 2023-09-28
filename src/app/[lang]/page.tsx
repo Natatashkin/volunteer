@@ -14,7 +14,6 @@ export default async function Home({ params: { lang } }: IHomePageProps) {
   } = pageData;
 
   // console.log(pageData?.attributes?.blocks);
-  
 
   return (
     <main className={styles.main}>

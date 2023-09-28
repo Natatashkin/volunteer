@@ -1,13 +1,11 @@
 "use client";
-import React from "react";
-import CarouselEmbla from "../CarouselEmbla/CarouselEmbla";
-import Image from "next/image";
+import { EmblaOptionsType } from "embla-carousel-react";
 import { ICarouselProps } from "@/types";
+import CarouselEmbla from "../CarouselEmbla/CarouselEmbla";
+import Container from "../../Container/Container";
+import Section from "../Section/Section";
 
 import styles from "./carousel.module.scss";
-
-import Container from "../../Container/Container";
-import { EmblaOptionsType } from "embla-carousel-react";
 
 const OPTIONS: EmblaOptionsType = { loop: true, align: "start" };
 
@@ -16,11 +14,9 @@ const Carousel = ({ title, description, relatedItems }: ICarouselProps) => {
 
   return (
     <Container>
-      <section>
-        <h2>{title}</h2>
-        {description && <p>{description}</p>}
+      <Section title={title} description={description}>
         <CarouselEmbla items={carouselItems} options={OPTIONS} />
-      </section>
+      </Section>
     </Container>
   );
 };

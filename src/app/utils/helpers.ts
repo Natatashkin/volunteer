@@ -76,34 +76,55 @@ export const getPageQuery = (slug: string, locale: string) => {
       },
       // populate: "deep",
       populate: {
+        seo: {
+          populate: "*",
+        },
         blocks: {
           on: {
             "elements.features": {
               populate: {
                 features: {
                   fields: ["title", "description"],
-                  populate: ["icon", "icon.url", "icon.alternativeText"]
-                }
-              }
+                  populate: ["icon", "icon.url", "icon.alternativeText"],
+                },
+              },
             },
             "elements.hero": {
               populate: {
                 image: {
-                  fields: ["url", "alternativeText"]
-                }
-              }
+                  fields: ["url", "alternativeText"],
+                },
+              },
             },
             "elements.carousel-projects": {
-              // populate: "*"
               populate: {
                 relatedItems: {
                   fields: ["title", "description", "slug", "rootSlug"],
-                  populate: ["image", "image.url", "image.alternativeText", "category", "category.slug" ]
-                }
-              }
-            }
-          }
-        }
+                  populate: {
+                    image: {
+                      fields: ["url", "alternativeText"],
+                    },
+                    category: {
+                      fields: "slug",
+                    },
+                  },
+                },
+              },
+            },
+            "elements.carousel-blog": {
+              populate: {
+                relatedItems: {
+                  fields: ["title", "description", "slug", "rootSlug"],
+                  populate: {
+                    image: {
+                      fields: ["url", "alternativeText"],
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
       },
       locale: locale,
     },

@@ -237,3 +237,9 @@ export type TUseDotButtonProps = {
   scrollSnaps: TSnaps[];
   onDotButtonClick: (index: number) => void;
 };
+
+export interface ISectionProps {
+  children: ReactNode;
+  title: string;
+  description: string;
+}
