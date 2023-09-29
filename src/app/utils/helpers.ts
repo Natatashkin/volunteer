@@ -74,7 +74,6 @@ export const getPageQuery = (slug: string, locale: string) => {
           $eq: slug ?? "/",
         },
       },
-      // populate: "deep",
       populate: {
         seo: {
           populate: "*",
@@ -87,9 +86,9 @@ export const getPageQuery = (slug: string, locale: string) => {
                   fields: ["title", "description"],
                   populate: {
                     icon: {
-                      fields: ["url", "alternativeText"]
-                    }
-                  }
+                      fields: ["url", "alternativeText"],
+                    },
+                  },
                 },
               },
             },
@@ -123,7 +122,19 @@ export const getPageQuery = (slug: string, locale: string) => {
                     image: {
                       fields: ["url", "alternativeText"],
                     },
-                    description: true
+                    description: true,
+                  },
+                },
+              },
+            },
+            "elements.text-palette-with-icons": {
+              populate: {
+                items: {
+                  fields: ["title", "description"],
+                  populate: {
+                    icon: {
+                      fields: ["url", "alternativeText"],
+                    },
                   },
                 },
               },
