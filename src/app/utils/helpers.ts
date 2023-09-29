@@ -85,7 +85,11 @@ export const getPageQuery = (slug: string, locale: string) => {
               populate: {
                 features: {
                   fields: ["title", "description"],
-                  populate: ["icon", "icon.url", "icon.alternativeText"],
+                  populate: {
+                    icon: {
+                      fields: ["url", "alternativeText"]
+                    }
+                  }
                 },
               },
             },
@@ -99,7 +103,7 @@ export const getPageQuery = (slug: string, locale: string) => {
             "elements.carousel-projects": {
               populate: {
                 relatedItems: {
-                  fields: ["title", "description", "slug", "rootSlug"],
+                  fields: ["title", "slug", "rootSlug"],
                   populate: {
                     image: {
                       fields: ["url", "alternativeText"],
@@ -114,11 +118,12 @@ export const getPageQuery = (slug: string, locale: string) => {
             "elements.carousel-blog": {
               populate: {
                 relatedItems: {
-                  fields: ["title", "description", "slug", "rootSlug"],
+                  fields: ["title", "slug", "rootSlug"],
                   populate: {
                     image: {
                       fields: ["url", "alternativeText"],
                     },
+                    description: true
                   },
                 },
               },

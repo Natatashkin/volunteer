@@ -39,6 +39,8 @@ export const getPages = async () => {
 };
 
 export const getPageData = async (request: string) => {
+  console.log(request);
+  
   const res = await fetch(`${baseUrl}/api/pages?${request}`, {
     headers,
     // cache: 'no-store', 
