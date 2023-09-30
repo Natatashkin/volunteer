@@ -1,13 +1,15 @@
 import Image from "next/image";
 import LinkButton from "../../LinkButton/LinkButton";
 import styles from "../carouselEmbla.module.scss";
-import { getStrapiMedia } from "@/app/utils/helpers";
+import { generateLink, getStrapiMedia } from "@/app/utils/helpers";
 
 export interface CarouselEmblaItemProps {
   title: string;
+  slug: string;
   image: any;
-  category: any;
+  category?: any;
   date?: Date;
+  rootSlug: string;
 }
 
 const CarouselEmblaItem = ({
@@ -15,10 +17,13 @@ const CarouselEmblaItem = ({
   image,
   category,
   date,
+  slug,
+  rootSlug,
 }: CarouselEmblaItemProps) => {
-  const [imageData] = image.data;
-  const { url, alternativeText } = imageData.attributes;
+  const itemCategory = category?.data?.attributes?.slug || "";
+  const { url, alternativeText } = image.data.attributes;
   const imageUrl = getStrapiMedia(url);
+  const detailsLink = generateLink(rootSlug, itemCategory, slug);
 
   return (
     <div className={styles.embla__slide}>
@@ -31,11 +36,15 @@ const CarouselEmblaItem = ({
       <div className={styles.embla__slide__info}>
         <h4 className={styles.embla__slide__info__text}>{title}</h4>
         <div className={styles.embla__slide__info__button}>
-          <LinkButton variant="outlined" title="Докладніше" link="/projects" />
+          <LinkButton
+            variant="outlined"
+            title="Докладніше"
+            link={detailsLink}
+          />
         </div>
       </div>
     </div>
   );
-};  
+};
 
 export default CarouselEmblaItem;

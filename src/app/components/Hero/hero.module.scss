@@ -1,4 +1,4 @@
-@import "../../../styles/variables.module.scss";
+@import "../../styles/variables.module.scss";
 
 .hero {
   position: relative;
@@ -8,10 +8,10 @@
   @media (min-width: $tablet) {
     height: 600px;
   }
-  @media(min-width:$laptop) {
+  @media (min-width: $laptop) {
     height: 700px;
   }
-  @media(min-width:$desktop){
+  @media (min-width: $desktop) {
     height: 750px;
   }
 
@@ -47,13 +47,13 @@
     @media (min-width: $laptop) {
       max-width: 35%;
     }
-    
+
     &_title {
       font-size: $mobile-h1;
       text-shadow: $shadow;
       margin-bottom: 20px;
       line-height: 1;
-     
+
       @media (min-width: $tablet) {
         font-size: $tablet-h1;
       }

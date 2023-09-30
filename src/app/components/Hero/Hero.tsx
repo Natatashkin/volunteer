@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import LinkButton from "../LinkButton/LinkButton";
+import LinkButton from "../ui/LinkButton/LinkButton";
 import Image from "next/image";
 import styles from "./hero.module.scss";
 import { useAppContext } from "@/app/context/appContext";
-import { getLink, getStrapiMedia } from "@/app/utils/helpers";
-import { IHeroProps } from "@/types";
+import { getStrapiMedia } from "@/app/utils/helpers";
+import { THeroProps } from "@/types";
 
 const Hero = ({
   image,
@@ -13,15 +13,19 @@ const Hero = ({
   buttonLink,
   description,
   buttonTitle,
-}: IHeroProps) => {
+}: THeroProps) => {
   const { navData } = useAppContext();
-
-  // const heroLink = getLink(navData, buttonLink);
   const heroImagePath = getStrapiMedia(image.data[0].attributes.url);
 
   return (
     <section className={styles.hero}>
-      <Image src={heroImagePath} className={styles.hero_image} fill alt="" priority/>
+      <Image
+        src={heroImagePath}
+        className={styles.hero_image}
+        fill
+        alt=""
+        priority
+      />
       <div className={styles.hero_info}>
         <h1 className={styles.hero_info_title}>{title}</h1>
         <p className={styles.hero_info_text}>{description}</p>

@@ -5,6 +5,7 @@ import {
   PropsWithChildren,
   ReactNode,
 } from "react";
+import { NullLiteral } from "typescript";
 
 export type TPagePath = {
   noLocalizedPath: string;
@@ -125,11 +126,26 @@ export interface BlocksCommonTypes {
   __component: string;
   title: string;
   description: string;
+  relatedItems?: CollectionItem[];
+  items?: IComponentItemWIthIcon[] | IComponentItemWIthImage[];
   [key: string]: any;
 }
 
+export interface IComponentItemWIthIcon {
+  id: number;
+  title: string;
+  description: string;
+  icon: { data: IStrapiMedia };
+}
+export interface IComponentItemWIthImage {
+  id: number;
+  title: string;
+  description: string;
+  image: IStrapiMedia;
+}
+
 export interface IHeroBlock extends BlocksCommonTypes {
-  image: any;
+  image: IStrapiMedia | IStrapiMedia[];
   buttonTitle: string;
   buttonLink: string;
 }
@@ -143,27 +159,26 @@ export interface ICollectionItem {
     locale: string;
     title: string;
     slug: string;
+    rootSlug: string;
     description: string | null;
     image?: IStrapiMedia;
     icon?: {
       data: IStrapiMedia;
     };
     date?: Date;
-    project_category?: ICollectionItem;
+    category?: ICollectionItem;
   };
 }
-export interface IFeaturesBlock extends BlocksCommonTypes {
-  features: CollectionItem[];
-}
 
-export interface ICarouselBlock extends BlocksCommonTypes {
-  projects: CollectionItem[];
-}
-export type BlockType = IHeroBlock | IFeaturesBlock | ICarouselBlock;
+export type BlockType =
+  | IHeroBlock
+  | BlocksCommonTypes
+  | TTextPaletteWithIconsProps;
 
-export type IHeroProps = Omit<IHeroBlock, "__component">;
-export type IFeaturesProps = Omit<IFeaturesBlock, "__component">;
-export type ICarouselProps = Omit<ICarouselBlock, "__component">;
+export type THeroProps = Omit<IHeroBlock, "__component">;
+export type IFeaturesProps = Omit<BlocksCommonTypes, "__component">;
+export type ICarouselProps = Omit<BlocksCommonTypes, "__component">;
+export type TTextPaletteWithIconsProps = Omit<BlocksCommonTypes, "__component">;
 
 export type TSnaps = {
   isActive: boolean;
@@ -208,7 +223,7 @@ export interface IStrapiMedia {
     ext: string;
     mime: string;
     size: number;
-    url: number;
+    url: string;
     previewUrl: string | null;
     provider: string;
     provider_metadata: null;
@@ -234,3 +249,15 @@ export type TUseDotButtonProps = {
   scrollSnaps: TSnaps[];
   onDotButtonClick: (index: number) => void;
 };
+
+export interface ISectionProps {
+  children: ReactNode;
+  title: string;
+  description: string;
+}
+
+export interface ITextPaletteWithIconsItemProps {
+  title: string;
+  description: string;
+  icon: IStrapiMedia;
+}

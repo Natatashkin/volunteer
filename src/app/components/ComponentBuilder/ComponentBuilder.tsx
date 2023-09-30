@@ -2,19 +2,25 @@ import { BlockType } from "@/types";
 import Hero from "../Hero/Hero";
 import Features from "../Features/Features";
 import Carousel from "../Carousel/Carousel";
+import TextPaletteWithIcons from "../TextPaletteWithIcons/TextPaletteWithIcons";
 
-const createComponent = ({ __component, ...rest }: BlockType) => {  
+const createComponent = ({ __component, ...rest }: BlockType) => {
   let Component;
-  let componentProps;
+  // console.log(">>>>>>>>>>>>>>>>>>>", rest?.relatedItems);
 
   switch (__component) {
     case "elements.hero":
       Component = Hero;
       break;
-    case "elements.features":
-      Component = Features;
+    case "elements.text-palette-with-icons":
+      Component = TextPaletteWithIcons;
       break;
-    case "elements.carousel":
+    case "elements.mission":
+      break;
+    case "elements.carousel-projects":
+      Component = Carousel;
+      break;
+    case "elements.carousel-blog":
       Component = Carousel;
       break;
     default:

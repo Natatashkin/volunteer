@@ -74,12 +74,92 @@ export const getPageQuery = (slug: string, locale: string) => {
           $eq: slug ?? "/",
         },
       },
-      populate: "deep",
+      populate: {
+        seo: {
+          populate: "*",
+        },
+        blocks: {
+          on: {
+            "elements.features": {
+              populate: {
+                features: {
+                  fields: ["title", "description"],
+                  populate: {
+                    icon: {
+                      fields: ["url", "alternativeText"],
+                    },
+                  },
+                },
+              },
+            },
+            "elements.hero": {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+              },
+            },
+            "elements.carousel-projects": {
+              populate: {
+                relatedItems: {
+                  fields: ["title", "slug", "rootSlug"],
+                  populate: {
+                    image: {
+                      fields: ["url", "alternativeText"],
+                    },
+                    category: {
+                      fields: "slug",
+                    },
+                  },
+                },
+              },
+            },
+            "elements.carousel-blog": {
+              populate: {
+                relatedItems: {
+                  fields: ["title", "slug", "rootSlug"],
+                  populate: {
+                    image: {
+                      fields: ["url", "alternativeText"],
+                    },
+                    description: true,
+                  },
+                },
+              },
+            },
+            "elements.text-palette-with-icons": {
+              populate: {
+                items: {
+                  fields: ["title", "description"],
+                  populate: {
+                    icon: {
+                      fields: ["url", "alternativeText"],
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
       locale: locale,
     },
+
     { encodeValuesOnly: true }
   );
   return pageQery;
 };
 
-export const generateKey = (id: number, title: string)=> `${title}-${id}`
+export const generateKey = (id: number, title: string) => `${title}-${id}`;
+
+export const generateLink = (
+  pageSlug: string = "",
+  parentSlug: string = "",
+  slug: string
+) => {
+  return pageSlug
+    ? parentSlug
+      ? `${pageSlug}/${parentSlug}/${slug}`
+      : `/${pageSlug}/${slug}`
+    : `${slug}`;
+};

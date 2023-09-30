@@ -1,17 +1,17 @@
 "use client";
 import { ICollectionItem, IFeaturesProps } from "@/types";
-import FeaturesItem from "../FeaturesItem/FeaturesItem";
-import styles from "./features.module.scss";
-import Container from "../../Container/Container";
 import { generateKey } from "@/app/utils/helpers";
+import FeaturesItem from "./FeaturesItem/FeaturesItem";
+import Container from "../Container/Container";
+import Section from "../Section/Section";
+
+import styles from "./features.module.scss";
 
 const Features = ({ features, title, description }: IFeaturesProps) => {
   return (
     <Container>
-      <section className={styles.features}>
-        <h2 className={styles.features_title}>{title}</h2>
-        <p className={styles.features_description}>{description}</p>
-        <div className={styles.features_container}>
+      <Section title={title} description={description}>
+        <div className={styles.features}>
           {features.data.map(
             ({
               id,
@@ -29,7 +29,7 @@ const Features = ({ features, title, description }: IFeaturesProps) => {
             }
           )}
         </div>
-      </section>
+      </Section>
     </Container>
   );
 };
