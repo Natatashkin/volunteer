@@ -3,10 +3,11 @@ import Hero from "../Hero/Hero";
 import Features from "../Features/Features";
 import Carousel from "../Carousel/Carousel";
 import TextPaletteWithIcons from "../TextPaletteWithIcons/TextPaletteWithIcons";
+import TextImageButtonCircleBlock from "../TextImageButtonCircleBlock/TextImageButtonCircleBlock";
 
 const createComponent = ({ __component, ...rest }: BlockType) => {
   let Component;
-  // console.log(">>>>>>>>>>>>>>>>>>>", rest?.relatedItems);
+  // console.log(rest);
 
   switch (__component) {
     case "elements.hero":
@@ -15,6 +16,8 @@ const createComponent = ({ __component, ...rest }: BlockType) => {
     case "elements.text-palette-with-icons":
       Component = TextPaletteWithIcons;
       break;
+    case "elements.text-block-with-image-button-and-circle":
+      Component = TextImageButtonCircleBlock;
     case "elements.mission":
       break;
     case "elements.carousel-projects":

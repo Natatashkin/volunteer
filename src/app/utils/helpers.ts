@@ -139,6 +139,16 @@ export const getPageQuery = (slug: string, locale: string) => {
                 },
               },
             },
+            "elements.text-block-with-image-button-and-circle": {
+              populate: {
+                button: {
+                  fields: ["title", "link"],
+                },
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+              },
+            },
           },
         },
       },

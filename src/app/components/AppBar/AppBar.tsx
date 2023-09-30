@@ -1,7 +1,7 @@
 "use client";
 import { IAppBar } from "@/types";
 import useWidth from "@/app/lib/hooks/useWidth";
-import Logo from "../ui/Logo/Logo";
+import Logo from "../Logo/Logo";
 import PrimaryMenu from "../PrimaryMenu/PrimaryMenu";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
