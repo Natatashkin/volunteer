@@ -1,0 +1,57 @@
+@import "../../../styles/variables.module.scss";
+
+.textPalette_item {
+  display: flex;
+  width: 100%;
+  padding: 20px 10px;
+  border-radius: $radius;
+  transition: transform 250ms ease-in-out;
+  &:hover {
+    box-shadow: $shadow;
+    transform: scale(1.02);
+  }
+
+  &_imageWrapper {
+    display: block;
+    padding: 4px 8px 8px 0px;
+  }
+
+  &_thumb {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    & img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    padding-left: 4px;
+  }
+
+  &_title {
+    margin-bottom: 8px;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: $accent-color;
+  }
+
+  &_description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (min-width: $mobile) {
+      -webkit-line-clamp: 5;
+    }
+
+    @media (min-width: $tablet) {
+      -webkit-line-clamp: 4;
+    }
+  }
+}

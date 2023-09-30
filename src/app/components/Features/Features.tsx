@@ -1,8 +1,8 @@
 "use client";
 import { ICollectionItem, IFeaturesProps } from "@/types";
 import { generateKey } from "@/app/utils/helpers";
-import FeaturesItem from "../FeaturesItem/FeaturesItem";
-import Container from "../../Container/Container";
+import FeaturesItem from "./FeaturesItem/FeaturesItem";
+import Container from "../Container/Container";
 import Section from "../Section/Section";
 
 import styles from "./features.module.scss";

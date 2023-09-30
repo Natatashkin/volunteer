@@ -15,6 +15,8 @@ const createComponent = ({ __component, ...rest }: BlockType) => {
     case "elements.text-palette-with-icons":
       Component = TextPaletteWithIcons;
       break;
+    case "elements.mission":
+      break;
     case "elements.carousel-projects":
       Component = Carousel;
       break;

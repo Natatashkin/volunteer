@@ -1,8 +1,8 @@
 "use client";
 import { EmblaOptionsType } from "embla-carousel-react";
 import { ICarouselProps } from "@/types";
-import CarouselEmbla from "../CarouselEmbla/CarouselEmbla";
-import Container from "../../Container/Container";
+import CarouselEmbla from "../ui/CarouselEmbla/CarouselEmbla";
+import Container from "../Container/Container";
 import Section from "../Section/Section";
 
 import styles from "./carousel.module.scss";

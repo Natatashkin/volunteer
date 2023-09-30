@@ -1,11 +1,11 @@
 import React from "react";
 import { IComponentItemWIthIcon, TTextPaletteWithIconsProps } from "@/types";
+import { generateKey } from "@/app/utils/helpers";
 import Section from "../Section/Section";
-import Container from "../../Container/Container";
+import Container from "../Container/Container";
+import TextPaletteWithIconsItem from "./TextPaletteWithIconsItem/TextPaletteWithIcons";
 
 import styles from "./textPaletteWithIcons.module.scss";
-import { generateKey, getStrapiMedia } from "@/app/utils/helpers";
-import TextPaletteWithIconsItem from "./TextPaletteWithIconsItem/TextPaletteWithIcons";
 
 const TextPaletteWithIcons = ({
   title = "",

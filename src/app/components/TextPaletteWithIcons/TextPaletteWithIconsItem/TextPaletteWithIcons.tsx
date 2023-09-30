@@ -9,14 +9,15 @@ const TextPaletteWithIconsItem = ({
   icon,
   description,
 }: ITextPaletteWithIconsItemProps) => {
-  console.log(description);
   const { url, alternativeText } = icon.attributes;
   const iconUrl = getStrapiMedia(url);
 
   return (
     <div className={styles.textPalette_item}>
-      <div className={styles.textPalette_item_thumb}>
-        <Image src={iconUrl} fill alt={alternativeText || ""} />
+      <div className={styles.textPalette_item_imageWrapper}>
+        <div className={styles.textPalette_item_thumb}>
+          <Image src={iconUrl} fill alt={alternativeText || ""} />
+        </div>
       </div>
       <div className={styles.textPalette_item_content}>
         <h3 className={styles.textPalette_item_title}>{title}</h3>

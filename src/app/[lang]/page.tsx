@@ -2,7 +2,7 @@ import { getPageData } from "../lib/services";
 import { BlockType, IHomePageProps, TPagePath } from "@/types";
 import { getPageQuery } from "../utils/helpers";
 import styles from "./page.module.scss";
-import ComponentBuilder from "../components/ui/ComponentBuilder/ComponentBuilder";
+import ComponentBuilder from "../components/ComponentBuilder/ComponentBuilder";
 import { Fragment } from "react";
 
 export default async function Home({ params: { lang } }: IHomePageProps) {
