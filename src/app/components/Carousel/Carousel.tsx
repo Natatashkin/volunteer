@@ -5,8 +5,6 @@ import CarouselEmbla from "../ui/CarouselEmbla/CarouselEmbla";
 import Container from "../Container/Container";
 import Section from "../Section/Section";
 
-import styles from "./carousel.module.scss";
-
 const OPTIONS: EmblaOptionsType = { loop: true, align: "start" };
 
 const Carousel = ({ title, description, relatedItems }: ICarouselProps) => {
