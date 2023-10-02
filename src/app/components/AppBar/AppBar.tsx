@@ -6,14 +6,23 @@ import PrimaryMenu from "../PrimaryMenu/PrimaryMenu";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 import styles from "./appBar.module.scss";
+import classNames from "classnames";
+import { usePathname } from "next/navigation";
+import usePagePath from "@/app/lib/hooks/usePagePath";
 
 const AppBar = ({ items }: IAppBar) => {
   const { isLaptopWidth } = useWidth();
-  // console.log("app bar items", items);
+  const { noLocalizedPath } = usePagePath();
+
+  const isMainPage = noLocalizedPath === "/";
 
   return (
     <>
-      <header className={styles.appHeader}>
+      <header
+        className={classNames(styles.appHeader, {
+          [styles.appHeader__absolute]: isMainPage,
+        })}
+      >
         <div className={styles.appHeader_content}>
           <Logo />
           {isLaptopWidth ? (

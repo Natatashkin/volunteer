@@ -1,11 +1,11 @@
 import { getPageData } from "../lib/services";
-import { BlockType, IHomePageProps, TPagePath } from "@/types";
+import { BlockType, IPageProps, TPagePath } from "@/types";
 import { getPageQuery } from "../utils/helpers";
 import styles from "./page.module.scss";
 import ComponentBuilder from "../components/ComponentBuilder/ComponentBuilder";
 import { Fragment } from "react";
 
-export default async function Home({ params: { lang } }: IHomePageProps) {
+export default async function Home({ params: { lang } }: IPageProps) {
   const pageQery = getPageQuery("/", lang);
   const [pageData] = await getPageData(pageQery);
 

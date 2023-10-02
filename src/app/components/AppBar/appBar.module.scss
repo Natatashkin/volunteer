@@ -1,7 +1,13 @@
 @import "../../styles/variables.module.scss";
 
 .appHeader {
-  position: absolute;
+  &__absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  position: sticky;
   top: 0;
   left: 0;
   display: flex;
@@ -11,9 +17,10 @@
   background-color: transparent;
   width: 100%;
 
-  @media (min-width: $tablet) {
+  @media (min-width: $tablet) { 
     padding: 10px;
   }
+
   &_content {
     display: grid;
     grid-template-columns: 1.5fr 0.5fr;

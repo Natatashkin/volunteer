@@ -79,7 +79,7 @@ export type TGetIsActivePathState = {
 
 // Pages
 
-export interface IHomePageProps {
+export interface IPageProps {
   params: { lang: string; slug: string };
 }
 
