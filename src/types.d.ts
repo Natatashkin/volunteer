@@ -150,6 +150,15 @@ export interface IHeroBlock extends BlocksCommonTypes {
   buttonLink: string;
 }
 
+export interface ITextImageButtonCircleBlock extends BlocksCommonTypes {
+  image: IStrapiMedia | IStrapiMedia[];
+  button: {
+    id: number;
+    title: string;
+    link: string;
+  };
+}
+
 export interface ICollectionItem {
   id: number;
   attributes: {
@@ -173,12 +182,17 @@ export interface ICollectionItem {
 export type BlockType =
   | IHeroBlock
   | BlocksCommonTypes
-  | TTextPaletteWithIconsProps;
+  | TTextPaletteWithIconsProps
+  | TTextImageButtonCircleBlockProps;
 
 export type THeroProps = Omit<IHeroBlock, "__component">;
 export type IFeaturesProps = Omit<BlocksCommonTypes, "__component">;
 export type ICarouselProps = Omit<BlocksCommonTypes, "__component">;
 export type TTextPaletteWithIconsProps = Omit<BlocksCommonTypes, "__component">;
+export type TTextImageButtonCircleBlockProps = Omit<
+  ITextImageButtonCircleBlock,
+  "__component"
+>;
 
 export type TSnaps = {
   isActive: boolean;
@@ -252,8 +266,8 @@ export type TUseDotButtonProps = {
 
 export interface ISectionProps {
   children: ReactNode;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
 }
 
 export interface ITextPaletteWithIconsItemProps {
