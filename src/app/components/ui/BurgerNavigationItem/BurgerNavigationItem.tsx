@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useState } from "react";
 import classNames from "classnames";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { RiArrowDownSLine } from "react-icons/ri";
+// import { usePathname } from "next/navigation";
+// import { RiArrowDownSLine } from "react-icons/ri";
 import { INavigationItemProps } from "../../../../types";
-import { splitUrl, createNestedLink, findNavItem } from "@/app/utils/helpers";
-import NavigationItemWrapper from "../NavigationItemWrapper/NavigationItemWrapper";
+// import { splitUrl, } from "@/app/utils/helpers";
+// import NavigationItemWrapper from "../NavigationItemWrapper/NavigationItemWrapper";
 import styles from "./burgerNavigationItem.module.scss";
 
 const BurgerNavigationItem = ({
@@ -14,30 +14,38 @@ const BurgerNavigationItem = ({
   nestedItems,
   isActive,
 }: INavigationItemProps) => {
-  const path = usePathname();
-  const { noLocalizedPath } = splitUrl(path);
-  const hasNestedItems = Boolean(nestedItems?.length);
-  const isNestedItem = useMemo(
-    () => hasNestedItems && Boolean(findNavItem(nestedItems, noLocalizedPath)),
-    [noLocalizedPath, hasNestedItems, nestedItems]
-  );
+  // const path = usePathname();
+  // const { noLocalizedPath } = splitUrl(path);
+  // const hasNestedItems = Boolean(nestedItems?.length);
+  // const isNestedItem = useMemo(
+  //   () => hasNestedItems && Boolean(findNavItem(nestedItems, noLocalizedPath)),
+  //   [noLocalizedPath, hasNestedItems, nestedItems]
+  // );
 
-  const shouldOpen = isActive && isNestedItem;
+  // const shouldOpen = isActive && isNestedItem;
 
-  const [openDropdown, setOpenDropdown] = useState(shouldOpen);
-  const toggleOpen = () => setOpenDropdown((prev) => !prev);
+  // const [openDropdown, setOpenDropdown] = useState(shouldOpen);
+  // const toggleOpen = () => setOpenDropdown((prev) => !prev);
 
-  useEffect(() => {
-    if (!shouldOpen) {
-      setOpenDropdown(false);
-      return;
-    }
-    setOpenDropdown(true);
-  }, [shouldOpen]);
+  // useEffect(() => {
+  //   if (!shouldOpen) {
+  //     setOpenDropdown(false);
+  //     return;
+  //   }
+  //   setOpenDropdown(true);
+  // }, [shouldOpen]);
 
   return (
     <li className={styles.navigationItem}>
-      {!hasNestedItems ? (
+      <Link
+          href={link}
+          className={classNames(styles.navigationItem_link, {
+            [styles.navigationItem__active]: isActive,
+          })}
+        >
+          {title}
+        </Link>
+      {/* {!hasNestedItems ? (
         <Link
           href={link}
           className={classNames(styles.navigationItem_link, {
@@ -88,7 +96,7 @@ const BurgerNavigationItem = ({
             )}
           </ul>
         </div>
-      )}
+      )} */}
     </li>
   );
 };

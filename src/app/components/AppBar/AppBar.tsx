@@ -10,7 +10,6 @@ import styles from "./appBar.module.scss";
 const AppBar = ({ items }: IAppBar) => {
   const { isLaptopWidth } = useWidth();
   // console.log("app bar items", items);
-  
 
   return (
     <>
@@ -20,8 +19,7 @@ const AppBar = ({ items }: IAppBar) => {
           {isLaptopWidth ? (
             <PrimaryMenu items={items} />
           ) : (
-            // <BurgerMenu items={items} />
-            null
+            <BurgerMenu items={items} />
           )}
         </div>
       </header>

@@ -12,16 +12,16 @@ export const splitUrl = (path: string) => {
   return { locale, noLocalizedPath };
 };
 
-export const createNestedLink = (parentLink: string, childLink: string) => {
-  return `${parentLink}${childLink}`;
-};
+// export const createNestedLink = (parentLink: string, childLink: string) => {
+//   return `${parentLink}${childLink}`;
+// };
 
-export const findNavItem = (items: INavigationItem[] = [], path: string) => {
-  return items?.find(
-    ({ attributes }) =>
-      attributes.link !== "/" && path.includes(attributes.link)
-  );
-};
+// export const findNavItem = (items: INavigationItem[] = [], path: string) => {
+//   return items?.find(
+//     ({ attributes }) =>
+//       attributes.link !== "/" && path.includes(attributes.link)
+//   );
+// };
 
 export const getIsActivePathState = ({
   itemLink,
@@ -32,32 +32,32 @@ export const getIsActivePathState = ({
   return isActive;
 };
 
-export const getLink = (navItems: INavigationItem[], link: string) => {
-  const navItem = navItems.find(({ attributes }) => attributes.link === link);
-  if (navItem) {
-    return link;
-  }
+// export const getLink = (navItems: INavigationItem[], link: string) => {
+//   const navItem = navItems.find(({ attributes }) => attributes.link === link);
+//   if (navItem) {
+//     return link;
+//   }
 
-  const itemsWithNestedLinks: INavigationItem[] = navItems.filter(
-    ({ attributes: { nested_menu_items } }) =>
-      nested_menu_items?.data.length > 0
-  );
+//   const itemsWithNestedLinks: INavigationItem[] = navItems.filter(
+//     ({ attributes: { nested_menu_items } }) =>
+//       nested_menu_items?.data.length > 0
+//   );
 
-  if (itemsWithNestedLinks.length > 0) {
-    const parentNavItem = itemsWithNestedLinks.find(
-      ({ attributes: { nested_menu_items } }) =>
-        nested_menu_items.data.find(
-          ({ attributes: { link: itemLink } }) => itemLink === link
-        )
-    );
-    if (parentNavItem) {
-      const parentNavLink = parentNavItem.attributes.link;
-      const newLink = createNestedLink(parentNavLink, link);
-      return newLink;
-    }
-  }
-  return "/";
-};
+//   if (itemsWithNestedLinks.length > 0) {
+//     const parentNavItem = itemsWithNestedLinks.find(
+//       ({ attributes: { nested_menu_items } }) =>
+//         nested_menu_items.data.find(
+//           ({ attributes: { link: itemLink } }) => itemLink === link
+//         )
+//     );
+//     if (parentNavItem) {
+//       const parentNavLink = parentNavItem.attributes.link;
+//       const newLink = createNestedLink(parentNavLink, link);
+//       return newLink;
+//     }
+//   }
+//   return "/";
+// };
 
 export function getStrapiMedia(url: string) {
   if (url.startsWith("http") || url.startsWith("//")) {

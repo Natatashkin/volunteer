@@ -22,10 +22,6 @@ const PrymaryNavigationItem = ({
     setOpen(false);
   }, [path]);
 
-  console.log(nestedItems);
-
-  
-
   return (
     <li
       onClick={toggleOpen}
