@@ -29,19 +29,6 @@ export default async function RootLayout({
   params: { lang: string };
 }) {
   const query = getNavigation(params.lang);
-  // const navQuery = qs.stringify(
-  //   {
-  //     fields: ["title", "link"],
-  //     populate: [
-  //       "nested_menu_items.id",
-  //       "nested_menu_items.title",
-  //       "nested_menu_items.link",
-  //     ],
-  //     locale: params.lang,
-  //   },
-  //   { encodeValuesOnly: true }
-  // );
-
   const navigationData = await getNavigationData(query);
   // console.log("navigationData", navigationData);
   
@@ -51,7 +38,9 @@ export default async function RootLayout({
       <body className={inter.className}>
         <AppBar items={navigationData} />
         <AppContextProvider value={navigationData}>
+          <main>
           {children}
+          </main>
         </AppContextProvider>
       </body>
     </html>

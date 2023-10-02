@@ -17,7 +17,7 @@ export const getAllLocales = async () => {
 };
 
 export const getNavigationData = async (query: string) => {
-  const res = await fetch(`${baseUrl}/api/pages?${query}`, { headers })
+  const res = await fetch(`${baseUrl}/api/pages?${query}`, { headers });
 
   if (!res.ok) {
     throw new Error("Error");
@@ -26,17 +26,17 @@ export const getNavigationData = async (query: string) => {
   return data;
 };
 
-export const getPages = async () => {
-  const res = await fetch(`${baseUrl}/api/pages`, {
-    headers,
-  });
+// export const getPages = async () => {
+//   const res = await fetch(`${baseUrl}/api/pages`, {
+//     headers,
+//   });
 
-  if (!res.ok) {
-    throw new Error("Error");
-  }
-  const { data } = await res.json();
-  return data;
-};
+//   if (!res.ok) {
+//     throw new Error("Error");
+//   }
+//   const { data } = await res.json();
+//   return data;
+// };
 
 export const getPageData = async (request: string) => {
   // console.log(request);

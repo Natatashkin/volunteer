@@ -91,6 +91,15 @@ export const getPageQuery = (slug: string, locale: string) => {
         seo: {
           populate: "*",
         },
+        subpages: {
+          fields: ["slug", "title"],
+          populate: {
+            image: {
+              fields: ["url", "alternativeText"],
+            },
+          },
+        },
+        showSidebar: true,
         blocks: {
           on: {
             "elements.features": {
@@ -159,6 +168,19 @@ export const getPageQuery = (slug: string, locale: string) => {
                 },
                 image: {
                   fields: ["url", "alternativeText"],
+                },
+              },
+            },
+            "elements.sidebar": {
+              populate: {
+                fields: ["title"],
+                populate: {
+                  item: {
+                    fields: ["title", "description", "link", "buttonTitle"],
+                    populate: {
+                      image: ["url", "alternativeText"],
+                    },
+                  },
                 },
               },
             },

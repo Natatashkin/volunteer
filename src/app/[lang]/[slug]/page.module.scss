@@ -1,0 +1,13 @@
+.page {
+
+&_layout {
+	display: flex;
+	flex-direction: column;
+}
+
+&_layout__row {
+	flex-direction: column;
+}
+
+
+}
