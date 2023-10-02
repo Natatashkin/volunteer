@@ -36,9 +36,9 @@ export interface IAppBar {
 export type INavigationItem = {
   id: number;
   attributes: {
-    link: string;
+    slug: string;
     title: string;
-    nested_menu_items: {
+    subpages: {
       data: INavigationItem[];
     };
   };

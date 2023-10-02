@@ -16,7 +16,7 @@ const PrymaryNavigationItem = ({
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const toggleOpen = () => setOpen((prev) => !prev);
-  const hasNestedItems = Boolean(nestedItems.length);
+  // const hasNestedItems = Boolean(nestedItems.length);
 
   useEffect(() => {
     setOpen(false);
@@ -38,7 +38,7 @@ const PrymaryNavigationItem = ({
 
       <Link href={link} className={styles.primaryNavListItem_link}>
           {title}
-        </Link>
+      </Link>
       {/* {!hasNestedItems ? (
         <Link href={link} className={styles.primaryNavListItem_link}>
           {title}

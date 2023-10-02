@@ -6,7 +6,6 @@ import styles from "./primaryNavigation.module.scss";
 import { generateKey, generateLink } from "@/app/utils/helpers";
 
 const PrimaryNavigation = ({ items }: IAppMenuProps) => {
-  // console.log(items);
 
   return (
     <nav className={styles.navigation}>
