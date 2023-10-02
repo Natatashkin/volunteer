@@ -1,0 +1,48 @@
+@import "../../../styles/variables.module.scss";
+
+.category {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: $radius;
+
+  &_thumb {
+    position: relative;
+    aspect-ratio: 16/9;
+    border-radius: $radius;
+    overflow: hidden;
+    background-color: $transparent-bg-color;
+
+    &:hover img {
+      transform: scale(1.2);
+      transform-origin: center;
+    }
+
+    & img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      z-index: -1;
+      border-radius: $radius;
+      transition: transform 250ms ease-in-out;
+    }
+  }
+  &_title {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(100% - 16px);
+    margin: 0 8px;
+    text-align: center;
+    z-index: 2;
+
+    &:hover + .category_thumb {
+      & img {
+        transform: scale(1.2);
+        transform-origin: center;
+      }
+    }
+  }
+}

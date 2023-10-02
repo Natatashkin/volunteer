@@ -87,6 +87,7 @@ export const getPageQuery = (slug: string, locale: string) => {
           $eq: slug ?? "/",
         },
       },
+      fields: ["title", "description", "slug", "showSidebar"],
       populate: {
         seo: {
           populate: "*",
