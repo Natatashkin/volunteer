@@ -7,6 +7,7 @@ import { fetchLocalesData } from "@/middleware";
 import AppBar from "@/app/components/AppBar/AppBar";
 import { ReactNode } from "react";
 import { AppContextProvider, useAppContext } from "../context/appContext";
+import { getNavigation } from "../utils/helpers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,20 +28,23 @@ export default async function RootLayout({
   children: ReactNode;
   params: { lang: string };
 }) {
-  const navQuery = qs.stringify(
-    {
-      fields: ["title", "link"],
-      populate: [
-        "nested_menu_items.id",
-        "nested_menu_items.title",
-        "nested_menu_items.link",
-      ],
-      locale: params.lang,
-    },
-    { encodeValuesOnly: true }
-  );
+  const query = getNavigation(params.lang);
+  // const navQuery = qs.stringify(
+  //   {
+  //     fields: ["title", "link"],
+  //     populate: [
+  //       "nested_menu_items.id",
+  //       "nested_menu_items.title",
+  //       "nested_menu_items.link",
+  //     ],
+  //     locale: params.lang,
+  //   },
+  //   { encodeValuesOnly: true }
+  // );
 
-  const navigationData = await getNavigationData(navQuery);
+  const navigationData = await getNavigationData(query);
+  // console.log("navigationData", navigationData);
+  
 
   return (
     <html lang={params.lang}>

@@ -30,7 +30,21 @@ const BurgerMenu = ({ items }: IAppMenuProps) => {
       >
         <div className={styles.navigation_wrapper}>
           <ul className={styles.navigation_list}>
-            {items.map(
+          {items.map(
+              ({ id, attributes: { title, slug, subpages } }) => {
+                const itemLink = slug === "/"? slug : `/${slug}`
+                return (
+                  <NavigationItemWrapper
+                    key={id}
+                    title={title}
+                    link={itemLink}
+                    nestedItems={subpages?.data}
+                    Component={BurgerNavigationItem}
+                  />
+                );
+              }
+            )}
+            {/* {items.map(
               ({ id, attributes: { title, link, nested_menu_items } }) => {
                 return (
                   <NavigationItemWrapper
@@ -42,7 +56,7 @@ const BurgerMenu = ({ items }: IAppMenuProps) => {
                   />
                 );
               }
-            )}
+            )} */}
           </ul>
           <div className={styles.tools}>
             <div className={styles.tools_background}>

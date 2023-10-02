@@ -17,7 +17,7 @@ export const getAllLocales = async () => {
 };
 
 export const getNavigationData = async (query: string) => {
-  const res = await fetch(`${baseUrl}/api/menu-items?${query}`, { headers });
+  const res = await fetch(`${baseUrl}/api/pages?${query}`, { headers })
 
   if (!res.ok) {
     throw new Error("Error");

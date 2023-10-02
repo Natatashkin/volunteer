@@ -9,6 +9,7 @@ import styles from "./appBar.module.scss";
 
 const AppBar = ({ items }: IAppBar) => {
   const { isLaptopWidth } = useWidth();
+  // console.log("app bar items", items);
 
   return (
     <>
