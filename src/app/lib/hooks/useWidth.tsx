@@ -13,6 +13,7 @@ const useWidth = () => {
 
   const throttledWidth = useDebouncedCallback(handleClientWidth, 300);
   const isLaptopWidth = width >= parseInt(variables.laptop);
+ 
   const widthIsDetect = Boolean(width);
 
   useEffect(() => {

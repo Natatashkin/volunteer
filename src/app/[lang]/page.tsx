@@ -17,13 +17,13 @@ export default async function Home({ params: { lang } }: IHomePageProps) {
 
   return (
     <main className={styles.main}>
-      {blocks?.map((block: BlockType) => {
+      {/* {blocks?.map((block: BlockType) => {
         return (
           <Fragment key={`${block.__component}-${block.id}`}>
             <ComponentBuilder block={block} />
           </Fragment>
         );
-      })}
+      })} */}
     </main>
   );
 }

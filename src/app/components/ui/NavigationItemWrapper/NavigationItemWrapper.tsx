@@ -1,5 +1,5 @@
 "use client";
-import { getIsActivePathState, splitUrl } from "@/app/utils/helpers";
+import { generateLink, getIsActivePathState, splitUrl } from "@/app/utils/helpers";
 import { INavigationItemWrapperProps } from "@/types";
 import { usePathname } from "next/navigation";
 
@@ -10,13 +10,14 @@ const NavigationItemWrapper = ({
   Component,
 }: INavigationItemWrapperProps) => {
   const path = usePathname();
-
   const { noLocalizedPath } = splitUrl(path);
+  // const hasNestedItems = Boolean(nestedItems?.length);  
+  
   const isActive = getIsActivePathState({
     itemLink: link,
     urlPath: noLocalizedPath,
   });
-
+  
   return (
     <Component
       link={link}

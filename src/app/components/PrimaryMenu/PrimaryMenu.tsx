@@ -9,8 +9,10 @@ import { splitUrl } from "@/app/utils/helpers";
 import { usePathname } from "next/navigation";
 
 const PrimaryMenu = ({ items }: IAppMenuProps) => {
+  // console.log("navData >>>>>", items);
   const path = usePathname();
   const { locale } = splitUrl(path);
+
   return (
     <div className={styles.appHeader_primaryMenu}>
       <div className={styles.appHeader_action}>

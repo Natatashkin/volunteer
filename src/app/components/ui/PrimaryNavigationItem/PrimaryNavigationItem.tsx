@@ -22,6 +22,10 @@ const PrymaryNavigationItem = ({
     setOpen(false);
   }, [path]);
 
+  console.log(nestedItems);
+
+  
+
   return (
     <li
       onClick={toggleOpen}
@@ -31,7 +35,11 @@ const PrymaryNavigationItem = ({
         [styles.primaryNavListItem__open]: open,
       })}
     >
-      {!hasNestedItems ? (
+
+      <Link href={link} className={styles.primaryNavListItem_link}>
+          {title}
+        </Link>
+      {/* {!hasNestedItems ? (
         <Link href={link} className={styles.primaryNavListItem_link}>
           {title}
         </Link>
@@ -70,7 +78,7 @@ const PrymaryNavigationItem = ({
             </ul>
           </div>
         </div>
-      )}
+      )} */}
       <div />
     </li>
   );

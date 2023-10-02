@@ -66,8 +66,21 @@ export function getStrapiMedia(url: string) {
   return `${process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:1337"}${url}`;
 }
 
+export const getNavigation = (locale: string) => {
+  const navQuery = qs.stringify(
+    {
+      fields: ["title", "slug"],
+      populate: { subpages: { fields: ["title", "slug"] } },
+      sort: "order",
+      locale: locale,
+    },
+    { encodeValuesOnly: true }
+  );
+  return navQuery;
+};
+
 export const getPageQuery = (slug: string, locale: string) => {
-  const pageQery = qs.stringify(
+  const pageQuery = qs.stringify(
     {
       filters: {
         slug: {
@@ -157,7 +170,7 @@ export const getPageQuery = (slug: string, locale: string) => {
 
     { encodeValuesOnly: true }
   );
-  return pageQery;
+  return pageQuery;
 };
 
 export const generateKey = (id: number, title: string) => `${title}-${id}`;
