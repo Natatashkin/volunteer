@@ -80,7 +80,7 @@ export type TGetIsActivePathState = {
 // Pages
 
 export interface IPageProps {
-  params: { lang: string; slug: string };
+  params: { lang: string; slug: string; next: any };
 }
 
 export type ProgectTypes = {

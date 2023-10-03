@@ -1,0 +1,19 @@
+@import "../../../styles/variables.module.scss";
+
+.page {
+  &_title {
+    margin-bottom: 20px;
+    @media (min-width: $tablet) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &_layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_layout__row {
+    flex-direction: column;
+  }
+}
